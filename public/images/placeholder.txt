@@ -1,0 +1,19 @@
+This directory will contain images for the bakery website.
+
+For a real implementation, you would need to add actual image files here:
+
+1. hero-cake.jpg - For the hero section
+2. chocolate-cake.jpg - For the featured product
+3. macarons.jpg - For the featured product
+4. cupcakes.jpg - For the featured product
+5. chocolate-truffles.jpg - For products page
+6. chocolate-strawberries.jpg - For products page
+7. chocolate-bark.jpg - For products page
+8. strawberry-cake.jpg - For products page
+9. red-velvet-cake.jpg - For products page
+10. carrot-cake.jpg - For products page
+11. lemon-cake.jpg - For products page
+12. chocolate-chip-cookies.jpg - For products page
+13. shortbread-cookies.jpg - For products page
+
+These images should be high-quality photos of bakery items.
