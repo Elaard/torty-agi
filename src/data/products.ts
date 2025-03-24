@@ -8,6 +8,10 @@ export interface Product {
   featured?: boolean;
   bestseller?: boolean;
   new?: boolean;
+  size?: string;
+  ingredients?: string[];
+  allergens?: string[];
+  nutritionalInfo?: string;
 }
 
 export const productData: Product[] = [
@@ -19,7 +23,11 @@ export const productData: Product[] = [
     image: '/images/chocolate-cake.jpg',
     description: 'Bogate warstwy czekoladowe z gładkim ganache i wiórkami czekoladowymi.',
     featured: true,
-    bestseller: true
+    bestseller: true,
+    size: 'Średnica 24cm (8-10 porcji)',
+    ingredients: ['Mąka pszenna', 'Masło', 'Cukier', 'Jajka', 'Czekolada deserowa', 'Śmietana kremówka', 'Kakao'],
+    allergens: ['Gluten', 'Jajka', 'Mleko'],
+    nutritionalInfo: 'Wartość energetyczna: 350 kcal/100g'
   },
   {
     id: 'strawberry-delight',
@@ -28,7 +36,11 @@ export const productData: Product[] = [
     price: 149.99,
     image: '/images/strawberry-cake.jpg',
     description: 'Lekki biszkopt waniliowy ze świeżymi truskawkami i kremem.',
-    featured: true
+    featured: true,
+    size: 'Średnica 22cm (6-8 porcji)',
+    ingredients: ['Mąka pszenna', 'Masło', 'Cukier', 'Jajka', 'Świeże truskawki', 'Śmietana kremówka', 'Ekstrakt waniliowy'],
+    allergens: ['Gluten', 'Jajka', 'Mleko'],
+    nutritionalInfo: 'Wartość energetyczna: 320 kcal/100g'
   },
   {
     id: 'red-velvet',
@@ -80,7 +92,11 @@ export const productData: Product[] = [
     price: 79.99,
     image: '/images/chocolate-truffles.jpg',
     description: 'Ręcznie robione trufle czekoladowe z różnymi nadzieniami.',
-    bestseller: true
+    bestseller: true,
+    size: 'Opakowanie 12 sztuk',
+    ingredients: ['Czekolada deserowa', 'Śmietana kremówka', 'Masło', 'Kakao', 'Likier pomarańczowy', 'Orzechy laskowe'],
+    allergens: ['Mleko', 'Orzechy'],
+    nutritionalInfo: 'Wartość energetyczna: 450 kcal/100g'
   },
   {
     id: 'chocolate-covered-strawberries',
