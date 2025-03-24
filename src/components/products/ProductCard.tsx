@@ -37,7 +37,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           <div className="flex justify-between items-center">
             <span className="font-medium text-lg">{product.price.toFixed(2)} zł</span>
-            <button className="btn btn-primary py-1 px-3 text-sm" onClick={openModal}>
+            <button className="btn btn-primary btn-custom text-sm" onClick={openModal}>
               Więcej informacji
             </button>
           </div>

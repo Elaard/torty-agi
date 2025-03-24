@@ -26,7 +26,7 @@ export default function Home() {
                 <Link href="/kontakt" className="btn btn-primary text-lg px-8 py-4 shadow-xl">
                   Skontaktuj się
                 </Link>
-                <Link href="/kontakt" className="btn btn-outline text-lg px-8 py-4 transform -rotate-1">
+                <Link href="/produkty" className="btn btn-outline text-lg px-8 py-4 transform -rotate-1">
                   Nasze realizacje
                 </Link>
               </div>
