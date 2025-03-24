@@ -86,24 +86,6 @@ export default function ContactPage() {
                   </p>
                 </div>
               </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="bg-primary-100 p-3 rounded-full text-primary-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-medium text-lg mb-1">Godziny otwarcia</h3>
-                  <p className="text-gray-600">
-                    Poniedziałek - Piątek: 9:00 - 18:00
-                    <br />
-                    Sobota: 10:00 - 16:00
-                    <br />
-                    Niedziela: Zamknięte
-                  </p>
-                </div>
-              </div>
             </div>
 
             {/* Social Media */}
