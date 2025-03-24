@@ -67,25 +67,25 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg">
+                <Link href="/produkty" className="text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg">
                   <span className="w-2 h-2 bg-accent-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  <span>Galeria</span>
+                  <span>Produkty</span>
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg">
+                <Link href="/kontakt" className="text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg">
                   <span className="w-2 h-2 bg-accent-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   <span>Kontakt</span>
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg">
+                <Link href="/kontakt" className="text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg">
                   <span className="w-2 h-2 bg-accent-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   <span>Torty i ciasta</span>
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg">
+                <Link href="/kontakt" className="text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg">
                   <span className="w-2 h-2 bg-accent-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   <span>Słodkości i desery</span>
                 </Link>

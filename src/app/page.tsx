@@ -23,10 +23,10 @@ export default function Home() {
                 Ręcznie robione torty, ciasta i słodkości przygotowane z pasją i najlepszych składników. Idealne na każdą okazję.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Link href="/contact" className="btn btn-primary text-lg px-8 py-4 shadow-xl">
+                <Link href="/kontakt" className="btn btn-primary text-lg px-8 py-4 shadow-xl">
                   Skontaktuj się
                 </Link>
-                <Link href="/contact" className="btn btn-outline text-lg px-8 py-4 transform -rotate-1">
+                <Link href="/kontakt" className="btn btn-outline text-lg px-8 py-4 transform -rotate-1">
                   Nasze realizacje
                 </Link>
               </div>
@@ -158,7 +158,7 @@ export default function Home() {
                 <p className="text-secondary-600 mb-4">
                   Bogate warstwy czekoladowe z gładkim ganache i wiórkami czekoladowymi. Idealny na specjalne okazje.
                 </p>
-                <Link href="/contact" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                <Link href="/kontakt" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                   Więcej informacji
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -179,7 +179,7 @@ export default function Home() {
                 <p className="text-secondary-600 mb-4">
                   Delikatne ciasteczka migdałowe z różnymi nadzieniami w pięknych kolorach. Doskonały prezent.
                 </p>
-                <Link href="/contact" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                <Link href="/kontakt" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                   Więcej informacji
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -198,7 +198,7 @@ export default function Home() {
                 </div>
                 <h3 className="font-serif text-2xl font-semibold mb-3">Babeczki</h3>
                 <p className="text-secondary-600 mb-4">Soczyste babeczki z kremem maślanym i dekoracyjnymi dodatkami. Idealne na przyjęcia.</p>
-                <Link href="/contact" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                <Link href="/kontakt" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                   Więcej informacji
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -209,7 +209,7 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-16">
-            <Link href="/contact" className="btn btn-primary text-lg px-8 py-4 shadow-xl">
+            <Link href="/kontakt" className="btn btn-primary text-lg px-8 py-4 shadow-xl">
               Zobacz wszystkie nasze wypieki
             </Link>
           </div>
@@ -329,7 +329,7 @@ export default function Home() {
               personalizowane zamówienia, dostawę i odbiór osobisty.
             </p>
             <Link
-              href="/contact"
+              href="/kontakt"
               className="inline-block px-10 py-5 bg-white text-primary-600 rounded-full text-xl font-bold hover:bg-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
             >
               Skontaktuj się teraz
