@@ -2,7 +2,7 @@ import { getPageConfig } from "../../data/get-page-data";
 import ProductsClientWrapper from "../../components/products/ProductsClientWrapper";
 import styles from "./page.module.css";
 
-export default async function ProductsPage() {
+export default async function Page() {
   const config = await getPageConfig();
 
   return (

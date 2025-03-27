@@ -5,7 +5,7 @@ export const metadata = {
   description: "Skontaktuj się z nami w sprawie zamówień, pytań lub opinii.",
 };
 
-export default function ContactPage() {
+export default function Page() {
   return (
     <div className="py-12">
       <div className="container-custom">

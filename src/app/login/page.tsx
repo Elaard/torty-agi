@@ -1,0 +1,58 @@
+"use client";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
+export default function Page() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const router = useRouter();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    setError("");
+    e.preventDefault();
+
+    const response = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username: email, password }),
+    });
+
+    if (response.status !== 200) {
+      const error = await response.json();
+      setError(error);
+      return;
+    } else {
+      router.push("/dashboard");
+    }
+  };
+
+  return (
+    <form onSubmit={handleLogin}>
+      <div className="flex flex-col items-center mt-128">
+        <div className="flex px-2 py-2 gap-2">
+          <label htmlFor="email">Email</label>
+          <input className="border solid" required type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        </div>
+        <div className="flex px-2 py-2 gap-2">
+          <label htmlFor="password">Hasło</label>
+          <input
+            required
+            className="border solid field-sizing-content"
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        {error && <div className="text-red-500">{error}</div>}
+        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 border border-blue-700 rounded mt-2">
+          Zaloguj
+        </button>
+      </div>
+    </form>
+  );
+}
