@@ -3,7 +3,7 @@
 import { useState } from "react";
 import ProductCard from "./ProductCard";
 import ProductFilter from "./ProductFilter";
-import { Product } from "../../data/products";
+import { Product } from "@/data/get-page-data";
 
 interface ProductsClientWrapperProps {
   initialProducts: Product[];

@@ -1,18 +1,5 @@
-export interface Product {
-  id: string;
-  name: string;
-  category: 'cakes' | 'chocolates' | 'pastries' | 'cookies';
-  price: number;
-  image: string;
-  description: string;
-  featured?: boolean;
-  bestseller?: boolean;
-  new?: boolean;
-  size?: string;
-  ingredients?: string[];
-  allergens?: string[];
-  nutritionalInfo?: string;
-}
+import { Product } from "./get-page-data";
+
 
 export const productData: Product[] = [
   {
@@ -133,10 +120,6 @@ export const productData: Product[] = [
     description: 'Maślane kruche ciasteczka, które rozpływają się w ustach.'
   }
 ];
-
-export interface Config {
-  products: Product[];
-}
 
 export const categories = [
   { id: 'all', name: 'Wszystkie produkty' },

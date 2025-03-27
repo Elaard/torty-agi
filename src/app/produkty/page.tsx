@@ -3,7 +3,9 @@ import ProductsClientWrapper from "../../components/products/ProductsClientWrapp
 import styles from "./page.module.css";
 
 export default async function Page() {
-  const config = await getPageConfig();
+  const { products, allProducts } = await getPageConfig();
+
+  const initialProducts = allProducts.filter((product) => products.includes(product.id));
 
   return (
     <div className="py-12">
@@ -16,7 +18,7 @@ export default async function Page() {
           </p>
         </div>
 
-        <ProductsClientWrapper initialProducts={config.products} />
+        <ProductsClientWrapper initialProducts={initialProducts} />
       </div>
     </div>
   );

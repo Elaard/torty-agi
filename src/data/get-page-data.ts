@@ -1,22 +1,37 @@
-import { getPresignedUrl } from './get-s3-url';
-import { Config, Product, productData } from './products';
+import { getPresignedUrl } from "./get-s3-url";
+
+export interface Product {
+  id: string;
+  name: string;
+  category: 'cakes' | 'chocolates' | 'pastries' | 'cookies';
+  price: number;
+  image: string;
+  description: string;
+  featured?: boolean;
+  bestseller?: boolean;
+  new?: boolean;
+  size?: string;
+  ingredients?: string[];
+  allergens?: string[];
+  nutritionalInfo?: string;
+}
 
 // Interface for the page data structure
 export interface PageData {
-  mainPage: {
-    products: [
-
-    ]
-  },
-  products: Product[];
+  promoted: string[],
+  creations: string[],
+  reviews: Array<{ name: string, review: string }>,
+  products: string[],
+  allProducts: Product[];
 }
 
 // Default/fallback data
 export const defaultPageData: PageData = {
-  mainPage: {
-    products: []
-  },
-  products: productData // Use the static product data as fallback
+  promoted: [],
+  creations: [],
+  reviews: [],
+  products: [],
+  allProducts: [],
 };
 
 // Cache for the page data
@@ -33,12 +48,12 @@ export async function getConfig(): Promise<PageData> {
   }
   try {
     // Get these values from environment variables
-    const bucket = process.env.AWS_S3_BUCKET || '';
-    const bucketFile = 'data.json';
+    const bucket = process.env.AWS_S3_BUCKET || "";
+    const bucketFile = "data.json";
 
     // If bucket is not configured, return default data
     if (!bucket) {
-      console.warn('AWS_S3_BUCKET not configured, using default data');
+      console.warn("AWS_S3_BUCKET not configured, using default data");
       return defaultPageData;
     }
 
@@ -51,7 +66,7 @@ export async function getConfig(): Promise<PageData> {
       const timeoutId = setTimeout(() => controller.abort(), 5000);
 
       const response = await fetch(url, {
-        signal: controller.signal
+        signal: controller.signal,
       });
 
       clearTimeout(timeoutId);
@@ -70,22 +85,28 @@ export async function getConfig(): Promise<PageData> {
 
       return pageData;
     } catch (fetchError) {
-      console.error('Error fetching page data from S3:', fetchError);
+      console.error("Error fetching page data from S3:", fetchError);
       return defaultPageData;
     }
   } catch (error) {
-    console.error('Error in getPageData:', error);
+    console.error("Error in getPageData:", error);
     // Fall back to default data
     return defaultPageData;
   }
 }
 
-export async function getPageConfig(): Promise<Config> {
+export async function getPageConfig(): Promise<PageData> {
   try {
     const config = await getConfig();
     return config;
   } catch (error) {
-    console.error('Error getting products from page data:', error);
-    return { products: [] };
+    console.error("Error getting products from page data:", error);
+    return {
+      promoted: [],
+      creations: [],
+      reviews: [],
+      products: [],
+      allProducts: [],
+    };
   }
 }
