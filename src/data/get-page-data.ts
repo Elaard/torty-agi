@@ -3,11 +3,19 @@ import { Config, Product, productData } from './products';
 
 // Interface for the page data structure
 export interface PageData {
+  mainPage: {
+    products: [
+
+    ]
+  },
   products: Product[];
 }
 
 // Default/fallback data
 export const defaultPageData: PageData = {
+  mainPage: {
+    products: []
+  },
   products: productData // Use the static product data as fallback
 };
 

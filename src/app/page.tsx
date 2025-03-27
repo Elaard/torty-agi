@@ -209,7 +209,7 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-16">
-            <Link href="/kontakt" className="btn btn-primary text-lg px-8 py-4 shadow-xl">
+            <Link href="/produkty" className="btn btn-primary text-lg px-8 py-4 shadow-xl">
               Zobacz wszystkie nasze wypieki
             </Link>
           </div>

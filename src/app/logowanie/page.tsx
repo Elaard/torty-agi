@@ -13,7 +13,7 @@ export default function Page() {
     setError("");
     e.preventDefault();
 
-    const response = await fetch("/api/login", {
+    const response = await fetch("/api/logowanie", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +26,7 @@ export default function Page() {
       setError(error);
       return;
     } else {
-      router.push("/dashboard");
+      router.push("/panel-admina");
     }
   };
 
