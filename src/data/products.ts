@@ -134,6 +134,10 @@ export const productData: Product[] = [
   }
 ];
 
+export interface Config {
+  products: Product[];
+}
+
 export const categories = [
   { id: 'all', name: 'Wszystkie produkty' },
   { id: 'cakes', name: 'Torty i ciasta' },

@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
+import { getConfig } from "../data/get-page-data";
 
 export const metadata: Metadata = {
   title: "Torty AGI | Artystyczna Cukiernia",
@@ -32,6 +33,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  getConfig();
+
   return (
     <html lang="pl" className="scroll-smooth">
       <body className="bg-white text-gray-900 font-sans">
