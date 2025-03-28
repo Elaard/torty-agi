@@ -1,7 +1,27 @@
 import Link from 'next/link';
 import PlaceholderImage from '../components/ui/PlaceholderImage';
+import { getPageConfig, Product } from '@/data/get-page-data';
 
-export default function Home() {
+export default async function Home() {
+  // Fetch page data
+  const pageData = await getPageConfig();
+
+  // Get promoted products as individual variables
+  const promoted1 = pageData.promoted.promoted1 ? pageData.allProducts.find((p) => p.id === pageData.promoted.promoted1) || null : null;
+
+  const promoted2 = pageData.promoted.promoted2 ? pageData.allProducts.find((p) => p.id === pageData.promoted.promoted2) || null : null;
+
+  const promoted3 = pageData.promoted.promoted3 ? pageData.allProducts.find((p) => p.id === pageData.promoted.promoted3) || null : null;
+
+  const promoted4 = pageData.promoted.promoted4 ? pageData.allProducts.find((p) => p.id === pageData.promoted.promoted4) || null : null;
+
+  // Get creation products as individual variables
+  const creation1 = pageData.creations.creation1 ? pageData.allProducts.find((p) => p.id === pageData.creations.creation1) || null : null;
+
+  const creation2 = pageData.creations.creation2 ? pageData.allProducts.find((p) => p.id === pageData.creations.creation2) || null : null;
+
+  const creation3 = pageData.creations.creation3 ? pageData.allProducts.find((p) => p.id === pageData.creations.creation3) || null : null;
+
   return (
     <div className="bg-beige">
       {/* Hero Section */}
@@ -50,38 +70,151 @@ export default function Home() {
               <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary-100 rounded-full opacity-0 animate-float animation-delay-1000"></div>
 
               <div className="relative grid grid-cols-2 gap-4 md:gap-6">
-                <div className="space-y-4 md:space-y-6 pt-10">
-                  <div className="h-40 md:h-56 rounded-2xl overflow-hidden transform rotate-2 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-rotate-1 group">
-                    <PlaceholderImage
-                      text="Tort czekoladowy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                  <div className="h-32 md:h-44 rounded-2xl overflow-hidden transform -rotate-1 shadow-xl hover:shadow-2xl transition-all duration-500 hover:rotate-1 group">
-                    <PlaceholderImage
-                      text="Makaroniki"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                </div>
-                <div className="space-y-4 md:space-y-6">
-                  <div className="h-32 md:h-44 rounded-2xl overflow-hidden transform rotate-1 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-rotate-1 group">
-                    <PlaceholderImage
-                      text="Babeczki"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                  <div className="h-40 md:h-56 rounded-2xl overflow-hidden transform -rotate-2 shadow-xl hover:shadow-2xl transition-all duration-500 hover:rotate-1 group">
-                    <PlaceholderImage
-                      text="Tort weselny"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                </div>
+                {promoted1 || promoted2 || promoted3 || promoted4 ? (
+                  <>
+                    <div className="space-y-4 md:space-y-6 pt-10">
+                      {/* First promoted product */}
+                      {promoted1 && (
+                        <Link
+                          href={`/produkty/${promoted1.id}`}
+                          key={promoted1.id}
+                          className="h-40 md:h-56 rounded-2xl overflow-hidden transform rotate-2 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-rotate-1 group relative block"
+                        >
+                          {promoted1.mainImage ? (
+                            <img
+                              src={promoted1.mainImage}
+                              alt={promoted1.name}
+                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                          ) : (
+                            <PlaceholderImage
+                              text={promoted1.name}
+                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="absolute bottom-0 left-0 right-0 p-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/80 to-transparent">
+                            <span className="font-medium">{promoted1.name}</span>
+                          </div>
+                        </Link>
+                      )}
+
+                      {/* Second promoted product */}
+                      {promoted2 && (
+                        <Link
+                          href={`/produkty/${promoted2.id}`}
+                          key={promoted2.id}
+                          className="h-32 md:h-44 rounded-2xl overflow-hidden transform -rotate-1 shadow-xl hover:shadow-2xl transition-all duration-500 hover:rotate-1 group relative block"
+                        >
+                          {promoted2.mainImage ? (
+                            <img
+                              src={promoted2.mainImage}
+                              alt={promoted2.name}
+                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                          ) : (
+                            <PlaceholderImage
+                              text={promoted2.name}
+                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="absolute bottom-0 left-0 right-0 p-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/80 to-transparent">
+                            <span className="font-medium">{promoted2.name}</span>
+                          </div>
+                        </Link>
+                      )}
+                    </div>
+                    <div className="space-y-4 md:space-y-6">
+                      {/* Third promoted product */}
+                      {promoted3 && (
+                        <Link
+                          href={`/produkty/${promoted3.id}`}
+                          key={promoted3.id}
+                          className="h-32 md:h-44 rounded-2xl overflow-hidden transform rotate-1 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-rotate-1 group relative block"
+                        >
+                          {promoted3.mainImage ? (
+                            <img
+                              src={promoted3.mainImage}
+                              alt={promoted3.name}
+                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                          ) : (
+                            <PlaceholderImage
+                              text={promoted3.name}
+                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="absolute bottom-0 left-0 right-0 p-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/80 to-transparent">
+                            <span className="font-medium">{promoted3.name}</span>
+                          </div>
+                        </Link>
+                      )}
+
+                      {/* Fourth promoted product */}
+                      {promoted4 && (
+                        <Link
+                          href={`/produkty/${promoted4.id}`}
+                          key={promoted4.id}
+                          className="h-40 md:h-56 rounded-2xl overflow-hidden transform -rotate-2 shadow-xl hover:shadow-2xl transition-all duration-500 hover:rotate-1 group relative block"
+                        >
+                          {promoted4.mainImage ? (
+                            <img
+                              src={promoted4.mainImage}
+                              alt={promoted4.name}
+                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                          ) : (
+                            <PlaceholderImage
+                              text={promoted4.name}
+                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="absolute bottom-0 left-0 right-0 p-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/80 to-transparent">
+                            <span className="font-medium">{promoted4.name}</span>
+                          </div>
+                        </Link>
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="space-y-4 md:space-y-6 pt-10">
+                      <div className="h-40 md:h-56 rounded-2xl overflow-hidden transform rotate-2 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-rotate-1 group">
+                        <PlaceholderImage
+                          text="Tort czekoladowy"
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      </div>
+                      <div className="h-32 md:h-44 rounded-2xl overflow-hidden transform -rotate-1 shadow-xl hover:shadow-2xl transition-all duration-500 hover:rotate-1 group">
+                        <PlaceholderImage
+                          text="Makaroniki"
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      </div>
+                    </div>
+                    <div className="space-y-4 md:space-y-6">
+                      <div className="h-32 md:h-44 rounded-2xl overflow-hidden transform rotate-1 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-rotate-1 group">
+                        <PlaceholderImage
+                          text="Babeczki"
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      </div>
+                      <div className="h-40 md:h-56 rounded-2xl overflow-hidden transform -rotate-2 shadow-xl hover:shadow-2xl transition-all duration-500 hover:rotate-1 group">
+                        <PlaceholderImage
+                          text="Tort weselny"
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -102,66 +235,163 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {/* Specialty 1 */}
-            <div className="group relative">
-              <div className="absolute inset-0 bg-primary-200 rounded-3xl transform rotate-3 group-hover:rotate-1 transition-transform duration-300"></div>
-              <div className="relative bg-white p-6 rounded-3xl shadow-xl overflow-hidden transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 border border-primary-100">
-                <div className="relative h-64 mb-6 overflow-hidden rounded-xl">
-                  <PlaceholderImage text="Tort czekoladowy" className="transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <h3 className="font-serif text-2xl font-semibold mb-3">Tort czekoladowy</h3>
-                <p className="text-secondary-600 mb-4">
-                  Bogate warstwy czekoladowe z gładkim ganache i wiórkami czekoladowymi. Idealny na specjalne okazje.
-                </p>
-                <Link href="/kontakt" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
-                  Więcej informacji
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
+            {creation1 || creation2 || creation3 ? (
+              <>
+                {/* First creation */}
+                {creation1 && (
+                  <div className="group relative">
+                    <div className="absolute inset-0 bg-primary-200 rounded-3xl transform rotate-3 group-hover:rotate-1 transition-transform duration-300"></div>
+                    <Link href={`/produkty/${creation1.id}`} className="block">
+                      <div className="relative bg-white p-6 rounded-3xl shadow-xl overflow-hidden transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 border border-primary-100">
+                        <div className="relative h-64 mb-6 overflow-hidden rounded-xl">
+                          {creation1.mainImage ? (
+                            <img
+                              src={creation1.mainImage}
+                              alt={creation1.name}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                          ) : (
+                            <PlaceholderImage text={creation1.name} className="transition-transform duration-500 group-hover:scale-105" />
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <h3 className="font-serif text-2xl font-semibold mb-3">{creation1.name}</h3>
+                        <p className="text-secondary-600 mb-4">{creation1.description}</p>
+                        <span className="text-primary-600 font-medium inline-flex items-center">
+                          Więcej informacji
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </span>
+                      </div>
+                    </Link>
+                  </div>
+                )}
 
-            {/* Specialty 2 */}
-            <div className="group relative md:translate-y-8">
-              <div className="absolute inset-0 bg-accent-200 rounded-3xl transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
-              <div className="relative bg-white p-6 rounded-3xl shadow-xl overflow-hidden transform rotate-1 group-hover:rotate-0 transition-transform duration-300 border border-accent-100">
-                <div className="relative h-64 mb-6 overflow-hidden rounded-xl">
-                  <PlaceholderImage text="Makaroniki" className="transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <h3 className="font-serif text-2xl font-semibold mb-3">Makaroniki</h3>
-                <p className="text-secondary-600 mb-4">
-                  Delikatne ciasteczka migdałowe z różnymi nadzieniami w pięknych kolorach. Doskonały prezent.
-                </p>
-                <Link href="/kontakt" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
-                  Więcej informacji
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
+                {/* Second creation */}
+                {creation2 && (
+                  <div className="group relative md:translate-y-8">
+                    <div className="absolute inset-0 bg-accent-200 rounded-3xl transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
+                    <Link href={`/produkty/${creation2.id}`} className="block">
+                      <div className="relative bg-white p-6 rounded-3xl shadow-xl overflow-hidden transform rotate-1 group-hover:rotate-0 transition-transform duration-300 border border-accent-100">
+                        <div className="relative h-64 mb-6 overflow-hidden rounded-xl">
+                          {creation2.mainImage ? (
+                            <img
+                              src={creation2.mainImage}
+                              alt={creation2.name}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                          ) : (
+                            <PlaceholderImage text={creation2.name} className="transition-transform duration-500 group-hover:scale-105" />
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <h3 className="font-serif text-2xl font-semibold mb-3">{creation2.name}</h3>
+                        <p className="text-secondary-600 mb-4">{creation2.description}</p>
+                        <span className="text-primary-600 font-medium inline-flex items-center">
+                          Więcej informacji
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </span>
+                      </div>
+                    </Link>
+                  </div>
+                )}
 
-            {/* Specialty 3 */}
-            <div className="group relative">
-              <div className="absolute inset-0 bg-secondary-200 rounded-3xl transform rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
-              <div className="relative bg-white p-6 rounded-3xl shadow-xl overflow-hidden transform -rotate-2 group-hover:rotate-0 transition-transform duration-300 border border-secondary-100">
-                <div className="relative h-64 mb-6 overflow-hidden rounded-xl">
-                  <PlaceholderImage text="Babeczki" className="transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                {/* Third creation */}
+                {creation3 && (
+                  <div className="group relative">
+                    <div className="absolute inset-0 bg-secondary-200 rounded-3xl transform rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
+                    <Link href={`/produkty/${creation3.id}`} className="block">
+                      <div className="relative bg-white p-6 rounded-3xl shadow-xl overflow-hidden transform -rotate-2 group-hover:rotate-0 transition-transform duration-300 border border-secondary-100">
+                        <div className="relative h-64 mb-6 overflow-hidden rounded-xl">
+                          {creation3.mainImage ? (
+                            <img
+                              src={creation3.mainImage}
+                              alt={creation3.name}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                          ) : (
+                            <PlaceholderImage text={creation3.name} className="transition-transform duration-500 group-hover:scale-105" />
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <h3 className="font-serif text-2xl font-semibold mb-3">{creation3.name}</h3>
+                        <p className="text-secondary-600 mb-4">{creation3.description}</p>
+                        <span className="text-primary-600 font-medium inline-flex items-center">
+                          Więcej informacji
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </span>
+                      </div>
+                    </Link>
+                  </div>
+                )}
+              </>
+            ) : (
+              // Fallback content if no creation products are available
+              <>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-primary-200 rounded-3xl transform rotate-3 group-hover:rotate-1 transition-transform duration-300"></div>
+                  <div className="relative bg-white p-6 rounded-3xl shadow-xl overflow-hidden transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 border border-primary-100">
+                    <div className="relative h-64 mb-6 overflow-hidden rounded-xl">
+                      <PlaceholderImage text="Tort czekoladowy" className="transition-transform duration-500 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <h3 className="font-serif text-2xl font-semibold mb-3">Tort czekoladowy</h3>
+                    <p className="text-secondary-600 mb-4">
+                      Bogate warstwy czekoladowe z gładkim ganache i wiórkami czekoladowymi. Idealny na specjalne okazje.
+                    </p>
+                    <Link href="/kontakt" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                      Więcej informacji
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
-                <h3 className="font-serif text-2xl font-semibold mb-3">Babeczki</h3>
-                <p className="text-secondary-600 mb-4">Soczyste babeczki z kremem maślanym i dekoracyjnymi dodatkami. Idealne na przyjęcia.</p>
-                <Link href="/kontakt" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
-                  Więcej informacji
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
+
+                <div className="group relative md:translate-y-8">
+                  <div className="absolute inset-0 bg-accent-200 rounded-3xl transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
+                  <div className="relative bg-white p-6 rounded-3xl shadow-xl overflow-hidden transform rotate-1 group-hover:rotate-0 transition-transform duration-300 border border-accent-100">
+                    <div className="relative h-64 mb-6 overflow-hidden rounded-xl">
+                      <PlaceholderImage text="Makaroniki" className="transition-transform duration-500 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <h3 className="font-serif text-2xl font-semibold mb-3">Makaroniki</h3>
+                    <p className="text-secondary-600 mb-4">
+                      Delikatne ciasteczka migdałowe z różnymi nadzieniami w pięknych kolorach. Doskonały prezent.
+                    </p>
+                    <Link href="/kontakt" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                      Więcej informacji
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-secondary-200 rounded-3xl transform rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
+                  <div className="relative bg-white p-6 rounded-3xl shadow-xl overflow-hidden transform -rotate-2 group-hover:rotate-0 transition-transform duration-300 border border-secondary-100">
+                    <div className="relative h-64 mb-6 overflow-hidden rounded-xl">
+                      <PlaceholderImage text="Babeczki" className="transition-transform duration-500 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <h3 className="font-serif text-2xl font-semibold mb-3">Babeczki</h3>
+                    <p className="text-secondary-600 mb-4">Soczyste babeczki z kremem maślanym i dekoracyjnymi dodatkami. Idealne na przyjęcia.</p>
+                    <Link href="/kontakt" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                      Więcej informacji
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
 
           <div className="text-center mt-16">

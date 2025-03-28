@@ -1,27 +1,35 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import ProductCard from "./ProductCard";
-import { Product, ProductCategory } from "@/data/get-page-data";
+import { useRouter } from 'next/navigation';
+import ProductCard from './ProductCard';
+import { Product, ProductCategory } from '@/data/get-page-data';
 
 interface ProductsClientWrapperProps {
   initialProducts: Product[];
   categories: ProductCategory[];
+  activeCategory: string;
 }
 
-export default function ProductsClientWrapper({ initialProducts, categories }: ProductsClientWrapperProps) {
-  const [activeCategory, setActiveCategory] = useState("all");
+export default function ProductsClientWrapper({ initialProducts, categories, activeCategory }: ProductsClientWrapperProps) {
+  const router = useRouter();
 
-  const products = initialProducts.filter((product) => activeCategory === "all" || product.category === activeCategory);
+  // Function to update the URL when a category is selected
+  const handleCategoryChange = (category: string) => {
+    const url = category === 'wszystkie' ? '/produkty' : `/produkty?kategoria=${category}`;
+
+    router.push(url);
+  };
+
+  const products = initialProducts.filter((product) => activeCategory === 'wszystkie' || product.category === activeCategory);
 
   return (
     <div className="space-y-8">
       {/* Horizontal Category Filter */}
       <div className="flex flex-wrap justify-center gap-3 mb-8">
         <button
-          onClick={() => setActiveCategory("all")}
+          onClick={() => handleCategoryChange('wszystkie')}
           className={`px-4 py-2 rounded-full transition-colors ${
-            activeCategory === "all" ? "bg-primary-600 text-white" : "bg-gray-100 hover:bg-gray-200 text-gray-800"
+            activeCategory === 'wszystkie' ? 'bg-primary-600 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
           }`}
         >
           Wszystkie
@@ -30,9 +38,9 @@ export default function ProductsClientWrapper({ initialProducts, categories }: P
         {categories.map((category) => (
           <button
             key={category.id}
-            onClick={() => setActiveCategory(category.id)}
+            onClick={() => handleCategoryChange(category.name)}
             className={`px-4 py-2 rounded-full transition-colors ${
-              activeCategory === category.id ? "bg-primary-600 text-white" : "bg-gray-100 hover:bg-gray-200 text-gray-800"
+              activeCategory === category.id ? 'bg-primary-600 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
             }`}
           >
             {category.name}

@@ -60,17 +60,17 @@ export const AdminPanel = ({ initialData }: AdminPanelProps) => {
     });
   };
 
-  const updatePromoted = (promotedIds: string[]) => {
+  const updatePromoted = (promotedObj: { promoted1: string; promoted2: string; promoted3: string; promoted4: string }) => {
     setPageData({
       ...pageData,
-      promoted: promotedIds,
+      promoted: promotedObj,
     });
   };
 
-  const updateCreations = (creationIds: string[]) => {
+  const updateCreations = (creationsObj: { creation1: string; creation2: string; creation3: string }) => {
     setPageData({
       ...pageData,
-      creations: creationIds,
+      creations: creationsObj,
     });
   };
 
@@ -131,10 +131,10 @@ export const AdminPanel = ({ initialData }: AdminPanelProps) => {
         {activeTab === 'products' && <ProductsSection products={pageData.allProducts} updateProducts={updateProducts} />}
         {activeTab === 'categories' && <CategoriesSection categories={pageData.categories} updateCategories={updateCategories} />}
         {activeTab === 'promoted' && (
-          <PromotedSection allProducts={pageData.allProducts} promotedIds={pageData.promoted} updatePromoted={updatePromoted} />
+          <PromotedSection allProducts={pageData.allProducts} promoted={pageData.promoted} updatePromoted={updatePromoted} />
         )}
         {activeTab === 'creations' && (
-          <CreationsSection allProducts={pageData.allProducts} creationIds={pageData.creations} updateCreations={updateCreations} />
+          <CreationsSection allProducts={pageData.allProducts} creations={pageData.creations} updateCreations={updateCreations} />
         )}
       </div>
     </div>

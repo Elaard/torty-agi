@@ -24,8 +24,17 @@ export interface ProductCategory {
 
 // Interface for the page data structure
 export interface PageData {
-  promoted: string[],
-  creations: string[],
+  promoted: {
+    promoted1: string;
+    promoted2: string;
+    promoted3: string;
+    promoted4: string;
+  },
+  creations: {
+    creation1: string;
+    creation2: string;
+    creation3: string;
+  },
   products: string[],
   allProducts: Product[];
   categories: Array<ProductCategory>;
@@ -33,8 +42,17 @@ export interface PageData {
 
 // Default/fallback data
 export const defaultPageData: PageData = {
-  promoted: [],
-  creations: [],
+  promoted: {
+    promoted1: '',
+    promoted2: '',
+    promoted3: '',
+    promoted4: ''
+  },
+  creations: {
+    creation1: '',
+    creation2: '',
+    creation3: ''
+  },
   products: [],
   allProducts: [],
   categories: [],
@@ -108,8 +126,17 @@ export async function getPageConfig(): Promise<PageData> {
   } catch (error) {
     console.error("Error getting products from page data:", error);
     return {
-      promoted: [],
-      creations: [],
+      promoted: {
+        promoted1: '',
+        promoted2: '',
+        promoted3: '',
+        promoted4: ''
+      },
+      creations: {
+        creation1: '',
+        creation2: '',
+        creation3: ''
+      },
       products: [],
       allProducts: [],
       categories: []
