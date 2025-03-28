@@ -134,8 +134,6 @@ export const ProductsSection = ({ products, updateProducts }: ProductsSectionPro
     }
   };
 
-  console.log(editingProduct);
-
   // Delete a product
   const deleteProduct = (id: string) => {
     if (confirm('Czy na pewno chcesz usunąć ten produkt?')) {
