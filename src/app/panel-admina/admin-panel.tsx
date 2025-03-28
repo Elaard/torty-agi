@@ -128,7 +128,9 @@ export const AdminPanel = ({ initialData }: AdminPanelProps) => {
       </div>
 
       <div className="bg-white rounded-lg shadow-md p-6">
-        {activeTab === 'products' && <ProductsSection products={pageData.allProducts} updateProducts={updateProducts} />}
+        {activeTab === 'products' && (
+          <ProductsSection products={pageData.allProducts} categories={pageData.categories} updateProducts={updateProducts} />
+        )}
         {activeTab === 'categories' && <CategoriesSection categories={pageData.categories} updateCategories={updateCategories} />}
         {activeTab === 'promoted' && (
           <PromotedSection allProducts={pageData.allProducts} promoted={pageData.promoted} updatePromoted={updatePromoted} />

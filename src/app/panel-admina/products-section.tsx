@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Product } from '@/data/get-page-data';
+import { Product, ProductCategory } from '@/data/get-page-data';
 import { ImageUploader } from '@/components/ui/image-uploader';
 import { generateId } from '@/utils/generate-url';
 import { Modal } from '../../components/ui/Modal';
@@ -10,6 +10,7 @@ import { ImagePicker } from '../../components/ui/image-picker';
 interface ProductsSectionProps {
   products: Product[];
   updateProducts: (products: Product[]) => void;
+  categories: ProductCategory[];
 }
 
 interface PendingImage {
@@ -17,7 +18,7 @@ interface PendingImage {
   uploaderIndex: number;
 }
 
-export const ProductsSection = ({ products, updateProducts }: ProductsSectionProps) => {
+export const ProductsSection = ({ products, categories, updateProducts }: ProductsSectionProps) => {
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [isAdding, setIsAdding] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -298,10 +299,9 @@ export const ProductsSection = ({ products, updateProducts }: ProductsSectionPro
                   className="w-full border rounded-md px-4 py-2"
                   required
                 >
-                  <option value="cakes">Torty</option>
-                  <option value="chocolates">Czekoladki</option>
-                  <option value="pastries">Ciasta</option>
-                  <option value="cookies">Ciasteczka</option>
+                  {categories.map((c) => {
+                    return <option value={c.id}>{c.name}</option>;
+                  })}
                 </select>
               </div>
               <div>
@@ -492,12 +492,7 @@ export const ProductsSection = ({ products, updateProducts }: ProductsSectionPro
                   </div>
                 </td>
                 <td className="py-3 px-4">{product.name}</td>
-                <td className="py-3 px-4">
-                  {product.category === 'cakes' && 'Torty'}
-                  {product.category === 'chocolates' && 'Czekoladki'}
-                  {product.category === 'pastries' && 'Ciasta'}
-                  {product.category === 'cookies' && 'Ciasteczka'}
-                </td>
+                <td className="py-3 px-4">{categories.find((c) => c.id === product.category)?.name}</td>
                 <td className="py-3 px-4">{product.price} zł</td>
                 <td className="py-3 px-4">
                   <div className="flex gap-2">

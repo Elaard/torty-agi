@@ -14,7 +14,7 @@ interface ProductPageProps {
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params;
 
-  const { allProducts } = await getPageConfig();
+  const { allProducts, categories } = await getPageConfig();
   const product = allProducts.find((p) => p.id === id);
 
   if (!product) {
@@ -106,13 +106,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <div>
                   <h2 className="text-xl font-medium mb-3">Kategoria</h2>
                   <span className="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
-                    {product.category === 'cakes'
-                      ? 'Torty'
-                      : product.category === 'chocolates'
-                        ? 'Czekoladki'
-                        : product.category === 'pastries'
-                          ? 'Ciasta'
-                          : 'Ciasteczka'}
+                    {categories.find((c) => c.id === product.category)?.name}
                   </span>
                 </div>
 

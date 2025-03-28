@@ -1,14 +1,15 @@
 'use client';
 import Link from 'next/link';
 import { PlaceholderImage } from '../../components/ui/placeholder-image';
-import { Product } from '@/data/get-page-data';
+import { Product, ProductCategory } from '@/data/get-page-data';
 import { routes } from '@/utils/routes';
 
 interface ProductCardProps {
   product: Product;
+  categories: ProductCategory[];
 }
 
-export const ProductCard = ({ product }: ProductCardProps) => {
+export const ProductCard = ({ product, categories }: ProductCardProps) => {
   return (
     <Link href={routes.getProduct(product.id)} className="block">
       <article className="group relative flex flex-col overflow-hidden rounded-xl bg-white transition-all hover:shadow-lg">
@@ -41,22 +42,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         {/* Product Info - Cleaner layout */}
         <div className="p-5 flex-grow flex flex-col">
           <h3 className="font-serif text-xl font-semibold mb-2 hover:text-primary-600 transition-colors">{product.name}</h3>
-
-          {/* Category tag */}
-          {product.category && (
-            <span className="text-xs text-gray-500 uppercase tracking-wider mb-3">
-              {product.category === 'cakes'
-                ? 'Torty'
-                : product.category === 'chocolates'
-                  ? 'Czekoladki'
-                  : product.category === 'pastries'
-                    ? 'Ciasta'
-                    : 'Ciasteczka'}
-            </span>
-          )}
-
+          {categories.find((c) => c.id === product.category)?.name}
           <p className="text-gray-600 mb-4 line-clamp-3 flex-grow">{product.description}</p>
-
           <div className="flex justify-between items-center mt-auto pt-3 border-t border-gray-100">
             <span className="font-medium text-lg">{product.price.toFixed(2)} zł</span>
             <span className="text-primary-600 font-medium hover:text-primary-800 transition-colors flex items-center gap-1">

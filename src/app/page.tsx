@@ -396,7 +396,7 @@ export default async function Home() {
           </div>
 
           <div className="text-center mt-16">
-            <Link href={routes.contact} className="btn btn-primary text-lg px-8 py-4 shadow-xl">
+            <Link href={routes.products} className="btn btn-primary text-lg px-8 py-4 shadow-xl">
               Zobacz wszystkie nasze wypieki
             </Link>
           </div>
