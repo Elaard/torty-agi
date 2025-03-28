@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { ProductCategory } from '@/data/get-page-data';
-import { v4 as uuidv4 } from 'uuid';
+import { generateId } from '@/utils/generate-url';
 
 interface CategoriesSectionProps {
   categories: ProductCategory[];
@@ -12,9 +12,10 @@ interface CategoriesSectionProps {
 export const CategoriesSection = ({ categories, updateCategories }: CategoriesSectionProps) => {
   const [editingCategory, setEditingCategory] = useState<ProductCategory | null>(null);
   const [isAdding, setIsAdding] = useState(false);
+  const [error, setError] = useState('');
 
   const startAddingCategory = () => {
-    setEditingCategory({ id: uuidv4(), name: '' });
+    setEditingCategory({ id: '', name: '' });
     setIsAdding(true);
   };
 
@@ -41,11 +42,16 @@ export const CategoriesSection = ({ categories, updateCategories }: CategoriesSe
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!editingCategory) return;
+    if (!editingCategory) {
+      return;
+    }
+
+    const value = e.target.value;
 
     setEditingCategory({
       ...editingCategory,
-      name: e.target.value,
+      id: generateId(value),
+      name: value,
     });
   };
 
@@ -63,12 +69,27 @@ export const CategoriesSection = ({ categories, updateCategories }: CategoriesSe
         <form className="bg-gray-50 p-6 rounded-lg mb-6 border">
           <h3 className="text-xl font-semibold mb-4">{isAdding ? 'Dodaj Nową Kategorię' : 'Edytuj Kategorię'}</h3>
           <div>
-            <label className="block mb-2 font-medium" htmlFor="category">
+            <label className="block mb-2 font-medium" htmlFor="category_id">
+              Id Kategorii
+            </label>
+            <input
+              id="category_id"
+              type="text"
+              value={editingCategory.id}
+              name="id"
+              onChange={handleInputChange}
+              className="w-full border rounded-md px-4 py-2"
+              disabled
+            />
+          </div>
+          <div>
+            <label className="block mb-2 font-medium" htmlFor="category_name">
               Nazwa Kategorii
             </label>
             <input
-              id="category"
+              id="category_name"
               type="text"
+              name="name"
               value={editingCategory.name}
               onChange={handleInputChange}
               className="w-full border rounded-md px-4 py-2"
