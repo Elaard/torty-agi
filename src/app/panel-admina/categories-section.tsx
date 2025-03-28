@@ -1,23 +1,26 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { ProductCategory } from "@/data/get-page-data";
-import { v4 as uuidv4 } from "uuid";
+import { useState } from 'react';
+import { ProductCategory } from '@/data/get-page-data';
+import { v4 as uuidv4 } from 'uuid';
 
 interface CategoriesSectionProps {
   categories: ProductCategory[];
   updateCategories: (categories: ProductCategory[]) => void;
 }
 
-export default function CategoriesSection({ categories, updateCategories }: CategoriesSectionProps) {
+export const CategoriesSection = ({ categories, updateCategories }: CategoriesSectionProps) => {
   const [editingCategory, setEditingCategory] = useState<ProductCategory | null>(null);
   const [isAdding, setIsAdding] = useState(false);
 
   // New category template
   const newCategoryTemplate: ProductCategory = {
-    id: "",
-    name: "",
+    id: '',
+    name: '',
   };
+
+  console.log('elo');
+  debugger;
 
   // Start adding a new category
   const startAddingCategory = () => {
@@ -52,7 +55,7 @@ export default function CategoriesSection({ categories, updateCategories }: Cate
 
   // Delete a category
   const deleteCategory = (id: string) => {
-    if (confirm("Czy na pewno chcesz usunąć tę kategorię?")) {
+    if (confirm('Czy na pewno chcesz usunąć tę kategorię?')) {
       updateCategories(categories.filter((c) => c.id !== id));
     }
   };
@@ -80,7 +83,7 @@ export default function CategoriesSection({ categories, updateCategories }: Cate
       {/* Category Editing Form */}
       {editingCategory && (
         <div className="bg-gray-50 p-6 rounded-lg mb-6 border">
-          <h3 className="text-xl font-semibold mb-4">{isAdding ? "Dodaj Nową Kategorię" : "Edytuj Kategorię"}</h3>
+          <h3 className="text-xl font-semibold mb-4">{isAdding ? 'Dodaj Nową Kategorię' : 'Edytuj Kategorię'}</h3>
           <div>
             <label className="block mb-2 font-medium">Nazwa Kategorii</label>
             <input
@@ -146,4 +149,4 @@ export default function CategoriesSection({ categories, updateCategories }: Cate
       </div>
     </div>
   );
-}
+};

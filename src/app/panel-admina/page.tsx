@@ -1,8 +1,10 @@
-import { getPageConfig } from "@/data/get-page-data";
-import AdminPanel from "@/components/admin/AdminPanel";
+import { getPageConfig } from '@/data/get-page-data';
+import { AdminPanel } from './admin-panel';
 
-export default async function Page() {
+const Page = async () => {
   const pageData = await getPageConfig();
 
   return <AdminPanel initialData={pageData} />;
-}
+};
+
+export default Page;

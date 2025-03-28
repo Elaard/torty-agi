@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState, useRef, forwardRef, useImperativeHandle } from "react";
+import { useState, useRef, forwardRef, useImperativeHandle } from 'react';
 
 export interface ImageUploaderHandle {
   uploadSelectedFile: () => Promise<string | null>;
@@ -8,15 +8,13 @@ export interface ImageUploaderHandle {
 
 interface ImageUploaderProps {
   onImageUploaded: (imageUrl: string) => void;
-  currentImageUrl?: string | null;
   onFileSelected?: (file: File) => void;
 }
 
-const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>(({ onImageUploaded, currentImageUrl, onFileSelected }, ref) => {
+const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>(({ onImageUploaded, onFileSelected }, ref) => {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [uploadProgress, setUploadProgress] = useState(0);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(currentImageUrl || null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -31,13 +29,13 @@ const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>(({ onI
     Array.from(files).forEach((file) => {
       // validate file type
       const fileType = file.type;
-      if (!fileType.startsWith("image/")) {
-        console.log("Tylko pliki graficzne są dozwolone.");
+      if (!fileType.startsWith('image/')) {
+        console.log('Tylko pliki graficzne są dozwolone.');
         return;
       }
 
       if (file.size > maxSize) {
-        setUploadError("Maksymalny rozmiar pliku to 5MB.");
+        setUploadError('Maksymalny rozmiar pliku to 5MB.');
         return;
       }
 
@@ -54,16 +52,16 @@ const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>(({ onI
 
     try {
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append('file', file);
 
-      const response = await fetch("/api/admin/upload-image", {
-        method: "POST",
+      const response = await fetch('/api/admin/upload-image', {
+        method: 'POST',
         body: formData,
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || "Błąd podczas przesyłania pliku");
+        throw new Error(errorData.error || 'Błąd podczas przesyłania pliku');
       }
 
       const data = await response.json();
@@ -72,23 +70,15 @@ const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>(({ onI
         onImageUploaded(data.imageUrl);
         setUploadProgress(100);
       } else {
-        throw new Error("Nie udało się uzyskać adresu URL obrazu");
+        throw new Error('Nie udało się uzyskać adresu URL obrazu');
       }
     } catch (error) {
-      console.error("Error uploading image:", error);
-      setUploadError(error instanceof Error ? error.message : "Nieznany błąd podczas przesyłania");
+      console.error('Error uploading image:', error);
+      setUploadError(error instanceof Error ? error.message : 'Nieznany błąd podczas przesyłania');
       return null;
     } finally {
       setIsUploading(false);
     }
-  };
-
-  // Public method to upload the selected file
-  const uploadSelectedFile = async () => {
-    if (selectedFile) {
-      return await uploadFile(selectedFile);
-    }
-    return null;
   };
 
   const triggerFileInput = () => {
@@ -100,7 +90,6 @@ const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>(({ onI
     uploadSelectedFile: async () => {
       if (selectedFile) {
         await uploadFile(selectedFile);
-        return previewUrl;
       }
       return null;
     },
@@ -112,36 +101,18 @@ const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>(({ onI
         className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:bg-gray-50 transition-colors"
         onClick={triggerFileInput}
       >
-        {previewUrl ? (
-          <div className="relative">
-            <img
-              src={previewUrl}
-              alt="Podgląd"
-              className="max-h-48 mx-auto object-contain"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                if (target.src !== "https://via.placeholder.com/150?text=Błąd+obrazu") {
-                  target.src = "https://via.placeholder.com/150?text=Błąd+obrazu";
-                }
-                target.onerror = null;
-              }}
+        <div className="py-4">
+          <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
             />
-            <div className="mt-2 text-sm text-gray-500">Kliknij, aby zmienić obraz</div>
-          </div>
-        ) : (
-          <div className="py-4">
-            <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
-            </svg>
-            <p className="mt-1 text-sm text-gray-500">Kliknij, aby dodać zdjęcie</p>
-            <p className="text-xs text-gray-400 mt-1">PNG, JPG, GIF do 5MB</p>
-          </div>
-        )}
+          </svg>
+          <p className="mt-1 text-sm text-gray-500">Kliknij, aby dodać zdjęcie</p>
+          <p className="text-xs text-gray-400 mt-1">PNG, JPG, GIF do 5MB</p>
+        </div>
 
         <input type="file" multiple ref={fileInputRef} onChange={handleFileChange} accept="image/*" className="hidden" />
       </div>
@@ -161,6 +132,6 @@ const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>(({ onI
 });
 
 // Display name for debugging
-ImageUploader.displayName = "ImageUploader";
+ImageUploader.displayName = 'ImageUploader';
 
 export default ImageUploader;

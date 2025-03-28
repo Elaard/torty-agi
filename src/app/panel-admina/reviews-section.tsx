@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 interface Review {
   id?: string;
@@ -14,7 +14,7 @@ interface ReviewsSectionProps {
   updateReviews: (reviews: Review[]) => void;
 }
 
-export default function ReviewsSection({ reviews, updateReviews }: ReviewsSectionProps) {
+export const ReviewsSection = ({ reviews, updateReviews }: ReviewsSectionProps) => {
   const [editingReview, setEditingReview] = useState<Review | null>(null);
   const [isAdding, setIsAdding] = useState(false);
 
@@ -28,9 +28,9 @@ export default function ReviewsSection({ reviews, updateReviews }: ReviewsSectio
 
   // New review template
   const newReviewTemplate: Review = {
-    id: "",
-    name: "",
-    review: "",
+    id: '',
+    name: '',
+    review: '',
   };
 
   // Start adding a new review
@@ -78,7 +78,7 @@ export default function ReviewsSection({ reviews, updateReviews }: ReviewsSectio
 
   // Delete a review
   const deleteReview = (reviewId: string) => {
-    if (confirm("Czy na pewno chcesz usunąć tę opinię?")) {
+    if (confirm('Czy na pewno chcesz usunąć tę opinię?')) {
       const updatedReviews = reviewsWithIds.filter((r) => r.id !== reviewId);
       // Remove internal IDs before updating
       updateReviews(updatedReviews.map((r) => ({ name: r.name, review: r.review })));
@@ -108,7 +108,7 @@ export default function ReviewsSection({ reviews, updateReviews }: ReviewsSectio
       {/* Review Editing Form */}
       {editingReview && (
         <div className="bg-gray-50 p-6 rounded-lg mb-6 border">
-          <h3 className="text-xl font-semibold mb-4">{isAdding ? "Dodaj Nową Opinię" : "Edytuj Opinię"}</h3>
+          <h3 className="text-xl font-semibold mb-4">{isAdding ? 'Dodaj Nową Opinię' : 'Edytuj Opinię'}</h3>
           <div className="space-y-4">
             <div>
               <label className="block mb-2 font-medium">Imię i Nazwisko</label>
@@ -172,4 +172,4 @@ export default function ReviewsSection({ reviews, updateReviews }: ReviewsSectio
       </div>
     </div>
   );
-}
+};

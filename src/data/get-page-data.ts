@@ -6,7 +6,7 @@ export interface Product {
   category: 'cakes' | 'chocolates' | 'pastries' | 'cookies';
   price: number;
   mainImage: string; // Kept for backward compatibility
-  images?: string[]; // New field for multiple images
+  images: string[]; // New field for multiple images
   description: string;
   featured?: boolean;
   bestseller?: boolean;

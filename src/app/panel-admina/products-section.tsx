@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
-import { useState, useRef } from "react";
-import { Product } from "@/data/get-page-data";
-import { v4 as uuidv4 } from "uuid";
-import ImageUploader, { ImageUploaderHandle } from "@/components/ui/ImageUploader";
-import { Modal } from "../ui/Modal";
+import { useState } from 'react';
+import { Product } from '@/data/get-page-data';
+import { v4 as uuidv4 } from 'uuid';
+import ImageUploader from '@/components/ui/ImageUploader';
+import { Modal } from '../../components/ui/Modal';
+import { ImagePicker } from '../../components/ui/image-picker';
 
 interface ProductsSectionProps {
   products: Product[];
@@ -16,27 +17,23 @@ interface PendingImage {
   uploaderIndex: number;
 }
 
-export default function ProductsSection({ products, updateProducts }: ProductsSectionProps) {
+export const ProductsSection = ({ products, updateProducts }: ProductsSectionProps) => {
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [isAdding, setIsAdding] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [pendingImages, setPendingImages] = useState<PendingImage[]>([]);
   const [isSaving, setIsSaving] = useState(false);
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const [selectedPendingImage, setSelectedPendingImage] = useState<PendingImage | null>(null);
 
   // New product template
   const newProductTemplate: Product = {
-    id: "",
-    name: "",
-    category: "cakes",
+    id: '',
+    name: '',
+    category: 'cakes',
     price: 0,
-    mainImage: "",
+    mainImage: '',
     images: [], // Initialize with empty array
-    description: "",
+    description: '',
   };
 
   // Filter products based on search term
@@ -69,39 +66,41 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
     setIsAdding(false);
   };
 
-  // Cancel editing
   const cancelEditing = () => {
     setEditingProduct(null);
   };
 
-  // Save product changes
   const saveProduct = async () => {
     if (!editingProduct) return;
 
     setIsSaving(true);
 
-    let images = [];
+    let images = [...editingProduct.images];
     let mainImage = editingProduct.mainImage;
     try {
       if (pendingImages.length > 0) {
         for (const pendingImage of pendingImages) {
           const formData = new FormData();
-          formData.append("file", pendingImage.file);
+          formData.append('file', pendingImage.file);
 
-          const response = await fetch("/api/admin/upload-image", {
-            method: "POST",
+          const response = await fetch('/api/admin/upload-image', {
+            method: 'POST',
             body: formData,
           });
 
           if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.error || "Błąd podczas przesyłania pliku");
+            throw new Error(errorData.error || 'Błąd podczas przesyłania pliku');
           }
 
           const data = await response.json();
 
           if (data.success && data.imageUrl) {
             images.push(data.imageUrl);
+
+            if (pendingImage.uploaderIndex === selectedPendingImage?.uploaderIndex) {
+              mainImage = data.imageUrl;
+            }
 
             if (!mainImage) {
               mainImage = data.imageUrl;
@@ -128,16 +127,18 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
       setEditingProduct(null);
       setIsAdding(false);
     } catch (error) {
-      console.error("Error saving product:", error);
-      alert("Wystąpił błąd podczas zapisywania produktu. Spróbuj ponownie.");
+      console.error('Error saving product:', error);
+      alert('Wystąpił błąd podczas zapisywania produktu. Spróbuj ponownie.');
     } finally {
       setIsSaving(false);
     }
   };
 
+  console.log(editingProduct);
+
   // Delete a product
   const deleteProduct = (id: string) => {
-    if (confirm("Czy na pewno chcesz usunąć ten produkt?")) {
+    if (confirm('Czy na pewno chcesz usunąć ten produkt?')) {
       updateProducts(products.filter((p) => p.id !== id));
     }
   };
@@ -148,15 +149,15 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
 
     const { name, value } = e.target;
 
-    if (name === "price") {
+    if (name === 'price') {
       setEditingProduct({
         ...editingProduct,
         [name]: parseFloat(value) || 0,
       });
-    } else if (name === "ingredients" || name === "allergens") {
+    } else if (name === 'ingredients' || name === 'allergens') {
       setEditingProduct({
         ...editingProduct,
-        [name]: value.split(",").map((item) => item.trim()),
+        [name]: value.split(',').map((item) => item.trim()),
       });
     } else {
       setEditingProduct({
@@ -188,7 +189,7 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
     };
   };
 
-  console.log(editingProduct);
+  // Usunięto console.log
 
   // Remove an image
   const removeImage = (imageUrl: string) => {
@@ -201,7 +202,7 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
       // Determine the new primary image if needed
       let newPrimaryImage = editingProduct.mainImage;
       if (imageUrl === editingProduct.mainImage) {
-        newPrimaryImage = updatedImages.length > 0 ? updatedImages[0] : "";
+        newPrimaryImage = updatedImages.length > 0 ? updatedImages[0] : '';
       }
 
       setEditingProduct({
@@ -266,7 +267,7 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
       {editingProduct && (
         <Modal maxW="max-w-6xl" maxH="max-modal-h">
           <div className="bg-gray-50 p-6 rounded-lg mb-6 border">
-            <h3 className="text-xl font-semibold mb-4">{isAdding ? "Dodaj Nowy Produkt" : "Edytuj Produkt"}</h3>
+            <h3 className="text-xl font-semibold mb-4">{isAdding ? 'Dodaj Nowy Produkt' : 'Edytuj Produkt'}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block mb-2 font-medium">Nazwa</label>
@@ -306,68 +307,44 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
                 />
               </div>
               <div className="md:col-span-2">
-                <label className="block mb-2 font-medium">Zdjęcia produktu</label>
+                <label className="block mb-2 font-medium">Aktualne Zdjęcia produktu</label>
 
                 {/* Current Images Gallery */}
-                {(editingProduct.images?.length || 0) > 0 && (
+                {!!editingProduct.images?.length && (
                   <div className="mb-4">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                       {editingProduct.images?.map((imgUrl, index) => (
-                        <div key={index} className="relative border rounded p-2 group">
-                          <img
-                            src={imgUrl}
-                            alt={`Zdjęcie ${index + 1}`}
-                            className={`w-full h-32 object-contain ${imgUrl === editingProduct.mainImage ? "ring-2 ring-blue-500" : ""}`}
-                          />
-                          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
-                            <div className="flex gap-2">
-                              {imgUrl !== editingProduct.mainImage && (
-                                <button
-                                  type="button"
-                                  onClick={() => setPrimaryImage(imgUrl)}
-                                  className="bg-blue-500 text-white p-1 rounded-full"
-                                  title="Ustaw jako główne zdjęcie"
-                                >
-                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path
-                                      fillRule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                      clipRule="evenodd"
-                                    />
-                                  </svg>
-                                </button>
-                              )}
-                              <button
-                                type="button"
-                                onClick={() => removeImage(imgUrl)}
-                                className="bg-red-500 text-white p-1 rounded-full"
-                                title="Usuń zdjęcie"
-                              >
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                    clipRule="evenodd"
-                                  />
-                                </svg>
-                              </button>
-                            </div>
-                          </div>
-                          {imgUrl === editingProduct.mainImage && (
-                            <div className="absolute top-0 left-0 bg-blue-500 text-white text-xs px-2 py-1 rounded-br">Główne</div>
-                          )}
-                        </div>
+                        <ImagePicker
+                          key={index}
+                          imgUrl={imgUrl}
+                          pickImage={setPrimaryImage}
+                          removeImage={removeImage}
+                          isSelected={imgUrl === editingProduct.mainImage}
+                        />
                       ))}
                     </div>
                   </div>
                 )}
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                  <ImageUploader
-                    onImageUploaded={handleImageUploaded}
-                    currentImageUrl={editingProduct.mainImage}
-                    onFileSelected={handleFileSelected}
-                  />
+                <p>Dodaj nowe zdjęcia</p>
+                <div className="grid grid-cols-2 md:grid-cols-2 gap-4 mt-4">
+                  <ImageUploader onImageUploaded={handleImageUploaded} onFileSelected={handleFileSelected} />
+                  <div>
+                    <ul className="flex gap-4 mt-2 list-disc list-inside">
+                      {pendingImages.map((pendingImage, index) => {
+                        // need to release it when not needed
+                        let imgUrl = URL.createObjectURL(pendingImage.file);
+                        return (
+                          <ImagePicker
+                            key={index}
+                            imgUrl={imgUrl}
+                            pickImage={() => setSelectedPendingImage(pendingImage)}
+                            removeImage={() => setPendingImages(pendingImages.filter((img) => img.uploaderIndex !== pendingImage.uploaderIndex))}
+                            isSelected={selectedPendingImage === pendingImage}
+                          />
+                        );
+                      })}
+                    </ul>
+                  </div>
                 </div>
               </div>
               <div className="md:col-span-2">
@@ -385,7 +362,7 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
                 <input
                   type="text"
                   name="size"
-                  value={editingProduct.size || ""}
+                  value={editingProduct.size || ''}
                   onChange={handleInputChange}
                   className="w-full border rounded-md px-4 py-2"
                 />
@@ -395,7 +372,7 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
                 <input
                   type="text"
                   name="ingredients"
-                  value={editingProduct.ingredients?.join(", ") || ""}
+                  value={editingProduct.ingredients?.join(', ') || ''}
                   onChange={handleInputChange}
                   className="w-full border rounded-md px-4 py-2"
                 />
@@ -405,7 +382,7 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
                 <input
                   type="text"
                   name="allergens"
-                  value={editingProduct.allergens?.join(", ") || ""}
+                  value={editingProduct.allergens?.join(', ') || ''}
                   onChange={handleInputChange}
                   className="w-full border rounded-md px-4 py-2"
                 />
@@ -415,7 +392,7 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
                 <input
                   type="text"
                   name="nutritionalInfo"
-                  value={editingProduct.nutritionalInfo || ""}
+                  value={editingProduct.nutritionalInfo || ''}
                   onChange={handleInputChange}
                   className="w-full border rounded-md px-4 py-2"
                 />
@@ -465,7 +442,7 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
                 onClick={saveProduct}
                 disabled={isSaving}
               >
-                {isSaving ? "Zapisywanie..." : "Zapisz"}
+                {isSaving ? 'Zapisywanie...' : 'Zapisz'}
               </button>
             </div>
           </div>
@@ -503,19 +480,14 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
                         </svg>
                       </div>
                     )}
-                    {product.images && product.images.length > 1 && (
-                      <div className="absolute -top-2 -right-2 bg-blue-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                        {product.images.length}
-                      </div>
-                    )}
                   </div>
                 </td>
                 <td className="py-3 px-4">{product.name}</td>
                 <td className="py-3 px-4">
-                  {product.category === "cakes" && "Torty"}
-                  {product.category === "chocolates" && "Czekoladki"}
-                  {product.category === "pastries" && "Ciasta"}
-                  {product.category === "cookies" && "Ciasteczka"}
+                  {product.category === 'cakes' && 'Torty'}
+                  {product.category === 'chocolates' && 'Czekoladki'}
+                  {product.category === 'pastries' && 'Ciasta'}
+                  {product.category === 'cookies' && 'Ciasteczka'}
                 </td>
                 <td className="py-3 px-4">{product.price} zł</td>
                 <td className="py-3 px-4">
@@ -542,4 +514,4 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
       </div>
     </div>
   );
-}
+};
