@@ -114,7 +114,7 @@ export const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>
           <p className="text-xs text-gray-400 mt-1">PNG, JPG, GIF do 5MB</p>
         </div>
 
-        <input type="file" multiple ref={fileInputRef} onChange={handleFileChange} accept="image/*" className="hidden" />
+        <input type="file" ref={fileInputRef} onChange={handleFileChange} accept="image/*" className="hidden" />
       </div>
 
       {isUploading && (
