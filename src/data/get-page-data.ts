@@ -5,7 +5,8 @@ export interface Product {
   name: string;
   category: 'cakes' | 'chocolates' | 'pastries' | 'cookies';
   price: number;
-  image: string;
+  mainImage: string; // Kept for backward compatibility
+  images?: string[]; // New field for multiple images
   description: string;
   featured?: boolean;
   bestseller?: boolean;
@@ -16,6 +17,11 @@ export interface Product {
   nutritionalInfo?: string;
 }
 
+export interface ProductCategory {
+  id: string;
+  name: string;
+}
+
 // Interface for the page data structure
 export interface PageData {
   promoted: string[],
@@ -23,6 +29,7 @@ export interface PageData {
   reviews: Array<{ name: string, review: string }>,
   products: string[],
   allProducts: Product[];
+  categories: Array<ProductCategory>;
 }
 
 // Default/fallback data
@@ -32,6 +39,7 @@ export const defaultPageData: PageData = {
   reviews: [],
   products: [],
   allProducts: [],
+  categories: [],
 };
 
 // Cache for the page data
@@ -107,6 +115,7 @@ export async function getPageConfig(): Promise<PageData> {
       reviews: [],
       products: [],
       allProducts: [],
+      categories: []
     };
   }
 }

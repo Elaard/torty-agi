@@ -7,7 +7,7 @@ export const productData: Product[] = [
     name: 'Tort czekoladowy',
     category: 'cakes',
     price: 159.99,
-    image: '/images/chocolate-cake.jpg',
+    mainImage: '/images/chocolate-cake.jpg',
     description: 'Bogate warstwy czekoladowe z gładkim ganache i wiórkami czekoladowymi.',
     featured: true,
     bestseller: true,
@@ -21,7 +21,7 @@ export const productData: Product[] = [
     name: 'Tort truskawkowy',
     category: 'cakes',
     price: 149.99,
-    image: '/images/strawberry-cake.jpg',
+    mainImage: '/images/strawberry-cake.jpg',
     description: 'Lekki biszkopt waniliowy ze świeżymi truskawkami i kremem.',
     featured: true,
     size: 'Średnica 22cm (6-8 porcji)',
@@ -34,7 +34,7 @@ export const productData: Product[] = [
     name: 'Tort Red Velvet',
     category: 'cakes',
     price: 169.99,
-    image: '/images/red-velvet-cake.jpg',
+    mainImage: '/images/red-velvet-cake.jpg',
     description: 'Klasyczny tort Red Velvet z kremem serowym.',
     bestseller: true
   },
@@ -43,7 +43,7 @@ export const productData: Product[] = [
     name: 'Ciasto marchewkowe',
     category: 'cakes',
     price: 129.99,
-    image: '/images/carrot-cake.jpg',
+    mainImage: '/images/carrot-cake.jpg',
     description: 'Soczyste ciasto marchewkowe z orzechami włoskimi i kremem serowym.'
   },
   {
@@ -51,7 +51,7 @@ export const productData: Product[] = [
     name: 'Ciasto cytrynowe',
     category: 'cakes',
     price: 119.99,
-    image: '/images/lemon-cake.jpg',
+    mainImage: '/images/lemon-cake.jpg',
     description: 'Wyraziste ciasto cytrynowe z polewą cytrynową.'
   },
   {
@@ -59,7 +59,7 @@ export const productData: Product[] = [
     name: 'Makaroniki',
     category: 'pastries',
     price: 89.99,
-    image: '/images/macarons.jpg',
+    mainImage: '/images/macarons.jpg',
     description: 'Delikatne ciasteczka migdałowe z różnymi nadzieniami w pięknych kolorach.',
     featured: true
   },
@@ -68,7 +68,7 @@ export const productData: Product[] = [
     name: 'Babeczki',
     category: 'pastries',
     price: 69.99,
-    image: '/images/cupcakes.jpg',
+    mainImage: '/images/cupcakes.jpg',
     description: 'Soczyste babeczki z kremem maślanym i dekoracyjnymi dodatkami.',
     featured: true
   },
@@ -77,7 +77,7 @@ export const productData: Product[] = [
     name: 'Trufle czekoladowe',
     category: 'chocolates',
     price: 79.99,
-    image: '/images/chocolate-truffles.jpg',
+    mainImage: '/images/chocolate-truffles.jpg',
     description: 'Ręcznie robione trufle czekoladowe z różnymi nadzieniami.',
     bestseller: true,
     size: 'Opakowanie 12 sztuk',
@@ -90,7 +90,7 @@ export const productData: Product[] = [
     name: 'Truskawki w czekoladzie',
     category: 'chocolates',
     price: 89.99,
-    image: '/images/chocolate-strawberries.jpg',
+    mainImage: '/images/chocolate-strawberries.jpg',
     description: 'Świeże truskawki zanurzone w wysokiej jakości czekoladzie.',
     new: true
   },
@@ -99,7 +99,7 @@ export const productData: Product[] = [
     name: 'Tabliczki czekoladowe',
     category: 'chocolates',
     price: 59.99,
-    image: '/images/chocolate-bark.jpg',
+    mainImage: '/images/chocolate-bark.jpg',
     description: 'Ręcznie robione tabliczki czekoladowe z orzechami, suszonymi owocami i innymi dodatkami.'
   },
   {
@@ -107,7 +107,7 @@ export const productData: Product[] = [
     name: 'Ciasteczka z kawałkami czekolady',
     category: 'cookies',
     price: 49.99,
-    image: '/images/chocolate-chip-cookies.jpg',
+    mainImage: '/images/chocolate-chip-cookies.jpg',
     description: 'Klasyczne ciasteczka z kawałkami czekolady, miękkie w środku i chrupiące na brzegach.',
     bestseller: true
   },
@@ -116,7 +116,7 @@ export const productData: Product[] = [
     name: 'Kruche ciasteczka',
     category: 'cookies',
     price: 45.99,
-    image: '/images/shortbread-cookies.jpg',
+    mainImage: '/images/shortbread-cookies.jpg',
     description: 'Maślane kruche ciasteczka, które rozpływają się w ustach.'
   }
 ];

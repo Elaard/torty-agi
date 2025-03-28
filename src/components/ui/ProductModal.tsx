@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Product } from "../../data/products";
+import { Product } from "@/data/get-page-data";
 
 interface ProductModalProps {
   product: Product;
@@ -10,6 +10,10 @@ interface ProductModalProps {
 
 export default function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  // Get all product images
+  const productImages = product.images && product.images.length > 0 ? product.images : product.mainImage ? [product.mainImage] : [];
 
   // Close modal when clicking outside
   useEffect(() => {
@@ -66,15 +70,39 @@ export default function ProductModal({ product, isOpen, onClose }: ProductModalP
         {/* Modal Content */}
         <div className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Product Image */}
-            <div className="bg-gray-100 rounded-lg overflow-hidden h-64 flex items-center justify-center shadow-md">
-              <Image
-                src={product.image}
-                alt={product.name}
-                width={500} // Wybierz odpowiednią szerokość
-                height={500} // Wybierz odpowiednią wysokość
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-              />
+            {/* Product Images Gallery */}
+            <div>
+              {/* Main Image */}
+              <div className="bg-gray-100 rounded-lg overflow-hidden h-64 flex items-center justify-center shadow-md mb-2">
+                {productImages.length > 0 ? (
+                  <Image
+                    src={productImages[activeImageIndex]}
+                    alt={`${product.name} - zdjęcie ${activeImageIndex + 1}`}
+                    width={500}
+                    height={500}
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-400">Brak zdjęcia</div>
+                )}
+              </div>
+
+              {/* Thumbnails */}
+              {productImages.length > 1 && (
+                <div className="flex gap-2 overflow-x-auto py-2">
+                  {productImages.map((imgUrl, index) => (
+                    <div
+                      key={index}
+                      className={`w-16 h-16 rounded cursor-pointer border-2 flex-shrink-0 ${
+                        index === activeImageIndex ? "border-blue-500" : "border-transparent"
+                      }`}
+                      onClick={() => setActiveImageIndex(index)}
+                    >
+                      <Image src={imgUrl} alt={`Miniatura ${index + 1}`} width={64} height={64} className="w-full h-full object-cover rounded" />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Product Details */}

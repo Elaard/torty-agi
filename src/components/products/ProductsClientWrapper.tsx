@@ -2,33 +2,49 @@
 
 import { useState } from "react";
 import ProductCard from "./ProductCard";
-import ProductFilter from "./ProductFilter";
-import { Product } from "@/data/get-page-data";
+import { Product, ProductCategory } from "@/data/get-page-data";
 
 interface ProductsClientWrapperProps {
   initialProducts: Product[];
+  categories: ProductCategory[];
 }
 
-export default function ProductsClientWrapper({ initialProducts }: ProductsClientWrapperProps) {
-  const [filteredProducts, setFilteredProducts] = useState(initialProducts);
+export default function ProductsClientWrapper({ initialProducts, categories }: ProductsClientWrapperProps) {
+  const [activeCategory, setActiveCategory] = useState("all");
 
-  // Here you could add filtering logic based on the ProductFilter component's state
-  // For now, we're just displaying all products
+  const products = initialProducts.filter((product) => activeCategory === "all" || product.category === activeCategory);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8">
-      {/* Sidebar with filters */}
-      <div className="w-full lg:w-1/4">
-        <ProductFilter />
+    <div className="space-y-8">
+      {/* Horizontal Category Filter */}
+      <div className="flex flex-wrap justify-center gap-3 mb-8">
+        <button
+          onClick={() => setActiveCategory("all")}
+          className={`px-4 py-2 rounded-full transition-colors ${
+            activeCategory === "all" ? "bg-primary-600 text-white" : "bg-gray-100 hover:bg-gray-200 text-gray-800"
+          }`}
+        >
+          Wszystkie
+        </button>
+
+        {categories.map((category) => (
+          <button
+            key={category.id}
+            onClick={() => setActiveCategory(category.id)}
+            className={`px-4 py-2 rounded-full transition-colors ${
+              activeCategory === category.id ? "bg-primary-600 text-white" : "bg-gray-100 hover:bg-gray-200 text-gray-800"
+            }`}
+          >
+            {category.name}
+          </button>
+        ))}
       </div>
 
-      {/* Product Grid */}
-      <div className="w-full lg:w-3/4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+      {/* Gallery Layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
     </div>
   );
