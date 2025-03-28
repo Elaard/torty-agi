@@ -1,8 +1,9 @@
-import ContactForm from "../../components/contact/ContactForm";
+import { contactDetails } from '@/utils/contactDetails';
+import ContactForm from '../../components/contact/ContactForm';
 
 export const metadata = {
-  title: "Kontakt | Torty AGI Cukiernia",
-  description: "Skontaktuj się z nami w sprawie zamówień, pytań lub opinii.",
+  title: 'Kontakt | Torty AGI Cukiernia',
+  description: 'Skontaktuj się z nami w sprawie zamówień, pytań lub opinii.',
 };
 
 export default function Page() {
@@ -12,15 +13,13 @@ export default function Page() {
         {/* Page Header */}
         <div className="text-center mb-12">
           <h1 className="heading-1 mb-4">Kontakt</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Masz pytanie lub chcesz złożyć zamówienie? Skontaktuj się z nami, a my z przyjemnością pomożemy.
-          </p>
+          <p className="text-gray-600 max-w-2xl mx-auto">Masz pytanie lub chcesz złożyć zamówienie?</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 gap-12">
           {/* Contact Information */}
-          <div>
-            <h2 className="heading-2 mb-6">Skontaktuj się z nami</h2>
+          <div className="max-w-2xl mx-auto">
+            <h2 className="heading-2 mb-6 text-center">Skontaktuj się z nami</h2>
 
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
@@ -37,11 +36,7 @@ export default function Page() {
                 </div>
                 <div>
                   <h3 className="font-medium text-lg mb-1">Nasza lokalizacja</h3>
-                  <p className="text-gray-600">
-                    ul. Cukiernicza 123
-                    <br />
-                    00-001 Warszawa
-                  </p>
+                  <p className="text-gray-600">{contactDetails.localization}</p>
                 </div>
               </div>
 
@@ -60,7 +55,7 @@ export default function Page() {
                   <h3 className="font-medium text-lg mb-1">Email</h3>
                   <p className="text-gray-600">
                     <a href="mailto:info@slodkiemarzenia.pl" className="hover:text-primary-600 transition-colors">
-                      info@slodkiemarzenia.pl
+                      {contactDetails.email}
                     </a>
                   </p>
                 </div>
@@ -81,7 +76,7 @@ export default function Page() {
                   <h3 className="font-medium text-lg mb-1">Telefon</h3>
                   <p className="text-gray-600">
                     <a href="tel:+48123456789" className="hover:text-primary-600 transition-colors">
-                      +48 123 456 789
+                      {contactDetails.phone}
                     </a>
                   </p>
                 </div>
@@ -93,7 +88,7 @@ export default function Page() {
               <h3 className="font-medium text-lg mb-3">Obserwuj nas</h3>
               <div className="flex space-x-4">
                 <a
-                  href="https://instagram.com"
+                  href={contactDetails.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-primary-100 p-3 rounded-full text-primary-600 hover:bg-primary-200 transition-colors"
@@ -104,7 +99,7 @@ export default function Page() {
                   </svg>
                 </a>
                 <a
-                  href="https://facebook.com"
+                  href={contactDetails.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-primary-100 p-3 rounded-full text-primary-600 hover:bg-primary-200 transition-colors"
@@ -116,12 +111,6 @@ export default function Page() {
                 </a>
               </div>
             </div>
-          </div>
-
-          {/* Contact Form */}
-          <div>
-            <h2 className="heading-2 mb-6">Wyślij nam wiadomość</h2>
-            <ContactForm />
           </div>
         </div>
       </div>

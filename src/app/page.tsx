@@ -5,124 +5,86 @@ export default function Home() {
   return (
     <div className="bg-gradient-to-b from-beige to-white">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-24 md:py-32">
+      <section className="relative overflow-hidden py-20 md:py-28">
+        {/* Background elements */}
         <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/hero-cake.svg')] opacity-5 bg-repeat"></div>
-        <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-accent-200 opacity-20 blur-3xl"></div>
-        <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-primary-200 opacity-20 blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-primary-50 to-transparent opacity-70"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-tr from-accent-50 to-transparent opacity-70"></div>
+        <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-accent-200 opacity-20 blur-3xl animate-pulse-slow"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-primary-200 opacity-20 blur-3xl animate-pulse-slow animation-delay-2000"></div>
 
         <div className="container-custom relative z-10">
-          <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-            <div className="animate-slide-up">
-              <span className="px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium inline-block mb-6 transform rotate-1 shadow-sm">
-                Z miłością do wypieków
-              </span>
-              <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-                Torty <span className="heading-fancy text-6xl md:text-8xl block mt-2">AGI</span>
-              </h1>
-              <p className="text-xl text-secondary-600 mb-10 leading-relaxed max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* Left content */}
+            <div className="animate-fade-in-up">
+              <div className="mb-8">
+                <span className="px-5 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium inline-block mb-6 transform rotate-1 shadow-md border border-primary-200">
+                  Z miłością do wypieków
+                </span>
+                <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+                  Torty <span className="heading-fancy text-6xl md:text-8xl block mt-3 text-primary-600">AGI</span>
+                </h1>
+              </div>
+
+              <p className="text-xl text-secondary-600 mb-10 leading-relaxed max-w-xl">
                 Ręcznie robione torty, ciasta i słodkości przygotowane z pasją i najlepszych składników. Idealne na każdą okazję.
               </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Link href="/kontakt" className="btn btn-primary text-lg px-8 py-4 shadow-xl">
+
+              <div className="flex flex-col sm:flex-row gap-6">
+                <Link
+                  href="/kontakt"
+                  className="btn btn-primary text-lg px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+                >
                   Skontaktuj się
                 </Link>
-                <Link href="/produkty" className="btn btn-outline text-lg px-8 py-4 transform -rotate-1">
+                <Link
+                  href="/produkty"
+                  className="btn btn-outline text-lg px-8 py-4 transform -rotate-1 hover:rotate-0 transition-all duration-300 hover:bg-primary-50"
+                >
                   Nasze realizacje
                 </Link>
               </div>
             </div>
-          </div>
 
-          <div className="mt-20 relative">
-            <div className="absolute inset-0 bg-gradient-to-t from-beige to-transparent z-10 pointer-events-none"></div>
-            <div className="grid grid-cols-3 gap-4 md:gap-8">
-              <div className="h-40 md:h-64 rounded-2xl overflow-hidden transform rotate-2 shadow-xl">
-                <PlaceholderImage text="Tort czekoladowy" className="h-full w-full object-cover" />
-              </div>
-              <div className="h-40 md:h-64 rounded-2xl overflow-hidden transform -rotate-1 shadow-xl translate-y-8">
-                <PlaceholderImage text="Tort weselny" className="h-full w-full object-cover" />
-              </div>
-              <div className="h-40 md:h-64 rounded-2xl overflow-hidden transform rotate-3 shadow-xl">
-                <PlaceholderImage text="Babeczki" className="h-full w-full object-cover" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            {/* Right content - Featured images */}
+            <div className="relative">
+              <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent-100 rounded-full opacity-20 animate-float"></div>
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary-100 rounded-full opacity-20 animate-float animation-delay-1000"></div>
 
-      {/* O nas Section */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary-50 opacity-50 blur-3xl"></div>
-
-        <div className="container-custom relative z-10">
-          <div className="text-center mb-16">
-            <span className="badge badge-secondary mb-4 inline-block transform -rotate-1">Nasza historia</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Tworzymy z <span className="heading-fancy">pasją</span>
-            </h2>
-            <div className="h-1 w-20 bg-accent-500 mx-auto my-6 rounded-full"></div>
-            <p className="text-secondary-600 max-w-2xl mx-auto mt-6 text-lg">
-              W Torty AGI każde ciasto tworzymy z miłością, używając najlepszych składników i wieloletniego doświadczenia. Nasza pasja do wypieków
-              widoczna jest w każdym kęsie.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="bg-white p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-t-4 border-primary-300">
-              <div className="bg-primary-100 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 transform -rotate-6">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                  />
-                </svg>
+              <div className="relative grid grid-cols-2 gap-4 md:gap-6">
+                <div className="space-y-4 md:space-y-6 pt-10">
+                  <div className="h-40 md:h-56 rounded-2xl overflow-hidden transform rotate-2 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-rotate-1 group">
+                    <PlaceholderImage
+                      text="Tort czekoladowy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  <div className="h-32 md:h-44 rounded-2xl overflow-hidden transform -rotate-1 shadow-xl hover:shadow-2xl transition-all duration-500 hover:rotate-1 group">
+                    <PlaceholderImage
+                      text="Makaroniki"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                </div>
+                <div className="space-y-4 md:space-y-6">
+                  <div className="h-32 md:h-44 rounded-2xl overflow-hidden transform rotate-1 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-rotate-1 group">
+                    <PlaceholderImage
+                      text="Babeczki"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  <div className="h-40 md:h-56 rounded-2xl overflow-hidden transform -rotate-2 shadow-xl hover:shadow-2xl transition-all duration-500 hover:rotate-1 group">
+                    <PlaceholderImage
+                      text="Tort weselny"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                </div>
               </div>
-              <h3 className="font-serif text-2xl font-semibold mb-4">Tworzone z miłością</h3>
-              <p className="text-secondary-600 text-lg">
-                Każde ciasto przygotowujemy z dbałością o detale, zapewniając wyjątkowe doznania smakowe przy każdym kęsie.
-              </p>
-            </div>
-
-            <div className="bg-white p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-t-4 border-accent-300 md:translate-y-8">
-              <div className="bg-accent-100 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 transform rotate-6">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-accent-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-serif text-2xl font-semibold mb-4">Najwyższa jakość</h3>
-              <p className="text-secondary-600 text-lg">
-                Używamy tylko najlepszych składników, pozyskiwanych lokalnie, aby tworzyć nasze pyszne wypieki.
-              </p>
-            </div>
-
-            <div className="bg-white p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-t-4 border-secondary-300">
-              <div className="bg-secondary-100 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 transform -rotate-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-10 w-10 text-secondary-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-serif text-2xl font-semibold mb-4">Personalizacja</h3>
-              <p className="text-secondary-600 text-lg">
-                Oferujemy spersonalizowane wypieki na specjalne okazje, dostosowane do Twoich preferencji i wymagań.
-              </p>
             </div>
           </div>
         </div>

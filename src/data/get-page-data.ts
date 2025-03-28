@@ -45,11 +45,11 @@ let config: PageData | null = null;
 let lastFetchTime: number = 0;
 const CACHE_TTL = 60 * 5000; // 5 minute cache TTL
 
-export async function getConfig(): Promise<PageData> {
+export async function getConfig(forceRefresh?: boolean): Promise<PageData> {
   const now = Date.now();
 
   const isExpired = lastFetchTime && now - lastFetchTime > CACHE_TTL;
-  if (config && !isExpired) {
+  if (config && !isExpired && !forceRefresh) {
     return config;
   }
   try {

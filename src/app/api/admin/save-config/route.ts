@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PageData } from "@/data/get-page-data";
+import { getConfig, PageData } from "@/data/get-page-data";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
 export async function POST(request: NextRequest) {
@@ -44,6 +44,7 @@ export async function POST(request: NextRequest) {
 
     // Upload to S3
     await s3Client.send(putObjectCommand);
+    await getConfig(true);
 
     return NextResponse.json({ success: true });
   } catch (error) {

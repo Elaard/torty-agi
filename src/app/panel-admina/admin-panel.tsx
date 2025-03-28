@@ -124,14 +124,6 @@ export const AdminPanel = ({ initialData }: AdminPanelProps) => {
           >
             Kreacje
           </button>
-          <button
-            className={`py-4 px-6 font-medium ${
-              activeTab === 'reviews' ? 'border-b-2 border-blue-500 text-blue-600' : 'text-gray-500 hover:text-gray-700'
-            }`}
-            onClick={() => setActiveTab('reviews')}
-          >
-            Opinie
-          </button>
         </nav>
       </div>
 

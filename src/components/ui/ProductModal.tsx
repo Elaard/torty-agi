@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { Product } from "@/data/get-page-data";
-import { Modal } from "./Modal";
+import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import { Product } from '@/data/get-page-data';
+import { Modal } from './Modal';
 
 interface ProductModalProps {
   product: Product;
@@ -56,7 +56,7 @@ export default function ProductModal({ product, isOpen, onClose }: ProductModalP
                   <div
                     key={index}
                     className={`w-16 h-16 rounded cursor-pointer border-2 flex-shrink-0 ${
-                      index === activeImageIndex ? "border-blue-500" : "border-transparent"
+                      index === activeImageIndex ? 'border-blue-500' : 'border-transparent'
                     }`}
                     onClick={() => setActiveImageIndex(index)}
                   >
@@ -159,7 +159,6 @@ export default function ProductModal({ product, isOpen, onClose }: ProductModalP
         <button onClick={onClose} className="btn btn-secondary mr-2">
           Zamknij
         </button>
-        <button className="btn btn-primary">Dodaj do koszyka</button>
       </div>
     </Modal>
   );

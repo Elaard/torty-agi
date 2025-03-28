@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { contactDetails } from '@/utils/contactDetails';
+import Link from 'next/link';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -20,7 +21,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-5">
               <a
-                href="https://instagram.com"
+                href={contactDetails.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white p-4 rounded-2xl text-primary-400 hover:text-primary-600 hover:shadow-xl transition-all duration-300 transform hover:scale-110 border border-primary-100"
@@ -31,7 +32,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://facebook.com"
+                href={contactDetails.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white p-4 rounded-2xl text-primary-400 hover:text-primary-600 hover:shadow-xl transition-all duration-300 transform hover:scale-110 border border-primary-100"
@@ -41,23 +42,12 @@ export default function Footer() {
                   <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
                 </svg>
               </a>
-              <a
-                href="https://pinterest.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white p-4 rounded-2xl text-primary-400 hover:text-primary-600 hover:shadow-xl transition-all duration-300 transform hover:scale-110 border border-primary-100"
-                aria-label="Pinterest"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" />
-                </svg>
-              </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="md:border-l md:border-r border-primary-100 md:px-12">
-            <h3 className="font-serif font-semibold text-2xl mb-4 text-secondary-600">Szybkie linki</h3>
+            <h3 className="font-serif font-semibold text-2xl mb-4 text-secondary-600">Odnośniki</h3>
             <div className="h-1 w-20 bg-accent-500 my-6 rounded-full"></div>
             <ul className="space-y-4">
               <li>
@@ -112,7 +102,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="font-medium text-secondary-700 mb-1 text-lg">Nasza lokalizacja</p>
-                  <p className="text-secondary-600 text-lg">ul. Cukiernicza 123, 00-001 Warszawa</p>
+                  <p className="text-secondary-600 text-lg">{contactDetails.localization}</p>
                 </div>
               </div>
 
@@ -130,7 +120,7 @@ export default function Footer() {
                 <div>
                   <p className="font-medium text-secondary-700 mb-1 text-lg">Email</p>
                   <a href="mailto:info@tortyagi.pl" className="text-secondary-600 hover:text-primary-600 transition-colors text-lg">
-                    info@tortyagi.pl
+                    {contactDetails.email}
                   </a>
                 </div>
               </div>
@@ -149,7 +139,7 @@ export default function Footer() {
                 <div>
                   <p className="font-medium text-secondary-700 mb-1 text-lg">Telefon</p>
                   <a href="tel:+48123456789" className="text-secondary-600 hover:text-primary-600 transition-colors text-lg">
-                    +48 123 456 789
+                    {contactDetails.phone}
                   </a>
                 </div>
               </div>
