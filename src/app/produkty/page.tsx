@@ -3,13 +3,18 @@ import { getPageConfig } from '../../data/get-page-data';
 import ProductCard from '../../components/products/ProductCard';
 import { routes } from '@/utils/routes';
 
-export default async function Page({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+interface ProductsPageProps {
+  params: Promise<string>;
+  searchParams: Promise<{
+    kategoria: string;
+  }>;
+}
+
+export default async function ProductsPage({ searchParams }: ProductsPageProps) {
   const { products, allProducts, categories } = await getPageConfig();
 
-  // Get the category from URL query params, default to "all"
-  const categoryFilter = typeof searchParams?.kategoria === 'string' ? searchParams?.kategoria : 'all';
+  const categoryFilter = (await searchParams).kategoria;
 
-  // Filter products on the server
   const filteredProducts = allProducts.filter(
     (product) => products.includes(product.id) && (categoryFilter === 'all' || product.category === categoryFilter)
   );
