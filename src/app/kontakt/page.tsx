@@ -83,10 +83,14 @@ export default function Page() {
           {/* Map or Location Image */}
           <div className="mt-12 pt-10 border-t border-gray-100">
             <h3 className="font-semibold text-xl mb-6 text-center">Znajdź nas</h3>
-            <div className="bg-gray-200 rounded-lg h-72 flex items-center justify-center">
-              <p className="text-gray-500">Mapa lokalizacji</p>
-              {/* Here you could add an actual map component or image */}
-            </div>
+            <iframe
+              className="m-auto"
+              src={contactDetails.googleCompanyLink}
+              width="600"
+              height="450"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
 
           {/* Social Media */}
