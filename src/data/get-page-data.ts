@@ -26,7 +26,6 @@ export interface ProductCategory {
 export interface PageData {
   promoted: string[],
   creations: string[],
-  reviews: Array<{ name: string, review: string }>,
   products: string[],
   allProducts: Product[];
   categories: Array<ProductCategory>;
@@ -36,7 +35,6 @@ export interface PageData {
 export const defaultPageData: PageData = {
   promoted: [],
   creations: [],
-  reviews: [],
   products: [],
   allProducts: [],
   categories: [],
@@ -112,7 +110,6 @@ export async function getPageConfig(): Promise<PageData> {
     return {
       promoted: [],
       creations: [],
-      reviews: [],
       products: [],
       allProducts: [],
       categories: []

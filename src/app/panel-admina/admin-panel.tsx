@@ -6,7 +6,6 @@ import { ProductsSection } from './products-section';
 import { CategoriesSection } from './categories-section';
 import { CreationsSection } from './creations-section';
 import { PromotedSection } from './promoted-section';
-import { ReviewsSection } from './reviews-section';
 
 interface AdminPanelProps {
   initialData: PageData;
@@ -75,13 +74,6 @@ export const AdminPanel = ({ initialData }: AdminPanelProps) => {
     });
   };
 
-  const updateReviews = (reviews: Array<{ name: string; review: string }>) => {
-    setPageData({
-      ...pageData,
-      reviews,
-    });
-  };
-
   return (
     <div className="container mx-auto p-4">
       <div className="flex justify-between items-center mb-6">
@@ -145,18 +137,13 @@ export const AdminPanel = ({ initialData }: AdminPanelProps) => {
 
       <div className="bg-white rounded-lg shadow-md p-6">
         {activeTab === 'products' && <ProductsSection products={pageData.allProducts} updateProducts={updateProducts} />}
-
         {activeTab === 'categories' && <CategoriesSection categories={pageData.categories} updateCategories={updateCategories} />}
-
         {activeTab === 'promoted' && (
           <PromotedSection allProducts={pageData.allProducts} promotedIds={pageData.promoted} updatePromoted={updatePromoted} />
         )}
-
         {activeTab === 'creations' && (
           <CreationsSection allProducts={pageData.allProducts} creationIds={pageData.creations} updateCreations={updateCreations} />
         )}
-
-        {activeTab === 'reviews' && <ReviewsSection reviews={pageData.reviews} updateReviews={updateReviews} />}
       </div>
     </div>
   );

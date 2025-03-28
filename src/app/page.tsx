@@ -1,5 +1,5 @@
-import Link from "next/link";
-import PlaceholderImage from "../components/ui/PlaceholderImage";
+import Link from 'next/link';
+import PlaceholderImage from '../components/ui/PlaceholderImage';
 
 export default function Home() {
   return (
