@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { Product } from '@/data/get-page-data';
-import { v4 as uuidv4 } from 'uuid';
 import { ImageUploader } from '@/components/ui/image-uploader';
+import { generateId } from '@/utils/generate-url';
 import { Modal } from '../../components/ui/Modal';
 import { ImagePicker } from '../../components/ui/image-picker';
 
@@ -43,7 +43,7 @@ export const ProductsSection = ({ products, updateProducts }: ProductsSectionPro
 
   // Start adding a new product
   const startAddingProduct = () => {
-    setEditingProduct({ ...newProductTemplate, id: uuidv4() });
+    setEditingProduct({ ...newProductTemplate, id: '' });
     setIsAdding(true);
   };
 
@@ -149,6 +149,8 @@ export const ProductsSection = ({ products, updateProducts }: ProductsSectionPro
 
     const { name, value } = e.target;
 
+    const newId = isAdding ? generateId(value) : editingProduct.id;
+
     if (name === 'price') {
       setEditingProduct({
         ...editingProduct,
@@ -162,6 +164,7 @@ export const ProductsSection = ({ products, updateProducts }: ProductsSectionPro
     } else {
       setEditingProduct({
         ...editingProduct,
+        id: newId,
         [name]: value,
       });
     }
@@ -269,6 +272,10 @@ export const ProductsSection = ({ products, updateProducts }: ProductsSectionPro
           <div className="bg-gray-50 p-6 rounded-lg mb-6 border">
             <h3 className="text-xl font-semibold mb-4">{isAdding ? 'Dodaj Nowy Produkt' : 'Edytuj Produkt'}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block mb-2 font-medium">Id</label>
+                <input type="text" name="name" value={editingProduct.id} className="w-full border rounded-md px-4 py-2" disabled />
+              </div>
               <div>
                 <label className="block mb-2 font-medium">Nazwa</label>
                 <input
