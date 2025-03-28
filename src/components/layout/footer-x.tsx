@@ -2,7 +2,7 @@ import { contactDetails } from '@/utils/contactDetails';
 import { routes } from '@/utils/routes';
 import Link from 'next/link';
 
-export default function Footer() {
+export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -145,4 +145,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};

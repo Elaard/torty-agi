@@ -1,30 +1,30 @@
-import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import type { Metadata } from "next";
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
-import { getConfig } from "../data/get-page-data";
+import './globals.css';
+import { Analytics } from '@vercel/analytics/react';
+import type { Metadata } from 'next';
+import { getConfig } from '../data/get-page-data';
+import { Header } from '@/components/layout/header-y';
+import { Footer } from '@/components/layout/footer-x';
 
 export const metadata: Metadata = {
-  title: "Torty AGI | Artystyczna Cukiernia",
-  description: "Ręcznie robione torty, ciasta i słodkości przygotowane z pasją i najlepszych składników. Idealne na każdą okazję.",
-  keywords: "cukiernia, torty, ciasta, słodkości, domowe wypieki, artystyczne wypieki, desery",
-  authors: [{ name: "Torty AGI Cukiernia" }],
+  title: 'Torty AGI | Artystyczna Cukiernia',
+  description: 'Ręcznie robione torty, ciasta i słodkości przygotowane z pasją i najlepszych składników. Idealne na każdą okazję.',
+  keywords: 'cukiernia, torty, ciasta, słodkości, domowe wypieki, artystyczne wypieki, desery',
+  authors: [{ name: 'Torty AGI Cukiernia' }],
   openGraph: {
-    title: "Torty AGI | Artystyczna Cukiernia",
-    description: "Ręcznie robione torty, ciasta i słodkości przygotowane z pasją i najlepszych składników.",
-    url: "https://tortyagi.pl",
-    siteName: "Torty AGI Cukiernia",
+    title: 'Torty AGI | Artystyczna Cukiernia',
+    description: 'Ręcznie robione torty, ciasta i słodkości przygotowane z pasją i najlepszych składników.',
+    url: 'https://tortyagi.pl',
+    siteName: 'Torty AGI Cukiernia',
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: "Torty AGI Cukiernia",
+        alt: 'Torty AGI Cukiernia',
       },
     ],
-    locale: "pl_PL",
-    type: "website",
+    locale: 'pl_PL',
+    type: 'website',
   },
 };
 

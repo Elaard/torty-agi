@@ -4,7 +4,7 @@ import { routes } from '@/utils/routes';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-export default function Header() {
+export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -113,4 +113,4 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
