@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import PlaceholderImage from '../ui/PlaceholderImage';
 import { Product } from '@/data/get-page-data';
+import { routes } from '@/utils/routes';
 
 interface ProductCardProps {
   product: Product;
@@ -9,7 +10,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <Link href={`/produkty/${product.id}`} className="block">
+    <Link href={routes.getProduct(product.id)} className="block">
       <article className="group relative flex flex-col overflow-hidden rounded-xl bg-white transition-all hover:shadow-lg">
         {/* Product Image - Larger and more prominent */}
         <div className="relative aspect-square overflow-hidden">

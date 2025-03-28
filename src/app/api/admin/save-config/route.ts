@@ -44,6 +44,7 @@ export async function POST(request: NextRequest) {
 
     // Upload to S3
     await s3Client.send(putObjectCommand);
+    console.log('saving---------------------')
     await getConfig(true);
 
     return NextResponse.json({ success: true });

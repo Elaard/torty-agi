@@ -1,22 +1,23 @@
-"use client";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+'use client';
+import { routes } from '@/utils/routes';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function Page() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
-    setError("");
+    setError('');
     e.preventDefault();
 
-    const response = await fetch("/api/auth/login", {
-      method: "POST",
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ username: email, password }),
     });
@@ -26,7 +27,7 @@ export default function Page() {
       setError(error);
       return;
     } else {
-      router.push("/panel-admina");
+      router.push(routes.adminPanel);
     }
   };
 

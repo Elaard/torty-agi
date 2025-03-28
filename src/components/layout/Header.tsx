@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useState, useEffect } from "react";
+import { routes } from '@/utils/routes';
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,8 +18,8 @@ export default function Header() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleMenu = () => {
@@ -28,13 +29,13 @@ export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-500 backdrop-blur-sm ${
-        isScrolled ? "bg-white/90 shadow-lg py-2" : "bg-transparent py-6"
+        isScrolled ? 'bg-white/90 shadow-lg py-2' : 'bg-transparent py-6'
       }`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
+          <Link href={routes.home} className="flex items-center group">
             <div className="relative">
               <span className="heading-fancy text-3xl md:text-4xl group-hover:scale-105 transition-transform duration-300 inline-block">
                 Torty AGI
@@ -45,19 +46,19 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="font-medium text-secondary-700 hover:text-primary-600 transition-colors relative group py-2">
+            <Link href={routes.home} className="font-medium text-secondary-700 hover:text-primary-600 transition-colors relative group py-2">
               <span>Strona główna</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-300 group-hover:w-full transition-all duration-300"></span>
             </Link>
-            <Link href="/produkty" className="font-medium text-secondary-700 hover:text-primary-600 transition-colors relative group py-2">
+            <Link href={routes.products} className="font-medium text-secondary-700 hover:text-primary-600 transition-colors relative group py-2">
               <span>Produkty</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-300 group-hover:w-full transition-all duration-300"></span>
             </Link>
-            <Link href="/kontakt" className="font-medium text-secondary-700 hover:text-primary-600 transition-colors relative group py-2">
+            <Link href={routes.contact} className="font-medium text-secondary-700 hover:text-primary-600 transition-colors relative group py-2">
               <span>Kontakt</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-300 group-hover:w-full transition-all duration-300"></span>
             </Link>
-            <Link href="/kontakt" className="btn btn-primary ml-4 shadow-lg">
+            <Link href={routes.contact} className="btn btn-primary ml-4 shadow-lg">
               Zamów teraz
             </Link>
           </nav>
@@ -82,28 +83,28 @@ export default function Header() {
         {isMenuOpen && (
           <nav className="md:hidden pt-4 pb-2 space-y-3 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl mt-4 animate-fade-in">
             <Link
-              href="/"
+              href={routes.home}
               className="block py-3 px-6 hover:bg-primary-50 transition-colors text-secondary-700 hover:text-primary-600"
               onClick={() => setIsMenuOpen(false)}
             >
               Strona główna
             </Link>
             <Link
-              href="/kontakt"
+              href={routes.products}
               className="block py-3 px-6 hover:bg-primary-50 transition-colors text-secondary-700 hover:text-primary-600"
               onClick={() => setIsMenuOpen(false)}
             >
               Produkty
             </Link>
             <Link
-              href="/kontakt"
+              href={routes.contact}
               className="block py-3 px-6 hover:bg-primary-50 transition-colors text-secondary-700 hover:text-primary-600"
               onClick={() => setIsMenuOpen(false)}
             >
               Kontakt
             </Link>
             <div className="px-6 pt-2 pb-3">
-              <Link href="/kontakt" className="block w-full btn btn-primary text-center shadow-lg" onClick={() => setIsMenuOpen(false)}>
+              <Link href={routes.contact} className="block w-full btn btn-primary text-center shadow-lg" onClick={() => setIsMenuOpen(false)}>
                 Zamów teraz
               </Link>
             </div>

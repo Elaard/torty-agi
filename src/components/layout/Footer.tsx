@@ -1,4 +1,5 @@
 import { contactDetails } from '@/utils/contactDetails';
+import { routes } from '@/utils/routes';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -51,19 +52,19 @@ export default function Footer() {
             <div className="h-1 w-20 bg-accent-500 my-6 rounded-full"></div>
             <ul className="space-y-4">
               <li>
-                <Link href="/" className="text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg">
+                <Link href={routes.home} className="text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg">
                   <span className="w-2 h-2 bg-accent-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   <span>Strona główna</span>
                 </Link>
               </li>
               <li>
-                <Link href="/produkty" className="text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg">
+                <Link href={routes.products} className="text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg">
                   <span className="w-2 h-2 bg-accent-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   <span>Produkty</span>
                 </Link>
               </li>
               <li>
-                <Link href="/kontakt" className="text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg">
+                <Link href={routes.contact} className="text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg">
                   <span className="w-2 h-2 bg-accent-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   <span>Kontakt</span>
                 </Link>

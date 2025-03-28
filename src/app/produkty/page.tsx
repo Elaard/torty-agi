@@ -1,12 +1,13 @@
-import { getPageConfig } from '../../data/get-page-data';
 import Link from 'next/link';
+import { getPageConfig } from '../../data/get-page-data';
 import ProductCard from '../../components/products/ProductCard';
+import { routes } from '@/utils/routes';
 
 export default async function Page({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
   const { products, allProducts, categories } = await getPageConfig();
 
   // Get the category from URL query params, default to "all"
-  const categoryFilter = typeof searchParams.kategoria === 'string' ? searchParams.kategoria : 'all';
+  const categoryFilter = typeof searchParams?.kategoria === 'string' ? searchParams?.kategoria : 'all';
 
   // Filter products on the server
   const filteredProducts = allProducts.filter(
@@ -28,7 +29,7 @@ export default async function Page({ searchParams }: { searchParams: { [key: str
           {/* Horizontal Category Filter - Server Component with Links */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             <Link
-              href="/produkty"
+              href={routes.products}
               className={`px-4 py-2 rounded-full transition-colors ${
                 categoryFilter === 'all' ? 'bg-primary-600 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
               }`}

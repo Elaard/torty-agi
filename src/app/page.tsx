@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import PlaceholderImage from '../components/ui/PlaceholderImage';
 import { getPageConfig, Product } from '@/data/get-page-data';
+import { routes } from '@/utils/routes';
 
 export default async function Home() {
   // Fetch page data
@@ -50,13 +51,13 @@ export default async function Home() {
 
               <div className="flex flex-col sm:flex-row gap-6">
                 <Link
-                  href="/kontakt"
+                  href={routes.contact}
                   className="btn btn-primary text-lg px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
                 >
                   Skontaktuj się
                 </Link>
                 <Link
-                  href="/produkty"
+                  href={routes.products}
                   className="btn btn-outline text-lg px-8 py-4 transform -rotate-1 hover:rotate-0 transition-all duration-300 hover:bg-primary-50"
                 >
                   Nasze realizacje
@@ -76,7 +77,7 @@ export default async function Home() {
                       {/* First promoted product */}
                       {promoted1 && (
                         <Link
-                          href={`/produkty/${promoted1.id}`}
+                          href={routes.getProduct(promoted1.id)}
                           key={promoted1.id}
                           className="h-40 md:h-56 rounded-2xl overflow-hidden transform rotate-2 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-rotate-1 group relative block"
                         >
@@ -102,7 +103,7 @@ export default async function Home() {
                       {/* Second promoted product */}
                       {promoted2 && (
                         <Link
-                          href={`/produkty/${promoted2.id}`}
+                          href={routes.getProduct(promoted2.id)}
                           key={promoted2.id}
                           className="h-32 md:h-44 rounded-2xl overflow-hidden transform -rotate-1 shadow-xl hover:shadow-2xl transition-all duration-500 hover:rotate-1 group relative block"
                         >
@@ -129,7 +130,7 @@ export default async function Home() {
                       {/* Third promoted product */}
                       {promoted3 && (
                         <Link
-                          href={`/produkty/${promoted3.id}`}
+                          href={routes.getProduct(promoted3.id)}
                           key={promoted3.id}
                           className="h-32 md:h-44 rounded-2xl overflow-hidden transform rotate-1 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-rotate-1 group relative block"
                         >
@@ -155,7 +156,7 @@ export default async function Home() {
                       {/* Fourth promoted product */}
                       {promoted4 && (
                         <Link
-                          href={`/produkty/${promoted4.id}`}
+                          href={routes.getProduct(promoted4.id)}
                           key={promoted4.id}
                           className="h-40 md:h-56 rounded-2xl overflow-hidden transform -rotate-2 shadow-xl hover:shadow-2xl transition-all duration-500 hover:rotate-1 group relative block"
                         >
@@ -241,7 +242,7 @@ export default async function Home() {
                 {creation1 && (
                   <div className="group relative">
                     <div className="absolute inset-0 bg-primary-200 rounded-3xl transform rotate-3 group-hover:rotate-1 transition-transform duration-300"></div>
-                    <Link href={`/produkty/${creation1.id}`} className="block">
+                    <Link href={routes.getProduct(creation1.id)} className="block">
                       <div className="relative bg-white p-6 rounded-3xl shadow-xl overflow-hidden transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 border border-primary-100">
                         <div className="relative h-64 mb-6 overflow-hidden rounded-xl">
                           {creation1.mainImage ? (
@@ -272,7 +273,7 @@ export default async function Home() {
                 {creation2 && (
                   <div className="group relative md:translate-y-8">
                     <div className="absolute inset-0 bg-accent-200 rounded-3xl transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
-                    <Link href={`/produkty/${creation2.id}`} className="block">
+                    <Link href={routes.getProduct(creation2.id)} className="block">
                       <div className="relative bg-white p-6 rounded-3xl shadow-xl overflow-hidden transform rotate-1 group-hover:rotate-0 transition-transform duration-300 border border-accent-100">
                         <div className="relative h-64 mb-6 overflow-hidden rounded-xl">
                           {creation2.mainImage ? (
@@ -303,7 +304,7 @@ export default async function Home() {
                 {creation3 && (
                   <div className="group relative">
                     <div className="absolute inset-0 bg-secondary-200 rounded-3xl transform rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
-                    <Link href={`/produkty/${creation3.id}`} className="block">
+                    <Link href={routes.getProduct(creation3.id)} className="block">
                       <div className="relative bg-white p-6 rounded-3xl shadow-xl overflow-hidden transform -rotate-2 group-hover:rotate-0 transition-transform duration-300 border border-secondary-100">
                         <div className="relative h-64 mb-6 overflow-hidden rounded-xl">
                           {creation3.mainImage ? (
@@ -344,7 +345,7 @@ export default async function Home() {
                     <p className="text-secondary-600 mb-4">
                       Bogate warstwy czekoladowe z gładkim ganache i wiórkami czekoladowymi. Idealny na specjalne okazje.
                     </p>
-                    <Link href="/kontakt" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                    <Link href={routes.contact} className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                       Więcej informacji
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -364,7 +365,7 @@ export default async function Home() {
                     <p className="text-secondary-600 mb-4">
                       Delikatne ciasteczka migdałowe z różnymi nadzieniami w pięknych kolorach. Doskonały prezent.
                     </p>
-                    <Link href="/kontakt" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                    <Link href={routes.contact} className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                       Więcej informacji
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -382,7 +383,7 @@ export default async function Home() {
                     </div>
                     <h3 className="font-serif text-2xl font-semibold mb-3">Babeczki</h3>
                     <p className="text-secondary-600 mb-4">Soczyste babeczki z kremem maślanym i dekoracyjnymi dodatkami. Idealne na przyjęcia.</p>
-                    <Link href="/kontakt" className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
+                    <Link href={routes.contact} className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center">
                       Więcej informacji
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -395,7 +396,7 @@ export default async function Home() {
           </div>
 
           <div className="text-center mt-16">
-            <Link href="/produkty" className="btn btn-primary text-lg px-8 py-4 shadow-xl">
+            <Link href={routes.contact} className="btn btn-primary text-lg px-8 py-4 shadow-xl">
               Zobacz wszystkie nasze wypieki
             </Link>
           </div>
