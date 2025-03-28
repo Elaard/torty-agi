@@ -98,7 +98,6 @@ export const AdminPanel = ({ initialData }: AdminPanelProps) => {
         </div>
       </div>
 
-      {/* Navigation Tabs */}
       <div className="border-b border-gray-200 mb-6">
         <nav className="flex -mb-px">
           <button
@@ -144,7 +143,6 @@ export const AdminPanel = ({ initialData }: AdminPanelProps) => {
         </nav>
       </div>
 
-      {/* Content Sections */}
       <div className="bg-white rounded-lg shadow-md p-6">
         {activeTab === 'products' && <ProductsSection products={pageData.allProducts} updateProducts={updateProducts} />}
 
