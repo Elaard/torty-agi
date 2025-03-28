@@ -3,7 +3,7 @@ import { getPresignedUrl } from "./get-s3-url";
 export interface Product {
   id: string;
   name: string;
-  category: 'cakes' | 'chocolates' | 'pastries' | 'cookies';
+  category: string;
   price: number;
   mainImage: string; // Kept for backward compatibility
   images: string[]; // New field for multiple images

@@ -300,7 +300,11 @@ export const ProductsSection = ({ products, categories, updateProducts }: Produc
                   required
                 >
                   {categories.map((c) => {
-                    return <option value={c.id}>{c.name}</option>;
+                    return (
+                      <option key={c.id} value={c.id}>
+                        {c.name}
+                      </option>
+                    );
                   })}
                 </select>
               </div>
