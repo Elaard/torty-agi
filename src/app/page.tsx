@@ -3,15 +3,13 @@ import PlaceholderImage from '../components/ui/PlaceholderImage';
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-b from-beige to-white">
+    <div className="bg-beige">
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 md:py-28">
         {/* Background elements */}
         <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/hero-cake.svg')] opacity-5 bg-repeat"></div>
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-primary-50 to-transparent opacity-70"></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-tr from-accent-50 to-transparent opacity-70"></div>
-        <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-accent-200 opacity-20 blur-3xl animate-pulse-slow"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-primary-200 opacity-20 blur-3xl animate-pulse-slow animation-delay-2000"></div>
+        <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-accent-200 opacity-10 blur-3xl animate-pulse-slow"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-primary-200 opacity-10 blur-3xl animate-pulse-slow animation-delay-2000"></div>
 
         <div className="container-custom relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -49,7 +47,7 @@ export default function Home() {
             {/* Right content - Featured images */}
             <div className="relative">
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent-100 rounded-full opacity-20 animate-float"></div>
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary-100 rounded-full opacity-20 animate-float animation-delay-1000"></div>
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary-100 rounded-full opacity-0 animate-float animation-delay-1000"></div>
 
               <div className="relative grid grid-cols-2 gap-4 md:gap-6">
                 <div className="space-y-4 md:space-y-6 pt-10">
@@ -90,11 +88,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Nasze Specjalności Section */}
       <section className="py-24 relative">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-primary-50 opacity-50 clip-path-diagonal"></div>
-        <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-accent-50 opacity-50 clip-path-diagonal-reverse"></div>
-
         <div className="container-custom relative z-10">
           <div className="text-center mb-16">
             <span className="badge badge-primary mb-4 inline-block transform rotate-1">Nasze specjalności</span>
@@ -179,9 +173,9 @@ export default function Home() {
       </section>
 
       {/* Opinie klientów Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-80 h-80 rounded-full bg-primary-100 opacity-30 blur-3xl"></div>
-        <div className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full bg-accent-100 opacity-30 blur-3xl"></div>
+      <section className="py-24 bg-beige relative overflow-hidden">
+        <div className="absolute -top-40 -left-40 w-80 h-80 rounded-full bg-primary-100 opacity-10 blur-3xl"></div>
+        <div className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full bg-accent-100 opacity-10 blur-3xl"></div>
 
         <div className="container-custom relative z-10">
           <div className="text-center mb-16">
@@ -276,9 +270,9 @@ export default function Home() {
 
       {/* Kontakt Section */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-800"></div>
+        <div className="absolute inset-0 bg-primary-700"></div>
         <div className="absolute inset-0 bg-[url('/images/hero-cake.svg')] opacity-5 bg-repeat"></div>
-        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent"></div>
+        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-beige to-transparent"></div>
 
         <div className="container-custom relative z-10">
           <div className="max-w-4xl mx-auto bg-white/10 backdrop-blur-lg rounded-3xl p-12 shadow-2xl border border-white/20 text-center">

@@ -1,24 +1,18 @@
-"use client";
-import { useState } from "react";
-import PlaceholderImage from "../ui/PlaceholderImage";
-import ProductModal from "../ui/ProductModal";
-import { Product } from "@/data/get-page-data";
+'use client';
+import Link from 'next/link';
+import PlaceholderImage from '../ui/PlaceholderImage';
+import { Product } from '@/data/get-page-data';
 
 interface ProductCardProps {
   product: Product;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-
   return (
-    <>
+    <Link href={`/produkty/${product.id}`} className="block">
       <article className="group relative flex flex-col overflow-hidden rounded-xl bg-white transition-all hover:shadow-lg">
         {/* Product Image - Larger and more prominent */}
-        <div className="relative aspect-square overflow-hidden cursor-pointer" onClick={openModal}>
+        <div className="relative aspect-square overflow-hidden">
           {product.mainImage ? (
             <img
               src={product.mainImage}
@@ -45,20 +39,18 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Product Info - Cleaner layout */}
         <div className="p-5 flex-grow flex flex-col">
-          <h3 className="font-serif text-xl font-semibold mb-2 cursor-pointer hover:text-primary-600 transition-colors" onClick={openModal}>
-            {product.name}
-          </h3>
+          <h3 className="font-serif text-xl font-semibold mb-2 hover:text-primary-600 transition-colors">{product.name}</h3>
 
           {/* Category tag */}
           {product.category && (
             <span className="text-xs text-gray-500 uppercase tracking-wider mb-3">
-              {product.category === "cakes"
-                ? "Torty"
-                : product.category === "chocolates"
-                ? "Czekoladki"
-                : product.category === "pastries"
-                ? "Ciasta"
-                : "Ciasteczka"}
+              {product.category === 'cakes'
+                ? 'Torty'
+                : product.category === 'chocolates'
+                  ? 'Czekoladki'
+                  : product.category === 'pastries'
+                    ? 'Ciasta'
+                    : 'Ciasteczka'}
             </span>
           )}
 
@@ -66,18 +58,15 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           <div className="flex justify-between items-center mt-auto pt-3 border-t border-gray-100">
             <span className="font-medium text-lg">{product.price.toFixed(2)} zł</span>
-            <button className="text-primary-600 font-medium hover:text-primary-800 transition-colors flex items-center gap-1" onClick={openModal}>
+            <span className="text-primary-600 font-medium hover:text-primary-800 transition-colors flex items-center gap-1">
               Szczegóły
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </button>
+            </span>
           </div>
         </div>
       </article>
-
-      {/* Product Modal */}
-      <ProductModal product={product} isOpen={isModalOpen} onClose={closeModal} />
-    </>
+    </Link>
   );
 }
