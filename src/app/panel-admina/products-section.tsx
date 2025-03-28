@@ -149,7 +149,11 @@ export const ProductsSection = ({ products, updateProducts }: ProductsSectionPro
 
     const { name, value } = e.target;
 
-    const newId = isAdding ? generateId(value) : editingProduct.id;
+    let newId = editingProduct.id;
+
+    if (isAdding && name === 'name') {
+      newId = generateId(value);
+    }
 
     if (name === 'price') {
       setEditingProduct({
