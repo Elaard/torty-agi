@@ -21,40 +21,30 @@ const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>(({ onI
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const files = e.target.files;
+    if (!files) return;
 
-    // Validate file type
-    const fileType = file.type;
-    if (!fileType.startsWith("image/")) {
-      setUploadError("Tylko pliki graficzne są dozwolone.");
-      return;
-    }
-
-    // Validate file size (max 5MB)
     const maxSize = 5 * 1024 * 1024; // 5MB
-    if (file.size > maxSize) {
-      setUploadError("Maksymalny rozmiar pliku to 5MB.");
-      return;
-    }
 
-    // Create preview
     const reader = new FileReader();
-    reader.onload = (e) => {
-      setPreviewUrl(e.target?.result as string);
-    };
-    reader.readAsDataURL(file);
+    const images = [];
+    Array.from(files).forEach((file) => {
+      // validate file type
+      const fileType = file.type;
+      if (!fileType.startsWith("image/")) {
+        console.log("Tylko pliki graficzne są dozwolone.");
+        return;
+      }
 
-    // Store the file for later upload
-    setSelectedFile(file);
+      if (file.size > maxSize) {
+        setUploadError("Maksymalny rozmiar pliku to 5MB.");
+        return;
+      }
 
-    // Notify parent component about the selected file
-    if (onFileSelected) {
-      onFileSelected(file);
-    } else {
-      // If no onFileSelected prop is provided, upload immediately (backward compatibility)
-      await uploadFile(file);
-    }
+      reader.readAsDataURL(file);
+      images.push(file);
+      onFileSelected?.(file);
+    });
   };
 
   const uploadFile = async (file: File) => {

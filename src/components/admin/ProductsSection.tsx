@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { Product } from "@/data/get-page-data";
 import { v4 as uuidv4 } from "uuid";
 import ImageUploader, { ImageUploaderHandle } from "@/components/ui/ImageUploader";
+import { Modal } from "../ui/Modal";
 
 interface ProductsSectionProps {
   products: Product[];
@@ -19,9 +20,13 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [isAdding, setIsAdding] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [newImageUrl, setNewImageUrl] = useState<string>("");
   const [pendingImages, setPendingImages] = useState<PendingImage[]>([]);
   const [isSaving, setIsSaving] = useState(false);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   // New product template
   const newProductTemplate: Product = {
@@ -75,15 +80,14 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
 
     setIsSaving(true);
 
+    let images = [];
+    let mainImage = editingProduct.mainImage;
     try {
-      // Upload all pending images first
       if (pendingImages.length > 0) {
         for (const pendingImage of pendingImages) {
-          // Create a FormData object
           const formData = new FormData();
           formData.append("file", pendingImage.file);
 
-          // Upload the file
           const response = await fetch("/api/admin/upload-image", {
             method: "POST",
             body: formData,
@@ -97,29 +101,22 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
           const data = await response.json();
 
           if (data.success && data.imageUrl) {
-            // Add the image URL to the product
-            handleImageUploaded(data.imageUrl);
+            images.push(data.imageUrl);
+
+            if (!mainImage) {
+              mainImage = data.imageUrl;
+            }
           }
         }
 
-        // Clear pending images
         setPendingImages([]);
       }
 
-      // Ensure mainImage is included in images before saving
-      let finalProduct = { ...editingProduct };
-
-      if (finalProduct.mainImage) {
-        // Initialize images array if it doesn't exist
-        if (!finalProduct.images) {
-          finalProduct.images = [];
-        }
-
-        // Add mainImage to images array if it's not already there
-        if (!finalProduct.images.includes(finalProduct.mainImage)) {
-          finalProduct.images = [finalProduct.mainImage, ...finalProduct.images];
-        }
-      }
+      let finalProduct = {
+        ...editingProduct,
+        mainImage,
+        images: images,
+      };
 
       // Save the product
       if (isAdding) {
@@ -185,18 +182,13 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
     // Add to images array
     const updatedImages = [...(editingProduct.images || [])];
 
-    // Only add the image if it's not already in the array
-    if (!updatedImages.includes(imageUrl)) {
-      updatedImages.push(imageUrl);
-
-      setEditingProduct({
-        ...editingProduct,
-        // Only set as primary image if it's the first one or if there's no mainImage
-        mainImage: editingProduct.mainImage || imageUrl,
-        images: updatedImages,
-      });
-    }
+    return {
+      mainImage: editingProduct.mainImage || imageUrl,
+      images: updatedImages,
+    };
   };
+
+  console.log(editingProduct);
 
   // Remove an image
   const removeImage = (imageUrl: string) => {
@@ -252,8 +244,6 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
     });
   };
 
-  console.log(filteredProducts);
-
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
@@ -274,216 +264,212 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
 
       {/* Product Editing Form */}
       {editingProduct && (
-        <div className="bg-gray-50 p-6 rounded-lg mb-6 border">
-          <h3 className="text-xl font-semibold mb-4">{isAdding ? "Dodaj Nowy Produkt" : "Edytuj Produkt"}</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block mb-2 font-medium">Nazwa</label>
-              <input
-                type="text"
-                name="name"
-                value={editingProduct.name}
-                onChange={handleInputChange}
-                className="w-full border rounded-md px-4 py-2"
-                required
-              />
-            </div>
-            <div>
-              <label className="block mb-2 font-medium">Kategoria</label>
-              <select
-                name="category"
-                value={editingProduct.category}
-                onChange={handleInputChange}
-                className="w-full border rounded-md px-4 py-2"
-                required
-              >
-                <option value="cakes">Torty</option>
-                <option value="chocolates">Czekoladki</option>
-                <option value="pastries">Ciasta</option>
-                <option value="cookies">Ciasteczka</option>
-              </select>
-            </div>
-            <div>
-              <label className="block mb-2 font-medium">Cena (zł)</label>
-              <input
-                name="price"
-                value={editingProduct.price}
-                onChange={handleInputChange}
-                className="w-full border rounded-md px-4 py-2"
-                min="0"
-                required
-              />
-            </div>
-            <div className="md:col-span-2">
-              <label className="block mb-2 font-medium">Zdjęcia produktu</label>
+        <Modal maxW="max-w-6xl" maxH="max-modal-h">
+          <div className="bg-gray-50 p-6 rounded-lg mb-6 border">
+            <h3 className="text-xl font-semibold mb-4">{isAdding ? "Dodaj Nowy Produkt" : "Edytuj Produkt"}</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block mb-2 font-medium">Nazwa</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={editingProduct.name}
+                  onChange={handleInputChange}
+                  className="w-full border rounded-md px-4 py-2"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block mb-2 font-medium">Kategoria</label>
+                <select
+                  name="category"
+                  value={editingProduct.category}
+                  onChange={handleInputChange}
+                  className="w-full border rounded-md px-4 py-2"
+                  required
+                >
+                  <option value="cakes">Torty</option>
+                  <option value="chocolates">Czekoladki</option>
+                  <option value="pastries">Ciasta</option>
+                  <option value="cookies">Ciasteczka</option>
+                </select>
+              </div>
+              <div>
+                <label className="block mb-2 font-medium">Cena (zł)</label>
+                <input
+                  name="price"
+                  value={editingProduct.price}
+                  onChange={handleInputChange}
+                  className="w-full border rounded-md px-4 py-2"
+                  min="0"
+                  required
+                />
+              </div>
+              <div className="md:col-span-2">
+                <label className="block mb-2 font-medium">Zdjęcia produktu</label>
 
-              {/* Current Images Gallery */}
-              {(editingProduct.images?.length || 0) > 0 && (
-                <div className="mb-4">
-                  <p className="text-sm text-gray-500 mb-2">Aktualne zdjęcia:</p>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {editingProduct.images?.map((imgUrl, index) => (
-                      <div key={index} className="relative border rounded p-2 group">
-                        <img
-                          src={imgUrl}
-                          alt={`Zdjęcie ${index + 1}`}
-                          className={`w-full h-32 object-contain ${imgUrl === editingProduct.mainImage ? "ring-2 ring-blue-500" : ""}`}
-                        />
-                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
-                          <div className="flex gap-2">
-                            {imgUrl !== editingProduct.mainImage && (
+                {/* Current Images Gallery */}
+                {(editingProduct.images?.length || 0) > 0 && (
+                  <div className="mb-4">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {editingProduct.images?.map((imgUrl, index) => (
+                        <div key={index} className="relative border rounded p-2 group">
+                          <img
+                            src={imgUrl}
+                            alt={`Zdjęcie ${index + 1}`}
+                            className={`w-full h-32 object-contain ${imgUrl === editingProduct.mainImage ? "ring-2 ring-blue-500" : ""}`}
+                          />
+                          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
+                            <div className="flex gap-2">
+                              {imgUrl !== editingProduct.mainImage && (
+                                <button
+                                  type="button"
+                                  onClick={() => setPrimaryImage(imgUrl)}
+                                  className="bg-blue-500 text-white p-1 rounded-full"
+                                  title="Ustaw jako główne zdjęcie"
+                                >
+                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path
+                                      fillRule="evenodd"
+                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                      clipRule="evenodd"
+                                    />
+                                  </svg>
+                                </button>
+                              )}
                               <button
                                 type="button"
-                                onClick={() => setPrimaryImage(imgUrl)}
-                                className="bg-blue-500 text-white p-1 rounded-full"
-                                title="Ustaw jako główne zdjęcie"
+                                onClick={() => removeImage(imgUrl)}
+                                className="bg-red-500 text-white p-1 rounded-full"
+                                title="Usuń zdjęcie"
                               >
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                   <path
                                     fillRule="evenodd"
-                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                     clipRule="evenodd"
                                   />
                                 </svg>
                               </button>
-                            )}
-                            <button
-                              type="button"
-                              onClick={() => removeImage(imgUrl)}
-                              className="bg-red-500 text-white p-1 rounded-full"
-                              title="Usuń zdjęcie"
-                            >
-                              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path
-                                  fillRule="evenodd"
-                                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            </button>
+                            </div>
                           </div>
+                          {imgUrl === editingProduct.mainImage && (
+                            <div className="absolute top-0 left-0 bg-blue-500 text-white text-xs px-2 py-1 rounded-br">Główne</div>
+                          )}
                         </div>
-                        {imgUrl === editingProduct.mainImage && (
-                          <div className="absolute top-0 left-0 bg-blue-500 text-white text-xs px-2 py-1 rounded-br">Główne</div>
-                        )}
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                {/* Image Uploader */}
-                <div>
-                  <p className="text-sm text-gray-500 mb-2">Prześlij nowe zdjęcia:</p>
-                  <ImageUploader onImageUploaded={handleImageUploaded} currentImageUrl={null} onFileSelected={handleFileSelected} />
-                  {pendingImages.length > 0 && (
-                    <p className="text-sm text-blue-500 mt-2">
-                      {pendingImages.length} {pendingImages.length === 1 ? "zdjęcie oczekuje" : "zdjęcia oczekują"} na zapisanie
-                    </p>
-                  )}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                  <ImageUploader
+                    onImageUploaded={handleImageUploaded}
+                    currentImageUrl={editingProduct.mainImage}
+                    onFileSelected={handleFileSelected}
+                  />
+                </div>
+              </div>
+              <div className="md:col-span-2">
+                <label className="block mb-2 font-medium">Opis</label>
+                <textarea
+                  name="description"
+                  value={editingProduct.description}
+                  onChange={handleInputChange}
+                  className="w-full border rounded-md px-4 py-2 h-24"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block mb-2 font-medium">Rozmiar</label>
+                <input
+                  type="text"
+                  name="size"
+                  value={editingProduct.size || ""}
+                  onChange={handleInputChange}
+                  className="w-full border rounded-md px-4 py-2"
+                />
+              </div>
+              <div>
+                <label className="block mb-2 font-medium">Składniki (oddzielone przecinkami)</label>
+                <input
+                  type="text"
+                  name="ingredients"
+                  value={editingProduct.ingredients?.join(", ") || ""}
+                  onChange={handleInputChange}
+                  className="w-full border rounded-md px-4 py-2"
+                />
+              </div>
+              <div>
+                <label className="block mb-2 font-medium">Alergeny (oddzielone przecinkami)</label>
+                <input
+                  type="text"
+                  name="allergens"
+                  value={editingProduct.allergens?.join(", ") || ""}
+                  onChange={handleInputChange}
+                  className="w-full border rounded-md px-4 py-2"
+                />
+              </div>
+              <div>
+                <label className="block mb-2 font-medium">Informacje o wartościach odżywczych</label>
+                <input
+                  type="text"
+                  name="nutritionalInfo"
+                  value={editingProduct.nutritionalInfo || ""}
+                  onChange={handleInputChange}
+                  className="w-full border rounded-md px-4 py-2"
+                />
+              </div>
+              <div className="md:col-span-2 flex flex-wrap gap-6">
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="featured"
+                    name="featured"
+                    checked={editingProduct.featured || false}
+                    onChange={handleCheckboxChange}
+                    className="w-4 h-4 mr-2"
+                  />
+                  <label htmlFor="featured">Wyróżniony</label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="bestseller"
+                    name="bestseller"
+                    checked={editingProduct.bestseller || false}
+                    onChange={handleCheckboxChange}
+                    className="w-4 h-4 mr-2"
+                  />
+                  <label htmlFor="bestseller">Bestseller</label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="new"
+                    name="new"
+                    checked={editingProduct.new || false}
+                    onChange={handleCheckboxChange}
+                    className="w-4 h-4 mr-2"
+                  />
+                  <label htmlFor="new">Nowość</label>
                 </div>
               </div>
             </div>
-            <div className="md:col-span-2">
-              <label className="block mb-2 font-medium">Opis</label>
-              <textarea
-                name="description"
-                value={editingProduct.description}
-                onChange={handleInputChange}
-                className="w-full border rounded-md px-4 py-2 h-24"
-                required
-              />
-            </div>
-            <div>
-              <label className="block mb-2 font-medium">Rozmiar</label>
-              <input
-                type="text"
-                name="size"
-                value={editingProduct.size || ""}
-                onChange={handleInputChange}
-                className="w-full border rounded-md px-4 py-2"
-              />
-            </div>
-            <div>
-              <label className="block mb-2 font-medium">Składniki (oddzielone przecinkami)</label>
-              <input
-                type="text"
-                name="ingredients"
-                value={editingProduct.ingredients?.join(", ") || ""}
-                onChange={handleInputChange}
-                className="w-full border rounded-md px-4 py-2"
-              />
-            </div>
-            <div>
-              <label className="block mb-2 font-medium">Alergeny (oddzielone przecinkami)</label>
-              <input
-                type="text"
-                name="allergens"
-                value={editingProduct.allergens?.join(", ") || ""}
-                onChange={handleInputChange}
-                className="w-full border rounded-md px-4 py-2"
-              />
-            </div>
-            <div>
-              <label className="block mb-2 font-medium">Informacje o wartościach odżywczych</label>
-              <input
-                type="text"
-                name="nutritionalInfo"
-                value={editingProduct.nutritionalInfo || ""}
-                onChange={handleInputChange}
-                className="w-full border rounded-md px-4 py-2"
-              />
-            </div>
-            <div className="md:col-span-2 flex flex-wrap gap-6">
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="featured"
-                  name="featured"
-                  checked={editingProduct.featured || false}
-                  onChange={handleCheckboxChange}
-                  className="w-4 h-4 mr-2"
-                />
-                <label htmlFor="featured">Wyróżniony</label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="bestseller"
-                  name="bestseller"
-                  checked={editingProduct.bestseller || false}
-                  onChange={handleCheckboxChange}
-                  className="w-4 h-4 mr-2"
-                />
-                <label htmlFor="bestseller">Bestseller</label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="new"
-                  name="new"
-                  checked={editingProduct.new || false}
-                  onChange={handleCheckboxChange}
-                  className="w-4 h-4 mr-2"
-                />
-                <label htmlFor="new">Nowość</label>
-              </div>
+            <div className="flex justify-end gap-4 mt-6">
+              <button className="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded-md" onClick={cancelEditing}>
+                Anuluj
+              </button>
+              <button
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md disabled:bg-blue-400"
+                onClick={saveProduct}
+                disabled={isSaving}
+              >
+                {isSaving ? "Zapisywanie..." : "Zapisz"}
+              </button>
             </div>
           </div>
-          <div className="flex justify-end gap-4 mt-6">
-            <button className="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded-md" onClick={cancelEditing}>
-              Anuluj
-            </button>
-            <button
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md disabled:bg-blue-400"
-              onClick={saveProduct}
-              disabled={isSaving}
-            >
-              {isSaving ? "Zapisywanie..." : "Zapisz"}
-            </button>
-          </div>
-        </div>
+        </Modal>
       )}
 
       {/* Products List */}
@@ -504,18 +490,7 @@ export default function ProductsSection({ products, updateProducts }: ProductsSe
                 <td className="py-3 px-4">
                   <div className="relative">
                     {product.mainImage ? (
-                      <img
-                        src={product.mainImage}
-                        alt={product.name}
-                        className="w-16 h-16 object-cover rounded"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          if (target.src !== "https://via.placeholder.com/150?text=Błąd+obrazu") {
-                            target.src = "https://via.placeholder.com/150?text=Błąd+obrazu";
-                          }
-                          target.onerror = null;
-                        }}
-                      />
+                      <img src={product.mainImage} alt={product.name} className="w-16 h-16 object-cover rounded" />
                     ) : (
                       <div className="w-16 h-16 bg-gray-200 rounded flex items-center justify-center text-gray-400">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">

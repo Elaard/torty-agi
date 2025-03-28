@@ -24,13 +24,6 @@ export default function ProductCard({ product }: ProductCardProps) {
               src={product.mainImage}
               alt={product.name}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                if (target.src !== "https://via.placeholder.com/150?text=Błąd+obrazu") {
-                  target.src = "https://via.placeholder.com/150?text=Błąd+obrazu";
-                }
-                target.onerror = null;
-              }}
             />
           ) : (
             <PlaceholderImage text={product.name} className="transition-transform duration-500 group-hover:scale-105" />

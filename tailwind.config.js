@@ -64,6 +64,12 @@ module.exports = {
       spacing: {
         128: "8rem",
       },
+      maxWidth: {
+        "max-w-6xl": "72rem",
+      },
+      maxHeight: {
+        "max-modal-h": "96vh",
+      },
     },
   },
   plugins: [],
