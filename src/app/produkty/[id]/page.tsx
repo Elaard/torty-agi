@@ -1,18 +1,25 @@
-import { getPageConfig } from '../../../data/get-page-data';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { routes } from '@/utils/routes';
+import { getPageConfig } from '../../../data/get-page-data';
 
-export default async function ProductPage({ params }: { params: { id: string } }) {
+interface ProductPageProps {
+  params: Promise<{
+    id: string;
+  }>;
+}
+
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { id } = await params;
+
   const { allProducts } = await getPageConfig();
-  const product = allProducts.find((p) => p.id === params.id);
+  const product = allProducts.find((p) => p.id === id);
 
   if (!product) {
     notFound();
   }
 
-  // Get all product images
   const productImages = product.images && product.images.length > 0 ? product.images : product.mainImage ? [product.mainImage] : [];
 
   return (
