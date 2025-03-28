@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { routes } from '@/utils/routes';
 import { getPageConfig } from '../../../data/get-page-data';
+import { ProductGallery } from './product-gallery';
 
 interface ProductPageProps {
   params: Promise<{
@@ -19,8 +20,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!product) {
     notFound();
   }
-
-  const productImages = product.images && product.images.length > 0 ? product.images : product.mainImage ? [product.mainImage] : [];
 
   return (
     <div className="py-16 bg-gray-50">
@@ -82,37 +81,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {/* Product Content */}
           <div className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Product Images Gallery */}
-              <div>
-                {/* Main Image */}
-                <div className="bg-gray-100 rounded-lg overflow-hidden h-80 flex items-center justify-center shadow-md mb-4">
-                  {productImages.length > 0 ? (
-                    <Image
-                      src={productImages[0]}
-                      alt={`${product.name} - zdjęcie główne`}
-                      width={600}
-                      height={600}
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-400">Brak zdjęcia</div>
-                  )}
-                </div>
-
-                {/* Thumbnails */}
-                {productImages.length > 1 && (
-                  <div className="grid grid-cols-4 gap-2">
-                    {productImages.map((imgUrl, index) => (
-                      <div
-                        key={index}
-                        className="aspect-square rounded overflow-hidden cursor-pointer border-2 border-transparent hover:border-blue-500"
-                      >
-                        <Image src={imgUrl} alt={`Miniatura ${index + 1}`} width={100} height={100} className="w-full h-full object-cover" />
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <ProductGallery images={product.images} mainImage={product.mainImage} />
 
               {/* Product Details */}
               <div className="space-y-6">
