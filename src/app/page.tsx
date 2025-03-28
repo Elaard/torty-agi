@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import PlaceholderImage from '../components/ui/PlaceholderImage';
-import { getPageConfig, Product } from '@/data/get-page-data';
+import { PlaceholderImage } from '../components/ui/placeholder-image';
+import { getPageConfig } from '@/data/get-page-data';
 import { routes } from '@/utils/routes';
 
 export default async function Home() {

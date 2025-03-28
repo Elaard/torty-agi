@@ -11,7 +11,7 @@ interface ImageUploaderProps {
   onFileSelected?: (file: File) => void;
 }
 
-const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>(({ onImageUploaded, onFileSelected }, ref) => {
+export const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>(({ onImageUploaded, onFileSelected }, ref) => {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -133,5 +133,3 @@ const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>(({ onI
 
 // Display name for debugging
 ImageUploader.displayName = 'ImageUploader';
-
-export default ImageUploader;

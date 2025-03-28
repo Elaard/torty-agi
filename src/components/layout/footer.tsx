@@ -1,4 +1,4 @@
-import { contactDetails } from '@/utils/contactDetails';
+import { contactDetails } from '@/utils/contact-details';
 import { routes } from '@/utils/routes';
 import Link from 'next/link';
 

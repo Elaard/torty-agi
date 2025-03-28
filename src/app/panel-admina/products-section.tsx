@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Product } from '@/data/get-page-data';
 import { v4 as uuidv4 } from 'uuid';
-import ImageUploader from '@/components/ui/ImageUploader';
+import { ImageUploader } from '@/components/ui/image-uploader';
 import { Modal } from '../../components/ui/Modal';
 import { ImagePicker } from '../../components/ui/image-picker';
 

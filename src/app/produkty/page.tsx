@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getPageConfig } from '../../data/get-page-data';
-import ProductCard from '../../components/products/ProductCard';
+import { ProductCard } from './product-card';
 import { routes } from '@/utils/routes';
 
 interface ProductsPageProps {

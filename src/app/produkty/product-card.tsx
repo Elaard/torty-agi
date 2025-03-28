@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import PlaceholderImage from '../ui/PlaceholderImage';
+import { PlaceholderImage } from '../../components/ui/placeholder-image';
 import { Product } from '@/data/get-page-data';
 import { routes } from '@/utils/routes';
 
@@ -8,7 +8,7 @@ interface ProductCardProps {
   product: Product;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <Link href={routes.getProduct(product.id)} className="block">
       <article className="group relative flex flex-col overflow-hidden rounded-xl bg-white transition-all hover:shadow-lg">
@@ -70,4 +70,4 @@ export default function ProductCard({ product }: ProductCardProps) {
       </article>
     </Link>
   );
-}
+};

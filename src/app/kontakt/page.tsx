@@ -1,4 +1,4 @@
-import { contactDetails } from '@/utils/contactDetails';
+import { contactDetails } from '@/utils/contact-details';
 
 export const metadata = {
   title: 'Kontakt | Torty AGI Cukiernia',
