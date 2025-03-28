@@ -1,9 +1,9 @@
 import './globals.css';
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
+import { Header } from '@/components/layout/header';
+import { Footer } from '@/components/layout/footer';
 import { getConfig } from '../data/get-page-data';
-import { Header } from '@/components/layout/header-y';
-import { Footer } from '@/components/layout/footer-x';
 
 export const metadata: Metadata = {
   title: 'Torty AGI | Artystyczna Cukiernia',
