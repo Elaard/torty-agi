@@ -12,7 +12,7 @@ interface ProductCardProps {
 export const ProductCard = ({ product, categories }: ProductCardProps) => {
   return (
     <Link href={routes.getProduct(product.id)} className='block'>
-      <article className='group relative flex flex-col overflow-hidden rounded-xl bg-white transition-all hover:shadow-lg'>
+      <article className='group relative flex flex-col overflow-hidden h-full rounded-xl bg-white transition-all hover:shadow-lg '>
         {/* Product Image - Larger and more prominent */}
         <div className='relative aspect-square overflow-hidden'>
           {product.mainImage ? (
