@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
+import Image from 'next/image';
 import { Product, ProductCategory } from '@/data/get-page-data';
 import { ImageUploader } from '@/components/ui/image-uploader';
 import { generateId } from '@/utils/generate-url';
@@ -143,7 +144,7 @@ export const ProductsSection = ({ products, categories, updateProducts }: Produc
   };
 
   // Handle input changes for editing product
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     if (!editingProduct) return;
 
     const { name, value } = e.target;
@@ -183,7 +184,7 @@ export const ProductsSection = ({ products, categories, updateProducts }: Produc
   };
 
   // Handle image upload (for direct URL input or after successful upload)
-  const handleImageUploaded = (imageUrl: string) => {
+  const handleImageUploaded = (imageUrl: string): any => {
     if (!editingProduct) return;
 
     // Add to images array
@@ -241,7 +242,7 @@ export const ProductsSection = ({ products, categories, updateProducts }: Produc
   };
 
   // Handle checkbox changes
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!editingProduct) return;
 
     const { name, checked } = e.target;
@@ -480,7 +481,7 @@ export const ProductsSection = ({ products, categories, updateProducts }: Produc
                 <td className='py-3 px-4'>
                   <div className='relative'>
                     {product.mainImage ? (
-                      <img src={product.mainImage} alt={product.name} className='w-16 h-16 object-cover rounded' />
+                      <Image width={500} height={500} src={product.mainImage} alt={product.name} className='w-16 h-16 object-cover rounded' />
                     ) : (
                       <div className='w-16 h-16 bg-gray-200 rounded flex items-center justify-center text-gray-400'>
                         <svg xmlns='http://www.w3.org/2000/svg' className='h-8 w-8' fill='none' viewBox='0 0 24 24' stroke='currentColor'>

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Product } from '@/data/get-page-data';
 
 interface PromotedSectionProps {
@@ -59,7 +60,9 @@ export const PromotedSection = ({ allProducts, promoted, updatePromoted }: Promo
 
         {product ? (
           <div className='flex items-center'>
-            {product.mainImage && <img src={product.mainImage} alt={product.name} className='w-16 h-16 object-cover rounded mr-3' />}
+            {product.mainImage && (
+              <Image width={500} height={500} src={product.mainImage} alt={product.name} className='w-16 h-16 object-cover rounded mr-3' />
+            )}
             <div>
               <h4 className='font-medium'>{product.name}</h4>
               <p className='text-sm text-gray-600'>{product.price} zł</p>

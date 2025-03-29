@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface ImagePickerProps {
   imgUrl: string;
   pickImage?: (imgUrl: string) => void;
@@ -8,7 +10,13 @@ interface ImagePickerProps {
 export const ImagePicker = ({ imgUrl, pickImage, removeImage, isSelected }: ImagePickerProps) => {
   return (
     <div className='relative border rounded p-2 group'>
-      <img src={imgUrl} alt='Zdjęcie produktu' className={`w-full h-32 object-contain ${isSelected ? 'ring-2 ring-blue-500' : ''}`} />
+      <Image
+        width={500}
+        height={500}
+        src={imgUrl}
+        alt='Zdjęcie produktu'
+        className={`w-full h-32 object-contain ${isSelected ? 'ring-2 ring-blue-500' : ''}`}
+      />
       <div className='absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100'>
         <div className='flex gap-2'>
           {!isSelected && pickImage && (

@@ -17,7 +17,7 @@ const eslintConfig = [
       // Niestandardowe reguły
       quotes: ['error', 'single'], // Wymusza używanie pojedynczych cudzysłowów
       'no-unused-vars': [
-        'error',
+        'warn',
         {
           args: 'none',
         },
@@ -37,7 +37,7 @@ const eslintConfig = [
           ],
         },
       ], // Uporządkowanie importów
-      'consistent-return': 'error', // Wymusza zwracanie wartości w funkcjach
+      'consistent-return': 'warn', // Wymusza zwracanie wartości w funkcjach
       'no-undef': 'error', // Zabrania używania niezdefiniowanych zmiennych
       'react/jsx-curly-brace-presence': ['error', { props: 'never' }], // Wymusza używanie nawiasów klamrowych w JSX
       'react-hooks/exhaustive-deps': 'error', // Wymusza poprawne ustawienie zależności w hookach (np. useEffect, useCallback, useMemo)

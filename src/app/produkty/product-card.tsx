@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { PlaceholderImage } from '../../components/ui/placeholder-image';
 import { Product, ProductCategory } from '@/data/get-page-data';
 import { routes } from '@/utils/routes';
@@ -16,11 +17,13 @@ export const ProductCard = ({ product, categories }: ProductCardProps) => {
         {/* Product Image - Larger and more prominent */}
         <div className='relative aspect-square overflow-hidden'>
           {product.mainImage ? (
-            <img
-              src={product.mainImage}
-              alt={product.name}
-              className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
-            />
+             <Image
+                src={product.mainImage}
+                alt={product.name}
+                width={500}
+                height={500}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+           />
           ) : (
             <PlaceholderImage text={product.name} className='transition-transform duration-500 group-hover:scale-105' />
           )}

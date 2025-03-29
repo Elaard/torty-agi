@@ -75,7 +75,6 @@ export const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>
     } catch (error) {
       console.error('Error uploading image:', error);
       setUploadError(error instanceof Error ? error.message : 'Nieznany błąd podczas przesyłania');
-      return null;
     } finally {
       setIsUploading(false);
     }
