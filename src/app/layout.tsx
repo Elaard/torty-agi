@@ -1,6 +1,7 @@
 import './globals.css';
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
+import { ReactNode } from 'react';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { getConfig } from '../data/get-page-data';
@@ -31,16 +32,16 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   getConfig();
 
   return (
-    <html lang="pl" className="scroll-smooth">
-      <body className="bg-white text-gray-900 font-sans">
-        <div className="flex flex-col min-h-screen">
+    <html lang='pl' className='scroll-smooth'>
+      <body className='bg-white text-gray-900 font-sans'>
+        <div className='flex flex-col min-h-screen'>
           <Header />
-          <main className="flex-grow">{children}</main>
+          <main className='flex-grow'>{children}</main>
           <Footer />
           <Analytics />
         </div>

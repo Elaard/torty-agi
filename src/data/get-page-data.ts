@@ -1,4 +1,4 @@
-import { getPresignedUrl } from "./get-s3-url";
+import { getPresignedUrl } from './get-s3-url';
 
 export interface Product {
   id: string;
@@ -72,12 +72,12 @@ export async function getConfig(forceRefresh?: boolean): Promise<PageData> {
   }
   try {
     // Get these values from environment variables
-    const bucket = process.env.AWS_S3_BUCKET || "";
-    const bucketFile = "data.json";
+    const bucket = process.env.AWS_S3_BUCKET || '';
+    const bucketFile = 'data.json';
 
     // If bucket is not configured, return default data
     if (!bucket) {
-      console.warn("AWS_S3_BUCKET not configured, using default data");
+      console.warn('AWS_S3_BUCKET not configured, using default data');
       return defaultPageData;
     }
 
@@ -109,11 +109,11 @@ export async function getConfig(forceRefresh?: boolean): Promise<PageData> {
 
       return pageData;
     } catch (fetchError) {
-      console.error("Error fetching page data from S3:", fetchError);
+      console.error('Error fetching page data from S3:', fetchError);
       return defaultPageData;
     }
   } catch (error) {
-    console.error("Error in getPageData:", error);
+    console.error('Error in getPageData:', error);
     // Fall back to default data
     return defaultPageData;
   }
@@ -124,7 +124,7 @@ export async function getPageConfig(): Promise<PageData> {
     const config = await getConfig();
     return config;
   } catch (error) {
-    console.error("Error getting products from page data:", error);
+    console.error('Error getting products from page data:', error);
     return {
       promoted: {
         promoted1: '',

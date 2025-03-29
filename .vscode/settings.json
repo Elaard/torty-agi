@@ -1,0 +1,7 @@
+{
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "notebook.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  }
+}

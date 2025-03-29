@@ -253,17 +253,17 @@ export const ProductsSection = ({ products, categories, updateProducts }: Produc
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-semibold">Zarządzanie Produktami</h2>
-        <div className="flex gap-4">
+      <div className='flex justify-between items-center mb-6'>
+        <h2 className='text-2xl font-semibold'>Zarządzanie Produktami</h2>
+        <div className='flex gap-4'>
           <input
-            type="text"
-            placeholder="Szukaj produktów..."
-            className="border rounded-md px-4 py-2 w-64"
+            type='text'
+            placeholder='Szukaj produktów...'
+            className='border rounded-md px-4 py-2 w-64'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md" onClick={startAddingProduct}>
+          <button className='bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md' onClick={startAddingProduct}>
             Dodaj Produkt
           </button>
         </div>
@@ -271,32 +271,32 @@ export const ProductsSection = ({ products, categories, updateProducts }: Produc
 
       {/* Product Editing Form */}
       {editingProduct && (
-        <Modal maxW="max-w-6xl" maxH="max-modal-h">
-          <div className="bg-gray-50 p-6 rounded-lg mb-6 border">
-            <h3 className="text-xl font-semibold mb-4">{isAdding ? 'Dodaj Nowy Produkt' : 'Edytuj Produkt'}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Modal maxW='max-w-6xl' maxH='max-modal-h'>
+          <div className='bg-gray-50 p-6 rounded-lg mb-6 border'>
+            <h3 className='text-xl font-semibold mb-4'>{isAdding ? 'Dodaj Nowy Produkt' : 'Edytuj Produkt'}</h3>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
               <div>
-                <label className="block mb-2 font-medium">Id</label>
-                <input type="text" name="name" value={editingProduct.id} className="w-full border rounded-md px-4 py-2" disabled />
+                <label className='block mb-2 font-medium'>Id</label>
+                <input type='text' name='name' value={editingProduct.id} className='w-full border rounded-md px-4 py-2' disabled />
               </div>
               <div>
-                <label className="block mb-2 font-medium">Nazwa</label>
+                <label className='block mb-2 font-medium'>Nazwa</label>
                 <input
-                  type="text"
-                  name="name"
+                  type='text'
+                  name='name'
                   value={editingProduct.name}
                   onChange={handleInputChange}
-                  className="w-full border rounded-md px-4 py-2"
+                  className='w-full border rounded-md px-4 py-2'
                   required
                 />
               </div>
               <div>
-                <label className="block mb-2 font-medium">Kategoria</label>
+                <label className='block mb-2 font-medium'>Kategoria</label>
                 <select
-                  name="category"
+                  name='category'
                   value={editingProduct.category}
                   onChange={handleInputChange}
-                  className="w-full border rounded-md px-4 py-2"
+                  className='w-full border rounded-md px-4 py-2'
                   required
                 >
                   {categories.map((c) => {
@@ -309,23 +309,23 @@ export const ProductsSection = ({ products, categories, updateProducts }: Produc
                 </select>
               </div>
               <div>
-                <label className="block mb-2 font-medium">Cena (zł)</label>
+                <label className='block mb-2 font-medium'>Cena (zł)</label>
                 <input
-                  name="price"
+                  name='price'
                   value={editingProduct.price}
                   onChange={handleInputChange}
-                  className="w-full border rounded-md px-4 py-2"
-                  min="0"
+                  className='w-full border rounded-md px-4 py-2'
+                  min='0'
                   required
                 />
               </div>
-              <div className="md:col-span-2">
-                <label className="block mb-2 font-medium">Aktualne Zdjęcia produktu</label>
+              <div className='md:col-span-2'>
+                <label className='block mb-2 font-medium'>Aktualne Zdjęcia produktu</label>
 
                 {/* Current Images Gallery */}
                 {!!editingProduct.images?.length && (
-                  <div className="mb-4">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div className='mb-4'>
+                    <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
                       {editingProduct.images?.map((imgUrl, index) => (
                         <ImagePicker
                           key={index}
@@ -339,10 +339,10 @@ export const ProductsSection = ({ products, categories, updateProducts }: Produc
                   </div>
                 )}
                 <p>Dodaj nowe zdjęcia</p>
-                <div className="grid grid-cols-2 md:grid-cols-2 gap-4 mt-4">
+                <div className='grid grid-cols-2 md:grid-cols-2 gap-4 mt-4'>
                   <ImageUploader onImageUploaded={handleImageUploaded} onFileSelected={handleFileSelected} />
                   <div>
-                    <ul className="flex gap-4 mt-2 list-disc list-inside">
+                    <ul className='flex gap-4 mt-2 list-disc list-inside'>
                       {pendingImages.map((pendingImage, index) => {
                         // need to release it when not needed
                         let imgUrl = URL.createObjectURL(pendingImage.file);
@@ -360,98 +360,98 @@ export const ProductsSection = ({ products, categories, updateProducts }: Produc
                   </div>
                 </div>
               </div>
-              <div className="md:col-span-2">
-                <label className="block mb-2 font-medium">Opis</label>
+              <div className='md:col-span-2'>
+                <label className='block mb-2 font-medium'>Opis</label>
                 <textarea
-                  name="description"
+                  name='description'
                   value={editingProduct.description}
                   onChange={handleInputChange}
-                  className="w-full border rounded-md px-4 py-2 h-24"
+                  className='w-full border rounded-md px-4 py-2 h-24'
                   required
                 />
               </div>
               <div>
-                <label className="block mb-2 font-medium">Rozmiar</label>
+                <label className='block mb-2 font-medium'>Rozmiar</label>
                 <input
-                  type="text"
-                  name="size"
+                  type='text'
+                  name='size'
                   value={editingProduct.size || ''}
                   onChange={handleInputChange}
-                  className="w-full border rounded-md px-4 py-2"
+                  className='w-full border rounded-md px-4 py-2'
                 />
               </div>
               <div>
-                <label className="block mb-2 font-medium">Składniki (oddzielone przecinkami)</label>
+                <label className='block mb-2 font-medium'>Składniki (oddzielone przecinkami)</label>
                 <input
-                  type="text"
-                  name="ingredients"
+                  type='text'
+                  name='ingredients'
                   value={editingProduct.ingredients?.join(', ') || ''}
                   onChange={handleInputChange}
-                  className="w-full border rounded-md px-4 py-2"
+                  className='w-full border rounded-md px-4 py-2'
                 />
               </div>
               <div>
-                <label className="block mb-2 font-medium">Alergeny (oddzielone przecinkami)</label>
+                <label className='block mb-2 font-medium'>Alergeny (oddzielone przecinkami)</label>
                 <input
-                  type="text"
-                  name="allergens"
+                  type='text'
+                  name='allergens'
                   value={editingProduct.allergens?.join(', ') || ''}
                   onChange={handleInputChange}
-                  className="w-full border rounded-md px-4 py-2"
+                  className='w-full border rounded-md px-4 py-2'
                 />
               </div>
               <div>
-                <label className="block mb-2 font-medium">Informacje o wartościach odżywczych</label>
+                <label className='block mb-2 font-medium'>Informacje o wartościach odżywczych</label>
                 <input
-                  type="text"
-                  name="nutritionalInfo"
+                  type='text'
+                  name='nutritionalInfo'
                   value={editingProduct.nutritionalInfo || ''}
                   onChange={handleInputChange}
-                  className="w-full border rounded-md px-4 py-2"
+                  className='w-full border rounded-md px-4 py-2'
                 />
               </div>
-              <div className="md:col-span-2 flex flex-wrap gap-6">
-                <div className="flex items-center">
+              <div className='md:col-span-2 flex flex-wrap gap-6'>
+                <div className='flex items-center'>
                   <input
-                    type="checkbox"
-                    id="featured"
-                    name="featured"
+                    type='checkbox'
+                    id='featured'
+                    name='featured'
                     checked={editingProduct.featured || false}
                     onChange={handleCheckboxChange}
-                    className="w-4 h-4 mr-2"
+                    className='w-4 h-4 mr-2'
                   />
-                  <label htmlFor="featured">Wyróżniony</label>
+                  <label htmlFor='featured'>Wyróżniony</label>
                 </div>
-                <div className="flex items-center">
+                <div className='flex items-center'>
                   <input
-                    type="checkbox"
-                    id="bestseller"
-                    name="bestseller"
+                    type='checkbox'
+                    id='bestseller'
+                    name='bestseller'
                     checked={editingProduct.bestseller || false}
                     onChange={handleCheckboxChange}
-                    className="w-4 h-4 mr-2"
+                    className='w-4 h-4 mr-2'
                   />
-                  <label htmlFor="bestseller">Bestseller</label>
+                  <label htmlFor='bestseller'>Bestseller</label>
                 </div>
-                <div className="flex items-center">
+                <div className='flex items-center'>
                   <input
-                    type="checkbox"
-                    id="new"
-                    name="new"
+                    type='checkbox'
+                    id='new'
+                    name='new'
                     checked={editingProduct.new || false}
                     onChange={handleCheckboxChange}
-                    className="w-4 h-4 mr-2"
+                    className='w-4 h-4 mr-2'
                   />
-                  <label htmlFor="new">Nowość</label>
+                  <label htmlFor='new'>Nowość</label>
                 </div>
               </div>
             </div>
-            <div className="flex justify-end gap-4 mt-6">
-              <button className="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded-md" onClick={cancelEditing}>
+            <div className='flex justify-end gap-4 mt-6'>
+              <button className='bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded-md' onClick={cancelEditing}>
                 Anuluj
               </button>
               <button
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md disabled:bg-blue-400"
+                className='bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md disabled:bg-blue-400'
                 onClick={saveProduct}
                 disabled={isSaving}
               >
@@ -463,47 +463,47 @@ export const ProductsSection = ({ products, categories, updateProducts }: Produc
       )}
 
       {/* Products List */}
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white">
-          <thead className="bg-gray-100">
+      <div className='overflow-x-auto'>
+        <table className='min-w-full bg-white'>
+          <thead className='bg-gray-100'>
             <tr>
-              <th className="py-3 px-4 text-left">Obraz</th>
-              <th className="py-3 px-4 text-left">Nazwa</th>
-              <th className="py-3 px-4 text-left">Kategoria</th>
-              <th className="py-3 px-4 text-left">Cena</th>
-              <th className="py-3 px-4 text-left">Akcje</th>
+              <th className='py-3 px-4 text-left'>Obraz</th>
+              <th className='py-3 px-4 text-left'>Nazwa</th>
+              <th className='py-3 px-4 text-left'>Kategoria</th>
+              <th className='py-3 px-4 text-left'>Cena</th>
+              <th className='py-3 px-4 text-left'>Akcje</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className='divide-y divide-gray-200'>
             {filteredProducts.map((product) => (
               <tr key={product.id}>
-                <td className="py-3 px-4">
-                  <div className="relative">
+                <td className='py-3 px-4'>
+                  <div className='relative'>
                     {product.mainImage ? (
-                      <img src={product.mainImage} alt={product.name} className="w-16 h-16 object-cover rounded" />
+                      <img src={product.mainImage} alt={product.name} className='w-16 h-16 object-cover rounded' />
                     ) : (
-                      <div className="w-16 h-16 bg-gray-200 rounded flex items-center justify-center text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <div className='w-16 h-16 bg-gray-200 rounded flex items-center justify-center text-gray-400'>
+                        <svg xmlns='http://www.w3.org/2000/svg' className='h-8 w-8' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                           <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
                             strokeWidth={2}
-                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                            d='M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z'
                           />
                         </svg>
                       </div>
                     )}
                   </div>
                 </td>
-                <td className="py-3 px-4">{product.name}</td>
-                <td className="py-3 px-4">{categories.find((c) => c.id === product.category)?.name}</td>
-                <td className="py-3 px-4">{product.price} zł</td>
-                <td className="py-3 px-4">
-                  <div className="flex gap-2">
-                    <button className="bg-blue-100 text-blue-700 px-3 py-1 rounded hover:bg-blue-200" onClick={() => startEditingProduct(product)}>
+                <td className='py-3 px-4'>{product.name}</td>
+                <td className='py-3 px-4'>{categories.find((c) => c.id === product.category)?.name}</td>
+                <td className='py-3 px-4'>{product.price} zł</td>
+                <td className='py-3 px-4'>
+                  <div className='flex gap-2'>
+                    <button className='bg-blue-100 text-blue-700 px-3 py-1 rounded hover:bg-blue-200' onClick={() => startEditingProduct(product)}>
                       Edytuj
                     </button>
-                    <button className="bg-red-100 text-red-700 px-3 py-1 rounded hover:bg-red-200" onClick={() => deleteProduct(product.id)}>
+                    <button className='bg-red-100 text-red-700 px-3 py-1 rounded hover:bg-red-200' onClick={() => deleteProduct(product.id)}>
                       Usuń
                     </button>
                   </div>
@@ -512,7 +512,7 @@ export const ProductsSection = ({ products, categories, updateProducts }: Produc
             ))}
             {filteredProducts.length === 0 && (
               <tr>
-                <td colSpan={5} className="py-4 text-center text-gray-500">
+                <td colSpan={5} className='py-4 text-center text-gray-500'>
                   Nie znaleziono produktów
                 </td>
               </tr>

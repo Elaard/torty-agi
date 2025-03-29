@@ -17,5 +17,6 @@ export const generateId = (str: string) => {
       };
       return map[match];
     })
+    // eslint-disable-next-line no-useless-escape
     .replace(/[^a-zA-Z0-9\-]/g, '');
 };

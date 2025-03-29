@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
-import { getConfig, PageData } from "@/data/get-page-data";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { NextRequest, NextResponse } from 'next/server';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { getConfig, PageData } from '@/data/get-page-data';
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,15 +9,15 @@ export async function POST(request: NextRequest) {
 
     // Get S3 configuration from environment variables
     const bucket = process.env.AWS_S3_BUCKET;
-    const region = process.env.AWS_REGION || "eu-central-1";
+    const region = process.env.AWS_REGION || 'eu-central-1';
     const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
     const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 
     // Check if S3 is configured
     if (!bucket || !accessKeyId || !secretAccessKey) {
-      console.error("AWS S3 configuration missing");
+      console.error('AWS S3 configuration missing');
       return NextResponse.json(
-        { error: "AWS S3 configuration missing" },
+        { error: 'AWS S3 configuration missing' },
         { status: 500 }
       );
     }
@@ -37,21 +37,21 @@ export async function POST(request: NextRequest) {
     // Create put object command
     const putObjectCommand = new PutObjectCommand({
       Bucket: bucket,
-      Key: "data.json",
+      Key: 'data.json',
       Body: jsonData,
-      ContentType: "application/json",
+      ContentType: 'application/json',
     });
 
     // Upload to S3
     await s3Client.send(putObjectCommand);
-    console.log('saving---------------------')
+
     await getConfig(true);
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Error saving config:", error);
+    console.error('Error saving config:', error);
     return NextResponse.json(
-      { error: "Failed to save configuration" },
+      { error: 'Failed to save configuration' },
       { status: 500 }
     );
   }

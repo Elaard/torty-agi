@@ -1,20 +1,20 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 import AWS from 'aws-sdk';
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from 'uuid';
 
 export async function POST(request: NextRequest) {
   try {
     // Get S3 configuration from environment variables
     const bucket = process.env.AWS_S3_BUCKET;
-    const region = process.env.AWS_REGION || "eu-central-1";
+    const region = process.env.AWS_REGION || 'eu-central-1';
     const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
     const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 
     // Check if S3 is configured
     if (!bucket || !accessKeyId || !secretAccessKey) {
-      console.error("AWS S3 configuration missing");
+      console.error('AWS S3 configuration missing');
       return NextResponse.json(
-        { error: "AWS S3 configuration missing" },
+        { error: 'AWS S3 configuration missing' },
         { status: 500 }
       );
     }
@@ -30,11 +30,11 @@ export async function POST(request: NextRequest) {
 
     // Parse the form data
     const formData = await request.formData();
-    const file = formData.get("file") as File;
+    const file = formData.get('file') as File;
 
     if (!file) {
       return NextResponse.json(
-        { error: "No file provided" },
+        { error: 'No file provided' },
         { status: 400 }
       );
     }
@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
     const allowedTypes = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
     if (!fileExtension || !allowedTypes.includes(fileExtension)) {
       return NextResponse.json(
-        { error: "Invalid file type. Only images are allowed (jpg, jpeg, png, gif, webp)" },
+        { error: 'Invalid file type. Only images are allowed (jpg, jpeg, png, gif, webp)' },
         { status: 400 }
       );
     }
@@ -76,9 +76,9 @@ export async function POST(request: NextRequest) {
       imageUrl
     });
   } catch (error) {
-    console.error("Error uploading image:", error);
+    console.error('Error uploading image:', error);
     return NextResponse.json(
-      { error: "Failed to upload image" },
+      { error: 'Failed to upload image' },
       { status: 500 }
     );
   }

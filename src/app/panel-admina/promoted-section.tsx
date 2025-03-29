@@ -37,11 +37,11 @@ export const PromotedSection = ({ allProducts, promoted, updatePromoted }: Promo
     const product = getProductById(productId);
 
     return (
-      <div className="border rounded-lg p-4 mb-4">
-        <div className="flex justify-between items-center mb-3">
-          <h4 className="font-medium">Promowany produkt {slotNumber}</h4>
-          <select className="border rounded px-2 py-1" value={productId} onChange={(e) => updatePromotedSlot(slotKey, e.target.value)}>
-            <option value="">-- Wybierz produkt --</option>
+      <div className='border rounded-lg p-4 mb-4'>
+        <div className='flex justify-between items-center mb-3'>
+          <h4 className='font-medium'>Promowany produkt {slotNumber}</h4>
+          <select className='border rounded px-2 py-1' value={productId} onChange={(e) => updatePromotedSlot(slotKey, e.target.value)}>
+            <option value=''>-- Wybierz produkt --</option>
             {allProducts.map((p) => (
               <option
                 key={p.id}
@@ -58,15 +58,15 @@ export const PromotedSection = ({ allProducts, promoted, updatePromoted }: Promo
         </div>
 
         {product ? (
-          <div className="flex items-center">
-            {product.mainImage && <img src={product.mainImage} alt={product.name} className="w-16 h-16 object-cover rounded mr-3" />}
+          <div className='flex items-center'>
+            {product.mainImage && <img src={product.mainImage} alt={product.name} className='w-16 h-16 object-cover rounded mr-3' />}
             <div>
-              <h4 className="font-medium">{product.name}</h4>
-              <p className="text-sm text-gray-600">{product.price} zł</p>
+              <h4 className='font-medium'>{product.name}</h4>
+              <p className='text-sm text-gray-600'>{product.price} zł</p>
             </div>
           </div>
         ) : (
-          <div className="text-gray-500 italic">Brak wybranego produktu</div>
+          <div className='text-gray-500 italic'>Brak wybranego produktu</div>
         )}
       </div>
     );
@@ -74,18 +74,18 @@ export const PromotedSection = ({ allProducts, promoted, updatePromoted }: Promo
 
   return (
     <div>
-      <div className="mb-6">
-        <h2 className="text-2xl font-semibold mb-4">Produkty Promowane</h2>
-        <p className="text-gray-600">
+      <div className='mb-6'>
+        <h2 className='text-2xl font-semibold mb-4'>Produkty Promowane</h2>
+        <p className='text-gray-600'>
           Wybierz dokładnie 4 produkty, które będą promowane na stronie głównej i w innych wyróżnionych miejscach. Możesz wybrać produkt z rozwijanej
           listy dla każdego slotu lub zmienić już wybrany produkt.
         </p>
       </div>
 
       {/* Current Promoted Products */}
-      <div className="mb-8">
-        <h3 className="text-xl font-semibold mb-4">Aktualnie Promowane</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className='mb-8'>
+        <h3 className='text-xl font-semibold mb-4'>Aktualnie Promowane</h3>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
           {renderPromotedSlot(1, 'promoted1')}
           {renderPromotedSlot(2, 'promoted2')}
           {renderPromotedSlot(3, 'promoted3')}
@@ -94,8 +94,8 @@ export const PromotedSection = ({ allProducts, promoted, updatePromoted }: Promo
       </div>
 
       {/* Instructions */}
-      <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-        <p className="text-blue-700">Użyj rozwijanych list powyżej, aby wybrać lub zmienić produkty w każdym slocie promocyjnym.</p>
+      <div className='mt-4 p-4 bg-blue-50 rounded-lg'>
+        <p className='text-blue-700'>Użyj rozwijanych list powyżej, aby wybrać lub zmienić produkty w każdym slocie promocyjnym.</p>
       </div>
     </div>
   );
