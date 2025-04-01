@@ -84,7 +84,7 @@ export default function Page() {
           <div className='mt-12 pt-10 border-t border-gray-100'>
             <h3 className='font-semibold text-xl mb-6 text-center'>Znajdź nas</h3>
             <iframe
-              className='m-auto'
+              className='m-auto w-full'
               src={contactDetails.googleCompanyLink}
               width='600'
               height='450'
