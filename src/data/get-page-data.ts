@@ -111,6 +111,7 @@ export async function getConfig(forceRefresh?: boolean): Promise<PageData> {
 
       // Parse the response
       const pageData: PageData = await response.json();
+      console.log(pageData);
 
       // Cache the data and update the last fetch time
       config = pageData;
