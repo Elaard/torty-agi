@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { getConfig } from '../data/get-page-data';
 
 export const metadata: Metadata = {
   title: 'Torty AGI | Artystyczna Cukiernia',
@@ -14,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Torty AGI | Artystyczna Cukiernia',
     description: 'Ręcznie robione torty, ciasta i słodkości przygotowane z pasją i najlepszych składników.',
-    url: 'https://tortyagi.pl',
+    url: 'https://torty-agi.pl',
     siteName: 'Torty AGI Cukiernia',
     images: [
       {
