@@ -46,7 +46,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
               <Link
                 key={category.id}
                 href={`/produkty?kategoria=${category.id}`}
-                className={`px-4 py-2 rounded-full transition-colors ${
+                className={`px-4 py-2 rounded-full transition-colors capitalize ${
                   categoryFilter === category.id ? 'bg-primary-600 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
                 }`}
               >

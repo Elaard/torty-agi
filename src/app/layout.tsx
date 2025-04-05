@@ -34,8 +34,6 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  getConfig();
-
   return (
     <html lang='pl' className='scroll-smooth'>
       <body className='bg-white text-gray-900 font-sans'>
