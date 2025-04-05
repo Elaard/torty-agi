@@ -66,7 +66,16 @@ const CACHE_TTL = 60 * 5000; // 5 minute cache TTL
 export async function getConfig(forceRefresh?: boolean): Promise<PageData> {
   const now = Date.now();
 
+
   const isExpired = lastFetchTime && now - lastFetchTime > CACHE_TTL;
+
+  console.log('Checking cache:', {
+    lastFetchTime,
+    now,
+    isExpired,
+    forceRefresh,
+  });
+
   if (config && !isExpired && !forceRefresh) {
     return config;
   }
