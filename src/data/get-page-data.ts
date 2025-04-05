@@ -1,3 +1,4 @@
+import { revalidatePath } from 'next/cache';
 import { getPresignedUrl } from './get-s3-url';
 
 export interface Product {
@@ -76,9 +77,12 @@ export async function getConfig(forceRefresh?: boolean): Promise<PageData> {
     forceRefresh,
   });
 
-  // if (config && !isExpired && !forceRefresh) {
-  //   return config;
-  // }
+  if (config && !isExpired && !forceRefresh) {
+    return config;
+  }
+
+  revalidatePath('/'); // Revalidate the path to ensure fresh data
+
   try {
     // Get these values from environment variables
     const bucket = process.env.AWS_S3_BUCKET || '';
