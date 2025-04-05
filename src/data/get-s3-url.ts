@@ -3,10 +3,10 @@ import AWS from 'aws-sdk';
 // Initialize S3 client with environment variables
 // This is used server-side in the API route
 const s3 = new AWS.S3({
-  region: process.env.AWS_REGION || 'eu-north-1',
+  region: process.env.AWS_REGION!!,
   credentials: new AWS.Credentials(
-    process.env.AWS_ACCESS_KEY_ID || '',
-    process.env.AWS_SECRET_ACCESS_KEY || ''
+    process.env.AWS_ACCESS_KEY_ID!!,
+    process.env.AWS_SECRET_ACCESS_KEY!!
   )
 });
 
@@ -17,12 +17,8 @@ export async function getPresignedUrl(bucket: string, key: string) {
     Expires: 60
   };
 
-  console.log(process.env.AWS_ACCESS_KEY_ID)
-  console.log(process.env.AWS_SECRET_ACCESS_KEY)
-
   try {
     const url = await s3.getSignedUrlPromise('getObject', params);
-    console.log(url);
     return url;
   } catch (error) {
     console.error(error);

@@ -1,5 +1,6 @@
 export const routes = {
   home: '/',
+  login: '/logowanie',
   contact: '/kontakt',
 
   products: '/produkty?kategoria=all',

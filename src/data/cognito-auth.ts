@@ -9,17 +9,17 @@ function generateSecretHash(username: string, clientId: string, clientSecret: st
 }
 
 const cognito = new CognitoIdentityServiceProvider({
-  region: 'eu-north-1',
+  region: process.env.AWS_REGION,
 });
 
 export async function login(username: string, password: string) {
   const secretHash = generateSecretHash(username,
-    '3gd881vnjmpqfolvt76m1d3sj2',
-    '12o3doru6h1m9ji0qthprn1dbi7b9k2almj6gdtm55tsul98trdv');
+    process.env.COGNITO_CLIENT_ID!!,
+    process.env.COGNITO_CLIENT_SECRET!!);
 
   const params: CognitoIdentityServiceProvider.Types.InitiateAuthRequest = {
     AuthFlow: 'USER_PASSWORD_AUTH',
-    ClientId: '3gd881vnjmpqfolvt76m1d3sj2',
+    ClientId: process.env.COGNITO_CLIENT_ID!!,
     AuthParameters: {
       USERNAME: username,
       PASSWORD: password,

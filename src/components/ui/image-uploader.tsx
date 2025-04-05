@@ -30,7 +30,7 @@ export const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>
       // validate file type
       const fileType = file.type;
       if (!fileType.startsWith('image/')) {
-        console.log('Tylko pliki graficzne są dozwolone.');
+        setUploadError('Tylko pliki graficzne są dozwolone.');
         return;
       }
 
