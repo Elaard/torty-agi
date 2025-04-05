@@ -1,4 +1,3 @@
-import { revalidatePath } from 'next/cache';
 import { getPresignedUrl } from './get-s3-url';
 
 export interface Product {
@@ -59,29 +58,10 @@ export const defaultPageData: PageData = {
   categories: [],
 };
 
-// Cache for the page data
-let config: PageData | null = null;
-let lastFetchTime: number = 0;
-const CACHE_TTL = 60 * 5000; // 5 minute cache TTL
+// We'll use Next.js's built-in caching instead of module-level variables
 
 export async function getConfig(forceRefresh?: boolean): Promise<PageData> {
-  const now = Date.now();
-
-
-  const isExpired = lastFetchTime && now - lastFetchTime > CACHE_TTL;
-
-  console.log('Checking cache:', {
-    lastFetchTime,
-    now,
-    isExpired,
-    forceRefresh,
-  });
-
-  if (config && !isExpired && !forceRefresh) {
-    return config;
-  }
-
-  revalidatePath('/'); // Revalidate the path to ensure fresh data
+  console.log('Getting config, forceRefresh:', forceRefresh);
 
   try {
     // Get these values from environment variables
@@ -104,6 +84,8 @@ export async function getConfig(forceRefresh?: boolean): Promise<PageData> {
 
       const response = await fetch(url, {
         signal: controller.signal,
+        cache: forceRefresh ? 'no-store' : 'no-cache', // Use Next.js cache control
+        next: { revalidate: 0 } // Don't cache at the Next.js level
       });
 
       clearTimeout(timeoutId);
@@ -115,11 +97,7 @@ export async function getConfig(forceRefresh?: boolean): Promise<PageData> {
 
       // Parse the response
       const pageData: PageData = await response.json();
-      console.log(pageData);
-
-      // Cache the data and update the last fetch time
-      config = pageData;
-      lastFetchTime = Date.now();
+      console.log('Fetched page data:', new Date().toISOString());
 
       return pageData;
     } catch (fetchError) {
@@ -133,9 +111,10 @@ export async function getConfig(forceRefresh?: boolean): Promise<PageData> {
   }
 }
 
-export async function getPageConfig(): Promise<PageData> {
+export async function getPageConfig(forceRefresh?: boolean): Promise<PageData> {
   try {
-    const config = await getConfig();
+    // Pass the forceRefresh parameter to ensure we can force a refresh when needed
+    const config = await getConfig(forceRefresh);
     return config;
   } catch (error) {
     console.error('Error getting products from page data:', error);

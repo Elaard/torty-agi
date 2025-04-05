@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { revalidatePath } from 'next/cache';
 import { getConfig, PageData } from '@/data/get-page-data';
 
 export async function POST(request: NextRequest) {
@@ -45,7 +46,13 @@ export async function POST(request: NextRequest) {
     // Upload to S3
     await s3Client.send(putObjectCommand);
 
+    // Force refresh the config
     await getConfig(true);
+
+    // Revalidate all paths that might use this config
+    //revalidatePath('/', 'layout'); // Revalidate the entire app (layout route)
+    //revalidatePath('/panel-admina', 'page'); // Revalidate admin panel specifically
+    revalidatePath('/'); // Revalidate the home page (layout route)
 
     return NextResponse.json({ success: true });
   } catch (error) {
