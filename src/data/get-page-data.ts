@@ -76,9 +76,9 @@ export async function getConfig(forceRefresh?: boolean): Promise<PageData> {
     forceRefresh,
   });
 
-  if (config && !isExpired && !forceRefresh) {
-    return config;
-  }
+  // if (config && !isExpired && !forceRefresh) {
+  //   return config;
+  // }
   try {
     // Get these values from environment variables
     const bucket = process.env.AWS_S3_BUCKET || '';
