@@ -6,7 +6,7 @@ import { routes } from '@/utils/routes';
 
 export default async function Home() {
   // Fetch page data
-  const pageData = await getPageConfig();
+  const pageData = await getPageConfig('fetching from home page');
 
   // Get promoted products as individual variables
   const promoted1 = pageData.promoted.promoted1 ? pageData.allProducts.find((p) => p.id === pageData.promoted.promoted1) || null : null;

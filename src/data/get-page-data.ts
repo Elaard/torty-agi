@@ -59,7 +59,8 @@ export const defaultPageData: PageData = {
 };
 
 
-export async function getConfig(): Promise<PageData> {
+export async function getConfig(log?: string): Promise<PageData> {
+  console.log(log)
   try {
     const bucket = process.env.AWS_S3_BUCKET || '';
     const bucketFile = 'data.json';
@@ -100,10 +101,10 @@ export async function getConfig(): Promise<PageData> {
   }
 }
 
-export async function getPageConfig(): Promise<PageData> {
+export async function getPageConfig(log?: string): Promise<PageData> {
   try {
     // Pass the forceRefresh parameter to ensure we can force a refresh when needed
-    const config = await getConfig();
+    const config = await getConfig(log);
     return config;
   } catch (error) {
     console.error('Error getting products from page data:', error);
