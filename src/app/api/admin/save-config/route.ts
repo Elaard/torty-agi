@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { revalidatePath } from 'next/cache';
 import { getConfig, PageData } from '@/data/get-page-data';
+import { routes } from '@/utils/routes';
 
 export async function POST(request: NextRequest) {
   try {
@@ -49,8 +50,8 @@ export async function POST(request: NextRequest) {
 
     await getConfig();
 
-    revalidatePath('/');
-    // revalidatePath('/produkty');
+    revalidatePath(routes.home);
+    revalidatePath(routes.adminPanel);
     // revalidatePath('/produkty/[id]', 'page')
 
     return NextResponse.json({ success: true });

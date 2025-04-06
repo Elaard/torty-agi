@@ -10,8 +10,8 @@ interface ProductsPageProps {
   }>;
 }
 
-export default async function ProductsPage({ searchParams, params }: ProductsPageProps) {
-  const { products, allProducts, categories } = await getPageConfig();
+export default async function ProductsPage({ searchParams }: ProductsPageProps) {
+  const { products, allProducts, categories } = await getPageConfig('fetching from produkty page');
 
   const categoryFilter = (await searchParams).kategoria;
 
