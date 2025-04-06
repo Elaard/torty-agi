@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
 
     await getConfig();
 
-    // revalidatePath('/');
+    revalidatePath('/');
     // revalidatePath('/produkty');
     // revalidatePath('/produkty/[id]', 'page')
 
