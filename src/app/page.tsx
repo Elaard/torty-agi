@@ -47,7 +47,7 @@ export default async function Home() {
               </div>
 
               <p className='text-xl text-secondary-600 mb-10 leading-relaxed max-w-xl'>
-                Ręcznie robione torty, ciasta i słodkości przygotowane z pasją i najlepszych składników. Idealne na każdą okazję.
+                Własnoręcznie tworzę torty, ciasta i słodkości z pasją i starannie dobieranych składników. Każdy wypiek to moja osobista kreacja na Twoją wyjątkową okazję.
               </p>
 
               <div className='flex flex-col sm:flex-row gap-6'>
@@ -240,7 +240,7 @@ export default async function Home() {
             </h2>
             <div className='h-1 w-20 bg-accent-500 mx-auto my-6 rounded-full'></div>
             <p className='text-secondary-600 max-w-2xl mx-auto mt-6 text-lg'>
-              Odkryj nasze najpopularniejsze i najsmaczniejsze wypieki, które nasi klienci uwielbiają. Każde ciasto tworzymy z dbałością o detale.
+              Poznaj moje ulubione i najbardziej cenione wypieki, które przygotowuję z sercem i dbałością o każdy detal.
             </p>
           </div>
 
@@ -358,7 +358,7 @@ export default async function Home() {
                     </div>
                     <h3 className='font-serif text-2xl font-semibold mb-3'>Tort czekoladowy</h3>
                     <p className='text-secondary-600 mb-4'>
-                      Bogate warstwy czekoladowe z gładkim ganache i wiórkami czekoladowymi. Idealny na specjalne okazje.
+                      Mój popisowy tort z bogatymi warstwami czekoladowymi, aksamitnym ganache i ręcznie strużonymi wiórkami czekoladowymi. Tworzę go specjalnie na wyjątkowe okazje.
                     </p>
                     <Link href={routes.contact} className='text-primary-600 font-medium hover:text-primary-700 inline-flex items-center'>
                       Więcej informacji
@@ -378,7 +378,7 @@ export default async function Home() {
                     </div>
                     <h3 className='font-serif text-2xl font-semibold mb-3'>Makaroniki</h3>
                     <p className='text-secondary-600 mb-4'>
-                      Delikatne ciasteczka migdałowe z różnymi nadzieniami w pięknych kolorach. Doskonały prezent.
+                      Delikatne ciasteczka migdałowe, które przygotowuję z różnymi nadzieniami w pięknych kolorach. Pakuję je z miłością - to mój pomysł na wyjątkowy prezent od serca.
                     </p>
                     <Link href={routes.contact} className='text-primary-600 font-medium hover:text-primary-700 inline-flex items-center'>
                       Więcej informacji
@@ -397,7 +397,7 @@ export default async function Home() {
                       <div className='absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
                     </div>
                     <h3 className='font-serif text-2xl font-semibold mb-3'>Babeczki</h3>
-                    <p className='text-secondary-600 mb-4'>Soczyste babeczki z kremem maślanym i dekoracyjnymi dodatkami. Idealne na przyjęcia.</p>
+                    <p className='text-secondary-600 mb-4'>Soczyste babeczki, które dekoruję ręcznie robionym kremem maślanym i starannie dobranymi dodatkami. Przygotowuję je z myślą o Twoim przyjęciu.</p>
                     <Link href={routes.contact} className='text-primary-600 font-medium hover:text-primary-700 inline-flex items-center'>
                       Więcej informacji
                       <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
@@ -431,7 +431,7 @@ export default async function Home() {
             </h2>
             <div className='h-1 w-20 bg-accent-500 mx-auto my-6 rounded-full'></div>
             <p className='text-secondary-600 max-w-2xl mx-auto mt-6 text-lg'>
-              Nie uwierzysz nam na słowo? Oto co nasi zadowoleni klienci mówią o naszych pysznych wypiekach.
+              Nie musisz wierzyć mi na słowo. Oto co mówią osoby, które spróbowały moich wypieków i podzieliły się swoimi wrażeniami.
             </p>
           </div>
 
@@ -527,7 +527,7 @@ export default async function Home() {
             </h2>
             <div className='h-1 w-20 bg-white mx-auto my-6 rounded-full'></div>
             <p className='text-xl text-white/90 max-w-2xl mx-auto my-8 leading-relaxed'>
-              Skontaktuj się z nami już dziś, aby zamówić wypieki na specjalną okazję lub po prostu sprawić sobie słodką przyjemność! Oferujemy
+              Skontaktuj się ze mną, aby zamówić wypieki na specjalną okazję lub po prostu sprawić sobie słodką przyjemność! Oferuję
               personalizowane zamówienia, dostawę i odbiór osobisty.
             </p>
             <Link

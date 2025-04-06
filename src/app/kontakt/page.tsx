@@ -12,7 +12,7 @@ export default function Page() {
         {/* Page Header */}
         <div className='text-center mb-16 max-w-3xl mx-auto'>
           <h1 className='heading-1 mb-4'>Kontakt</h1>
-          <p className='text-gray-600 text-lg'>Masz pytanie lub chcesz złożyć zamówienie? Jesteśmy tutaj, aby Ci pomóc!</p>
+          <p className='text-gray-600 text-lg'>Masz pytanie lub chcesz złożyć zamówienie? Jestem tutaj, aby Ci pomóc i odpowiedzieć na wszystkie pytania!</p>
           <div className='mt-6 w-24 h-1 bg-primary-500 mx-auto rounded-full'></div>
         </div>
 
