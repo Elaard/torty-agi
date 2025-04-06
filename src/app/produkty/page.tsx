@@ -4,13 +4,13 @@ import { ProductCard } from './product-card';
 import { routes } from '@/utils/routes';
 
 interface ProductsPageProps {
-  params: Promise<string>;
+  params: Promise<object>;
   searchParams: Promise<{
     kategoria: string;
   }>;
 }
 
-export default async function ProductsPage({ searchParams }: ProductsPageProps) {
+export default async function ProductsPage({ searchParams, params }: ProductsPageProps) {
   const { products, allProducts, categories } = await getPageConfig();
 
   const categoryFilter = (await searchParams).kategoria;
@@ -25,8 +25,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         <div className="text-center mb-12">
           <h1 className="heading-1 mb-4">Nasze słodkie kreacje</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Przeglądaj nasz wybór ręcznie robionych wypieków tworzonych z miłością i najlepszych składników. Idealne na każdą okazję lub po prostu dla
-            przyjemności.
+            Zapraszam do przejrzenia moich ręcznie tworzonych wypieków, które przygotowuję z miłością i starannie dobieranych składników. Tworzę je na Twoją wyjątkową okazję lub po prostu dla czystej przyjemności.
           </p>
         </div>
 

@@ -87,6 +87,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <div>
                   <h2 className='text-xl font-medium mb-3'>Opis</h2>
                   <p className='text-gray-600'>{product.description}</p>
+                  <p className='text-gray-500 mt-2 text-sm italic'>Każdy wypiek przygotowuję osobiście z dbałością o detale i smak.</p>
                 </div>
 
                 <div>

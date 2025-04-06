@@ -58,48 +58,37 @@ export const defaultPageData: PageData = {
   categories: [],
 };
 
-// We'll use Next.js's built-in caching instead of module-level variables
 
-export async function getConfig(forceRefresh?: boolean): Promise<PageData> {
-  console.log('Getting config, forceRefresh:', forceRefresh);
-
+export async function getConfig(): Promise<PageData> {
   try {
-    // Get these values from environment variables
     const bucket = process.env.AWS_S3_BUCKET || '';
     const bucketFile = 'data.json';
 
-    // If bucket is not configured, return default data
     if (!bucket) {
       console.warn('AWS_S3_BUCKET not configured, using default data');
       return defaultPageData;
     }
 
     try {
-      // Get the presigned URL
       const url = await getPresignedUrl(bucket, bucketFile);
 
-      // Fetch the page data from S3 with timeout
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000);
-
-      const response = await fetch(url, {
-        signal: controller.signal,
-        cache: forceRefresh ? 'no-store' : 'no-cache', // Use Next.js cache control
-        next: { revalidate: 0 } // Don't cache at the Next.js level
-      });
-
-      clearTimeout(timeoutId);
+      const response = await fetch(url)
 
       if (!response.ok) {
         console.error(`Failed to fetch page data: ${response.status}`);
         return defaultPageData;
       }
 
-      // Parse the response
-      const pageData: PageData = await response.json();
       console.log('Fetched page data:', new Date().toISOString());
 
-      return pageData;
+      if (!response.ok) {
+        console.error(`Failed to fetch page data: ${response.status}`);
+        return defaultPageData;
+      }
+
+      const data: PageData = await response.json();
+      return data;
+
     } catch (fetchError) {
       console.error('Error fetching page data from S3:', fetchError);
       return defaultPageData;
@@ -111,10 +100,10 @@ export async function getConfig(forceRefresh?: boolean): Promise<PageData> {
   }
 }
 
-export async function getPageConfig(forceRefresh?: boolean): Promise<PageData> {
+export async function getPageConfig(): Promise<PageData> {
   try {
     // Pass the forceRefresh parameter to ensure we can force a refresh when needed
-    const config = await getConfig(forceRefresh);
+    const config = await getConfig();
     return config;
   } catch (error) {
     console.error('Error getting products from page data:', error);

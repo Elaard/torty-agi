@@ -45,14 +45,13 @@ export async function POST(request: NextRequest) {
 
     // Upload to S3
     await s3Client.send(putObjectCommand);
-
     // Force refresh the config
-    await getConfig(true);
 
-    // Revalidate all paths that might use this config
-    //revalidatePath('/', 'layout'); // Revalidate the entire app (layout route)
-    //revalidatePath('/panel-admina', 'page'); // Revalidate admin panel specifically
-    revalidatePath('/'); // Revalidate the home page (layout route)
+    await getConfig();
+
+    // revalidatePath('/');
+    // revalidatePath('/produkty');
+    // revalidatePath('/produkty/[id]', 'page')
 
     return NextResponse.json({ success: true });
   } catch (error) {
