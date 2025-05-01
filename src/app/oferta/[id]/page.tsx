@@ -4,13 +4,8 @@ import { getPageConfig } from '@/data/get-page-data';
 import { routes } from '@/utils/routes';
 import { ImageCarousel } from './image-carousel';
 
-interface RealizacjaDetailPageProps {
-  params: {
-    id: string;
-  };
-}
 
-export default async function RealizacjaDetailPage({ params }: RealizacjaDetailPageProps) {
+export default async function RealizacjaDetailPage({ params }: any) {
   const { id } = params;
   const { allProducts, categories } = await getPageConfig('fetching from realizacja detail page');
 
