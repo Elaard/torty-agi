@@ -33,7 +33,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
           {/* Horizontal Category Filter - Server Component with Links */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             <Link
-              href={routes.products}
+              href={routes.oferta}
               className={`px-4 py-2 rounded-full transition-colors ${
                 categoryFilter === 'all' ? 'bg-primary-600 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
               }`}

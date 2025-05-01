@@ -44,7 +44,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                       clipRule='evenodd'
                     ></path>
                   </svg>
-                  <Link href={routes.products} className='ml-1 text-sm font-medium text-gray-700 hover:text-primary-600 md:ml-2'>
+                  <Link href={routes.oferta} className='ml-1 text-sm font-medium text-gray-700 hover:text-primary-600 md:ml-2'>
                   Oferta
                   </Link>
                 </div>
@@ -112,7 +112,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
                 {/* Back to products button */}
                 <div className='pt-4'>
-                  <Link href={routes.products} className='btn btn-primary'>
+                  <Link href={routes.oferta} className='btn btn-primary'>
                     Powrót do produktów
                   </Link>
                 </div>
