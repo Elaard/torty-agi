@@ -98,7 +98,7 @@ export const AdminPanel = ({ initialData }: AdminPanelProps) => {
             }`}
             onClick={() => setActiveTab('products')}
           >
-            Produkty
+            Oferta
           </button>
           <button
             className={`py-4 px-6 font-medium ${

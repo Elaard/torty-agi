@@ -47,7 +47,7 @@ export default async function Home() {
               </div>
 
               <p className='text-xl text-secondary-600 mb-10 leading-relaxed max-w-xl'>
-                Własnoręcznie tworzę torty, ciasta i słodkości z pasją i starannie dobieranych składników. Każdy wypiek to moja osobista kreacja na Twoją wyjątkową okazję.
+              Każdy tort jest robiony z najwyższej jakości składników, kremy są na bazie śmietany, dużo owoców. Używam jedynie prawdziwego masła i jajek z wolnego wybiegu, a wszystkie dekoracje robię własnoręcznie. Nie znajdziesz u mnie gotowców ze sklepu w postaci np ciasteczek, cukierków z gigantyczną ilością cukru. Zawsze staram się, żeby każdy tort był super dopieszczony i wyglądał jak małe dzieło sztuki, a do tego, żeby był pyszny.
               </p>
 
               <div className='flex flex-col sm:flex-row gap-6'>

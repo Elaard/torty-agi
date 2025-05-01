@@ -60,7 +60,7 @@ export const Footer = () => {
               <li>
                 <Link href={routes.products} className='text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg'>
                   <span className='w-2 h-2 bg-accent-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity'></span>
-                  <span>Produkty</span>
+                  <span>Oferta</span>
                 </Link>
               </li>
               <li>

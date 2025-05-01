@@ -60,7 +60,6 @@ export const defaultPageData: PageData = {
 
 
 export async function getConfig(log?: string): Promise<PageData> {
-  console.log(log)
   try {
     const bucket = process.env.AWS_S3_BUCKET || '';
     const bucketFile = 'data.json';

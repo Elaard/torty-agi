@@ -45,7 +45,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     ></path>
                   </svg>
                   <Link href={routes.products} className='ml-1 text-sm font-medium text-gray-700 hover:text-primary-600 md:ml-2'>
-                    Produkty
+                  Oferta
                   </Link>
                 </div>
               </li>
