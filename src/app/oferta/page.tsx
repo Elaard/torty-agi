@@ -3,13 +3,8 @@ import { getPageConfig } from '../../data/get-page-data';
 import { routes } from '@/utils/routes';
 import RealizacjeClient from './realizacje-client';
 
-interface RealizacjePageProps {
-  searchParams: {
-    kategoria?: string;
-  };
-}
 
-export default async function RealizacjePage({ searchParams }: RealizacjePageProps) {
+export default async function RealizacjePage({ searchParams }: any) {
   const { allProducts, categories } = await getPageConfig('fetching from oferta page');
   
   const categoryFilter = searchParams.kategoria || 'all';
