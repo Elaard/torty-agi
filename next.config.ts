@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
@@ -7,6 +7,11 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'torty-agi.s3.eu-north-1.amazonaws.com',
         pathname: '/images/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'wszystkiegoslodkiego.pl',
+        pathname: '/storage/images/**',
       }
     ]
   }

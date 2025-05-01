@@ -58,10 +58,10 @@ export default async function Home() {
                   Skontaktuj się
                 </Link>
                 <Link
-                  href={routes.products}
+                  href={routes.oferta}
                   className='btn btn-outline text-lg px-8 py-4 transform -rotate-1 hover:rotate-0 transition-all duration-300 hover:bg-primary-50'
                 >
-                  Nasze realizacje
+                  Moja oferta
                 </Link>
               </div>
             </div>
@@ -78,7 +78,7 @@ export default async function Home() {
                       {/* First promoted product */}
                       {promoted1 && (
                         <Link
-                          href={routes.getProduct(promoted1.id)}
+                          href={routes.oferta}
                           key={promoted1.id}
                           className='h-40 md:h-56 rounded-2xl overflow-hidden transform rotate-2 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-rotate-1 group relative block'
                         >
@@ -106,7 +106,7 @@ export default async function Home() {
                       {/* Second promoted product */}
                       {promoted2 && (
                         <Link
-                          href={routes.getProduct(promoted2.id)}
+                          href={routes.oferta}
                           key={promoted2.id}
                           className='h-32 md:h-44 rounded-2xl overflow-hidden transform -rotate-1 shadow-xl hover:shadow-2xl transition-all duration-500 hover:rotate-1 group relative block'
                         >
@@ -135,7 +135,7 @@ export default async function Home() {
                       {/* Third promoted product */}
                       {promoted3 && (
                         <Link
-                          href={routes.getProduct(promoted3.id)}
+                          href={routes.oferta}
                           key={promoted3.id}
                           className='h-32 md:h-44 rounded-2xl overflow-hidden transform rotate-1 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-rotate-1 group relative block'
                         >
@@ -163,7 +163,7 @@ export default async function Home() {
                       {/* Fourth promoted product */}
                       {promoted4 && (
                         <Link
-                          href={routes.getProduct(promoted4.id)}
+                          href={routes.oferta}
                           key={promoted4.id}
                           className='h-40 md:h-56 rounded-2xl overflow-hidden transform -rotate-2 shadow-xl hover:shadow-2xl transition-all duration-500 hover:rotate-1 group relative block'
                         >
@@ -251,7 +251,7 @@ export default async function Home() {
                 {creation1 && (
                   <div className='group relative'>
                     <div className='absolute inset-0 bg-primary-200 rounded-3xl transform rotate-3 group-hover:rotate-1 transition-transform duration-300'></div>
-                    <Link href={routes.getProduct(creation1.id)} className='block'>
+                    <Link href={routes.oferta} className='block'>
                       <div className='relative bg-white p-6 rounded-3xl shadow-xl overflow-hidden transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 border border-primary-100'>
                         <div className='relative h-64 mb-6 overflow-hidden rounded-xl'>
                           {creation1.mainImage ? (
@@ -284,7 +284,7 @@ export default async function Home() {
                 {creation2 && (
                   <div className='group relative md:translate-y-8'>
                     <div className='absolute inset-0 bg-accent-200 rounded-3xl transform -rotate-2 group-hover:rotate-0 transition-transform duration-300'></div>
-                    <Link href={routes.getProduct(creation2.id)} className='block'>
+                    <Link href={routes.oferta} className='block'>
                       <div className='relative bg-white p-6 rounded-3xl shadow-xl overflow-hidden transform rotate-1 group-hover:rotate-0 transition-transform duration-300 border border-accent-100'>
                         <div className='relative h-64 mb-6 overflow-hidden rounded-xl'>
                           {creation2.mainImage ? (
@@ -317,7 +317,7 @@ export default async function Home() {
                 {creation3 && (
                   <div className='group relative'>
                     <div className='absolute inset-0 bg-secondary-200 rounded-3xl transform rotate-2 group-hover:rotate-0 transition-transform duration-300'></div>
-                    <Link href={routes.getProduct(creation3.id)} className='block'>
+                    <Link href={routes.oferta} className='block'>
                       <div className='relative bg-white p-6 rounded-3xl shadow-xl overflow-hidden transform -rotate-2 group-hover:rotate-0 transition-transform duration-300 border border-secondary-100'>
                         <div className='relative h-64 mb-6 overflow-hidden rounded-xl'>
                           {creation3.mainImage ? (
@@ -411,8 +411,8 @@ export default async function Home() {
           </div>
 
           <div className='text-center mt-16'>
-            <Link href={routes.products} className='btn btn-primary text-lg px-8 py-4 shadow-xl'>
-              Zobacz wszystkie nasze wypieki
+            <Link href={routes.oferta} className='btn btn-primary text-lg px-8 py-4 shadow-xl'>
+              Zobacz wszystkie nasze oferta
             </Link>
           </div>
         </div>

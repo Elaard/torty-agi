@@ -3,8 +3,8 @@ export const routes = {
   login: '/logowanie',
   contact: '/kontakt',
 
-  products: '/produkty?kategoria=all',
-  getProduct: (id: string) => `/produkty/${id}`,
+  oferta: '/oferta?kategoria=all',
+  realizacje: '/realizacje',
 
   adminPanel: '/panel-admina'
 }
