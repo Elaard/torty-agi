@@ -86,7 +86,7 @@ export const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className='md:hidden pt-4 pb-2 space-y-2 bg-white/95 backdrop-blur-md rounded-xl shadow-xl mt-4 animate-fade-in'>
+          <nav className='md:hidden pt-4 pb-2 space-y-2 bg-white/95 backdrop-blur-md rounded-xl shadow-xl mt-4'>
             <Link
               href={routes.home}
               className='block py-3 px-6 hover:bg-primary-50 transition-colors text-gray-700 hover:text-primary-700 rounded-lg'
