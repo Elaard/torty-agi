@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   return {
     title: `${product.name} | ${categoryName} | Torty AGI`,
     description: product.description || `${product.name} - ${categoryName}. Ręcznie robiony wypiek z najlepszych składników. Idealne na każdą okazję.`,
-    keywords: `${product.name}, ${categoryName}, torty na zamówienie, cukiernia, ${product.ingredients?.join(', ') || ''}`,
+    keywords: `${product.name}, ${categoryName}, torty na zamówienie, cukiernia`,
     openGraph: {
       title: `${product.name} | Torty AGI`,
       description: product.description || `${product.name} - ${categoryName}. Ręcznie robiony wypiek z najlepszych składników.`,
@@ -132,33 +132,6 @@ export default async function RealizacjaDetailPage({ params }: { params: Promise
           images={realizacja.images && realizacja.images.length > 0 ? realizacja.images : realizacja.mainImage ? [realizacja.mainImage] : []}
           alt={realizacja.name}
         />
-
-        {/* Additional Information */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-          {/* Ingredients */}
-          {realizacja.ingredients && realizacja.ingredients.length > 0 && (
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <h2 className="text-2xl font-bold mb-4">Składniki</h2>
-              <ul className="list-disc list-inside space-y-2">
-                {realizacja.ingredients.map((ingredient, index) => (
-                  <li key={index} className="text-gray-700">{ingredient}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {/* Allergens */}
-          {realizacja.allergens && realizacja.allergens.length > 0 && (
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <h2 className="text-2xl font-bold mb-4">Alergeny</h2>
-              <ul className="list-disc list-inside space-y-2">
-                {realizacja.allergens.map((allergen, index) => (
-                  <li key={index} className="text-gray-700">{allergen}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
 
         {/* Call to Action */}
         <div className="bg-primary-50 p-8 md:p-12 rounded-3xl shadow-xl text-center">

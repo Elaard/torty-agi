@@ -28,15 +28,6 @@ export function ProductSchema({ product, categoryName }: ProductSchemaProps) {
       },
     },
     category: categoryName,
-    ...(product.ingredients && {
-      recipeIngredient: product.ingredients,
-    }),
-    ...(product.allergens && {
-      suitableForDiet: product.allergens.map((allergen) => ({
-        '@type': 'RestrictedDiet',
-        name: `Contains ${allergen}`,
-      })),
-    }),
   };
 
   return (

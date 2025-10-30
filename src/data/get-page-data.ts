@@ -12,8 +12,6 @@ export interface Product {
   bestseller?: boolean;
   new?: boolean;
   size?: string;
-  ingredients?: string[];
-  allergens?: string[];
   nutritionalInfo?: string;
 }
 
