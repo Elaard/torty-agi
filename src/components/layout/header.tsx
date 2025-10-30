@@ -59,10 +59,6 @@ export const Header = () => {
               <span>Realizacje</span>
               <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300'></span>
             </Link>
-            <Link href={routes.contact} className='font-medium text-gray-700 hover:text-primary-700 transition-colors relative group py-2'>
-              <span>Kontakt</span>
-              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300'></span>
-            </Link>
             <Link href={routes.contact} className='btn btn-primary ml-4'>
               Zamów
             </Link>
