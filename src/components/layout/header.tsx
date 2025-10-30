@@ -28,8 +28,8 @@ export const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-500 backdrop-blur-sm ${
-        isScrolled ? 'bg-white/90 shadow-lg py-2' : 'bg-transparent py-6'
+      className={`sticky top-0 z-50 transition-all duration-300 backdrop-blur-md ${
+        isScrolled ? 'bg-white/95 shadow-md py-3' : 'bg-cream/80 py-5'
       }`}
     >
       <div className='container-custom'>
@@ -37,39 +37,38 @@ export const Header = () => {
           {/* Logo */}
           <Link href={routes.home} className='flex items-center group'>
             <div className='relative'>
-              <span className='heading-fancy text-3xl md:text-4xl group-hover:scale-105 transition-transform duration-300 inline-block'>
-                Torty AGI
+              <span className='font-serif text-2xl md:text-3xl font-bold text-chocolate group-hover:text-primary-700 transition-colors duration-300'>
+                Torty <span className='heading-fancy text-3xl md:text-4xl'>AGI</span>
               </span>
-              <span className='absolute -bottom-1 left-0 w-0 h-1 bg-primary-300 group-hover:w-full transition-all duration-300 rounded-full'></span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className='hidden md:flex items-center space-x-8'>
-            <Link href={routes.home} className='font-medium text-secondary-700 hover:text-primary-600 transition-colors relative group py-2'>
+            <Link href={routes.home} className='font-medium text-gray-700 hover:text-primary-700 transition-colors relative group py-2'>
               <span>Strona główna</span>
-              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary-300 group-hover:w-full transition-all duration-300'></span>
+              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300'></span>
             </Link>
-            <Link href={routes.oferta} className='font-medium text-secondary-700 hover:text-primary-600 transition-colors relative group py-2'>
+            <Link href={routes.oferta} className='font-medium text-gray-700 hover:text-primary-700 transition-colors relative group py-2'>
               <span>Oferta</span>
-              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary-300 group-hover:w-full transition-all duration-300'></span>
+              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300'></span>
             </Link>
-            <Link href={routes.realizacje} className='font-medium text-secondary-700 hover:text-primary-600 transition-colors relative group py-2'>
+            <Link href={routes.realizacje} className='font-medium text-gray-700 hover:text-primary-700 transition-colors relative group py-2'>
               <span>Realizacje</span>
-              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary-300 group-hover:w-full transition-all duration-300'></span>
+              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300'></span>
             </Link>
-            <Link href={routes.contact} className='font-medium text-secondary-700 hover:text-primary-600 transition-colors relative group py-2'>
+            <Link href={routes.contact} className='font-medium text-gray-700 hover:text-primary-700 transition-colors relative group py-2'>
               <span>Kontakt</span>
-              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary-300 group-hover:w-full transition-all duration-300'></span>
+              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300'></span>
             </Link>
-            <Link href={routes.contact} className='btn btn-primary ml-4 shadow-lg'>
-              Zamów teraz
+            <Link href={routes.contact} className='btn btn-primary ml-4'>
+              Zamów
             </Link>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className='md:hidden p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-lg text-secondary-600 hover:bg-primary-50 transition-colors'
+            className='md:hidden p-3 rounded-lg bg-white shadow-md text-chocolate hover:bg-primary-50 transition-colors'
             onClick={toggleMenu}
             aria-label='Przełącz menu'
           >
@@ -85,38 +84,38 @@ export const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className='md:hidden pt-4 pb-2 space-y-3 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl mt-4 animate-fade-in'>
+          <nav className='md:hidden pt-4 pb-2 space-y-2 bg-white/95 backdrop-blur-md rounded-xl shadow-xl mt-4 animate-fade-in'>
             <Link
               href={routes.home}
-              className='block py-3 px-6 hover:bg-primary-50 transition-colors text-secondary-700 hover:text-primary-600'
+              className='block py-3 px-6 hover:bg-primary-50 transition-colors text-gray-700 hover:text-primary-700 rounded-lg'
               onClick={() => setIsMenuOpen(false)}
             >
               Strona główna
             </Link>
             <Link
               href={routes.oferta}
-              className='block py-3 px-6 hover:bg-primary-50 transition-colors text-secondary-700 hover:text-primary-600'
+              className='block py-3 px-6 hover:bg-primary-50 transition-colors text-gray-700 hover:text-primary-700 rounded-lg'
               onClick={() => setIsMenuOpen(false)}
             >
               Oferta
             </Link>
             <Link
               href={routes.realizacje}
-              className='block py-3 px-6 hover:bg-primary-50 transition-colors text-secondary-700 hover:text-primary-600'
+              className='block py-3 px-6 hover:bg-primary-50 transition-colors text-gray-700 hover:text-primary-700 rounded-lg'
               onClick={() => setIsMenuOpen(false)}
             >
               Realizacje
             </Link>
             <Link
               href={routes.contact}
-              className='block py-3 px-6 hover:bg-primary-50 transition-colors text-secondary-700 hover:text-primary-600'
+              className='block py-3 px-6 hover:bg-primary-50 transition-colors text-gray-700 hover:text-primary-700 rounded-lg'
               onClick={() => setIsMenuOpen(false)}
             >
               Kontakt
             </Link>
             <div className='px-6 pt-2 pb-3'>
-              <Link href={routes.contact} className='block w-full btn btn-primary text-center shadow-lg' onClick={() => setIsMenuOpen(false)}>
-                Zamów teraz
+              <Link href={routes.contact} className='block w-full btn btn-primary text-center' onClick={() => setIsMenuOpen(false)}>
+                Zamów
               </Link>
             </div>
           </nav>

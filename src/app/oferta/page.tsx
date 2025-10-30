@@ -5,16 +5,16 @@ import { routes } from '@/utils/routes';
 import RealizacjeClient from './realizacje-client';
 
 export const metadata: Metadata = {
-  title: 'Oferta | Torty AGI | Nasze Wypieki i Realizacje',
-  description: 'Pełna oferta naszych wypieków - torty urodzinowe, weselne, babeczki, makaroniki i inne słodkości. Zobacz galerie naszych realizacji i wybierz idealny wypiek na swoją okazję.',
-  keywords: 'oferta tortów, galeria tortów, realizacje cukiernicze, torty urodzinowe, torty weselne, babeczki, makaroniki, słodkości na zamówienie',
+  title: 'Oferta | Torty AGI | Nasze Wypieki',
+  description: 'Pełna oferta wypieków - torty urodzinowe, weselne, babeczki, makaroniki i inne słodkości. Każdy wypiek robiony ręcznie z naturalnych składników.',
+  keywords: 'oferta tortów, torty urodzinowe, torty weselne, babeczki, makaroniki, słodkości na zamówienie',
   openGraph: {
-    title: 'Oferta | Torty AGI | Nasze Wypieki i Realizacje',
-    description: 'Zobacz pełną ofertę naszych wypieków. Każda realizacja to unikalne dzieło stworzone z pasją i dbałością o najdrobniejsze detale.',
+    title: 'Oferta | Torty AGI | Nasze Wypieki',
+    description: 'Zobacz pełną ofertę wypieków. Każda realizacja robiona ręcznie z naturalnych składników.',
     type: 'website',
     locale: 'pl_PL',
     url: 'https://torty-agi.pl/oferta',
-    siteName: 'Torty AGI Cukiernia',
+    siteName: 'Torty AGI',
     images: [
       {
         url: '/images/og-image.jpg',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Oferta | Torty AGI',
-    description: 'Zobacz pełną ofertę naszych wypieków - torty, babeczki, makaroniki i więcej.',
+    description: 'Zobacz pełną ofertę naszych wypieków - torty, babeczki, makaroniki.',
     images: ['/images/og-image.jpg'],
   },
   alternates: {
@@ -39,23 +39,23 @@ export default async function RealizacjePage({ searchParams }: { searchParams: P
   const { allProducts, categories } = getPageConfig();
   const params = await searchParams;
   const categoryFilter = params.kategoria || 'all';
-  
+
   // Filter products to only include those that have images
   const oferta = allProducts.filter(
     (product) => product.images && product.images.length > 0 && (categoryFilter === 'all' || product.category === categoryFilter)
   );
-  
+
   return (
-    <div className="py-16 bg-beige">
+    <div className="py-16 bg-cream min-h-screen">
       <div className="container-custom">
         <div className="text-center mb-12">
-          <span className="badge badge-primary mb-4 inline-block transform rotate-1">Portfolio</span>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <span className="badge badge-primary mb-4 inline-block">Portfolio</span>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-chocolate">
             Oferta
           </h1>
-          <div className="h-1 w-20 bg-accent-500 mx-auto my-6 rounded-full"></div>
-          <p className="text-secondary-600 max-w-2xl mx-auto mt-6 text-lg">
-            Zapraszam do obejrzenia galerii moich prac. Każda realizacja to unikalne dzieło stworzone z pasją i dbałością o najdrobniejsze detale.
+          <div className="h-1 w-20 bg-secondary-500 mx-auto my-6 rounded"></div>
+          <p className="text-gray-700 max-w-2xl mx-auto mt-6 text-lg">
+            Galeria moich prac. Każdy wypiek robiony ręcznie, z czasem i dbałością o smak.
           </p>
         </div>
 
@@ -64,8 +64,8 @@ export default async function RealizacjePage({ searchParams }: { searchParams: P
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             <Link
               href={routes.oferta}
-              className={`px-4 py-2 rounded-full transition-colors ${
-                categoryFilter === 'all' ? 'bg-primary-600 text-white' : 'bg-white hover:bg-gray-100 text-gray-800 shadow-md'
+              className={`px-5 py-2 rounded-full transition-all duration-300 font-medium ${
+                categoryFilter === 'all' ? 'bg-primary-600 text-white shadow-md' : 'bg-white hover:bg-primary-50 text-gray-700 shadow-sm border border-primary-200'
               }`}
             >
               Wszystkie
@@ -75,8 +75,8 @@ export default async function RealizacjePage({ searchParams }: { searchParams: P
               <Link
                 key={category.id}
                 href={`/oferta?kategoria=${category.id}`}
-                className={`px-4 py-2 rounded-full transition-colors capitalize shadow-md ${
-                  categoryFilter === category.id ? 'bg-primary-600 text-white' : 'bg-white hover:bg-gray-100 text-gray-800'
+                className={`px-5 py-2 rounded-full transition-all duration-300 capitalize font-medium ${
+                  categoryFilter === category.id ? 'bg-primary-600 text-white shadow-md' : 'bg-white hover:bg-primary-50 text-gray-700 shadow-sm border border-primary-200'
                 }`}
               >
                 {category.name}
@@ -88,8 +88,8 @@ export default async function RealizacjePage({ searchParams }: { searchParams: P
           <RealizacjeClient oferta={oferta} categories={categories} />
 
           {oferta.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-xl text-secondary-600">Brak realizacji w tej kategorii.</p>
+            <div className="text-center py-16 bg-white rounded-2xl shadow-md border border-primary-200">
+              <p className="text-xl text-gray-600">Brak realizacji w tej kategorii.</p>
             </div>
           )}
         </div>

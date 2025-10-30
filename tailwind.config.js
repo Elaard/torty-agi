@@ -5,49 +5,47 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          50: "#FFF9F9",
-          100: "#FFE8EE",
-          200: "#FFD1DD",
-          300: "#F8B0C2", // Soft rose pink
-          400: "#F48FB1",
-          500: "#EC6A9C",
-          600: "#DB2777",
-          700: "#BE185D",
-          800: "#9D174D",
-          900: "#831843",
+          50: "#FAF7F2",
+          100: "#F4EDE3",
+          200: "#E9D9C7",
+          300: "#DDBF9F", // Ciepły karmel/miód
+          400: "#D4A574",
+          500: "#C8935B", // Główny kolor - naturalny miód
+          600: "#B17F4A",
+          700: "#8B6338",
+          800: "#6B4A2A",
+          900: "#4A3420",
         },
         secondary: {
-          50: "#F8F5F2",
-          100: "#EFE6DD",
-          200: "#E0D0C0",
-          300: "#C4A68A",
-          400: "#A67C52",
-          500: "#8B5E3C",
-          600: "#5C4033", // Rich chocolate brown
-          700: "#3C2A21",
-          800: "#2C1F19",
-          900: "#1A120B",
+          50: "#FFF8F8",
+          100: "#FFE8E8",
+          200: "#FFD1D1",
+          300: "#E6A5A5",
+          400: "#B97676",
+          500: "#8B3A3A", // Burgundowy/wiśniowy - jak naturalne owoce
+          600: "#732E2E",
+          700: "#5C2525",
+          800: "#3D1818",
+          900: "#2A1010",
         },
         accent: {
-          50: "#FFFDF5",
-          100: "#FFFBE6",
-          200: "#FFF7CC",
-          300: "#FFF0A3",
-          400: "#F9E27A",
-          500: "#F2C94C", // Warm honey gold
-          600: "#E6B325",
-          700: "#CB9A18",
-          800: "#A37D13",
-          900: "#7A5E0F",
+          50: "#F5F7F3",
+          100: "#E8EDE3",
+          200: "#D3DCC8",
+          300: "#BCC9AB",
+          400: "#A8B89F", // Oliwkowy zielony - świeżość
+          700: "#6B7A64",
+          800: "#4F5C4A",
+          900: "#3A4437",
         },
-        cream: "#FFF9F0",
-        beige: "#F5EFE6",
-        darkBrown: "#3C2A21",
+        cream: "#FAF7F2", // Naturalna śmietana/len
+        beige: "#F4EDE3",
+        chocolate: "#6B4423", // Czekoladowy brąz
       },
       fontFamily: {
-        sans: ["Lato", "sans-serif"],
-        serif: ["Playfair Display", "serif"],
-        cursive: ["Dancing Script", "cursive"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        serif: ["Libre Baskerville", "Georgia", "serif"],
+        handwritten: ["Caveat", "cursive"], // Delikatny accent, nie główny font
       },
       backgroundImage: {
         "hero-pattern": "url('/images/hero-pattern.svg')",

@@ -6,26 +6,25 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className='bg-beige border-t border-primary-100 pt-20 pb-10 relative overflow-hidden'>
-      <div className='absolute -top-40 -right-40 w-80 h-80 rounded-full bg-primary-100 opacity-20 blur-3xl'></div>
-      <div className='absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-accent-100 opacity-20 blur-3xl'></div>
-
+    <footer className='bg-beige border-t border-primary-200 pt-16 pb-8 relative'>
       <div className='container-custom relative z-10'>
         {/* Main Footer Content */}
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-16'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-12'>
           {/* Brand Section */}
-          <div className='md:pr-8'>
-            <h3 className='heading-fancy text-4xl mb-4'>Torty AGI</h3>
-            <div className='h-1 w-20 bg-accent-500 my-6 rounded-full'></div>
-            <p className='text-secondary-600 mb-8 leading-relaxed text-lg'>
-              Ręcznie robione ciasta i słodkości tworzone z miłością i najlepszych składników. Każdy kęs opowiada naszą historię pasji do wypieków.
+          <div>
+            <h3 className='font-serif text-3xl font-bold text-chocolate mb-4'>
+              Torty <span className='heading-fancy text-4xl'>AGI</span>
+            </h3>
+            <div className='h-1 w-16 bg-secondary-500 my-4 rounded'></div>
+            <p className='text-gray-700 mb-6 leading-relaxed'>
+              Domowe torty i słodkości robione z prawdziwych składników. Bez gotowców, sztucznych barwników i odgrzewanych mas.
             </p>
-            <div className='flex space-x-5'>
+            <div className='flex space-x-4'>
               <a
                 href={contactDetails.instagram}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='bg-white p-4 rounded-2xl text-primary-400 hover:text-primary-600 hover:shadow-xl transition-all duration-300 transform hover:scale-110 border border-primary-100'
+                className='bg-white p-3 rounded-xl text-primary-600 hover:text-primary-700 hover:shadow-md transition-all duration-300 border border-primary-200'
                 aria-label='Instagram'
               >
                 <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='currentColor' viewBox='0 0 24 24'>
@@ -36,7 +35,7 @@ export const Footer = () => {
                 href={contactDetails.facebook}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='bg-white p-4 rounded-2xl text-primary-400 hover:text-primary-600 hover:shadow-xl transition-all duration-300 transform hover:scale-110 border border-primary-100'
+                className='bg-white p-3 rounded-xl text-primary-600 hover:text-primary-700 hover:shadow-md transition-all duration-300 border border-primary-200'
                 aria-label='Facebook'
               >
                 <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='currentColor' viewBox='0 0 24 24'>
@@ -47,31 +46,31 @@ export const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className='md:border-l md:border-r border-primary-100 md:px-12'>
-            <h3 className='font-serif font-semibold text-2xl mb-4 text-secondary-600'>Odnośniki</h3>
-            <div className='h-1 w-20 bg-accent-500 my-6 rounded-full'></div>
-            <ul className='space-y-4'>
+          <div className='md:px-8'>
+            <h3 className='font-serif font-bold text-xl mb-4 text-chocolate'>Nawigacja</h3>
+            <div className='h-1 w-16 bg-secondary-500 my-4 rounded'></div>
+            <ul className='space-y-3'>
               <li>
-                <Link href={routes.home} className='text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg'>
-                  <span className='w-2 h-2 bg-accent-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity'></span>
+                <Link href={routes.home} className='text-gray-700 hover:text-primary-700 transition-colors flex items-center group'>
+                  <span className='w-2 h-2 bg-secondary-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity'></span>
                   <span>Strona główna</span>
                 </Link>
               </li>
               <li>
-                <Link href={routes.oferta} className='text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg'>
-                  <span className='w-2 h-2 bg-accent-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity'></span>
+                <Link href={routes.oferta} className='text-gray-700 hover:text-primary-700 transition-colors flex items-center group'>
+                  <span className='w-2 h-2 bg-secondary-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity'></span>
                   <span>Oferta</span>
                 </Link>
               </li>
               <li>
-                <Link href={routes.realizacje} className='text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg'>
-                  <span className='w-2 h-2 bg-accent-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity'></span>
+                <Link href={routes.realizacje} className='text-gray-700 hover:text-primary-700 transition-colors flex items-center group'>
+                  <span className='w-2 h-2 bg-secondary-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity'></span>
                   <span>Realizacje</span>
                 </Link>
               </li>
               <li>
-                <Link href={routes.contact} className='text-secondary-600 hover:text-primary-600 transition-colors flex items-center group text-lg'>
-                  <span className='w-2 h-2 bg-accent-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity'></span>
+                <Link href={routes.contact} className='text-gray-700 hover:text-primary-700 transition-colors flex items-center group'>
+                  <span className='w-2 h-2 bg-secondary-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity'></span>
                   <span>Kontakt</span>
                 </Link>
               </li>
@@ -79,13 +78,13 @@ export const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div className='md:pl-8'>
-            <h3 className='font-serif font-semibold text-2xl mb-4 text-secondary-600'>Kontakt</h3>
-            <div className='h-1 w-20 bg-accent-500 my-6 rounded-full'></div>
-            <address className='not-italic space-y-6'>
+          <div>
+            <h3 className='font-serif font-bold text-xl mb-4 text-chocolate'>Kontakt</h3>
+            <div className='h-1 w-16 bg-secondary-500 my-4 rounded'></div>
+            <address className='not-italic space-y-4'>
               <div className='flex items-start'>
-                <div className='bg-white p-3 rounded-xl shadow-lg mr-4 border border-primary-100'>
-                  <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6 text-primary-400' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                <div className='bg-white p-2 rounded-lg shadow-sm mr-3 border border-primary-200'>
+                  <svg xmlns='http://www.w3.org/2000/svg' className='h-5 w-5 text-primary-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                     <path
                       strokeLinecap='round'
                       strokeLinejoin='round'
@@ -96,14 +95,14 @@ export const Footer = () => {
                   </svg>
                 </div>
                 <div>
-                  <p className='font-medium text-secondary-700 mb-1 text-lg'>Nasza lokalizacja</p>
-                  <p className='text-secondary-600 text-lg'>{contactDetails.localization}</p>
+                  <p className='font-medium text-chocolate mb-1'>Lokalizacja</p>
+                  <p className='text-gray-700 text-sm'>{contactDetails.localization}</p>
                 </div>
               </div>
 
               <div className='flex items-start'>
-                <div className='bg-white p-3 rounded-xl shadow-lg mr-4 border border-primary-100'>
-                  <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6 text-primary-400' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                <div className='bg-white p-2 rounded-lg shadow-sm mr-3 border border-primary-200'>
+                  <svg xmlns='http://www.w3.org/2000/svg' className='h-5 w-5 text-primary-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                     <path
                       strokeLinecap='round'
                       strokeLinejoin='round'
@@ -113,16 +112,16 @@ export const Footer = () => {
                   </svg>
                 </div>
                 <div>
-                  <p className='font-medium text-secondary-700 mb-1 text-lg'>Email</p>
-                  <a href='mailto:info@tortyagi.pl' className='text-secondary-600 hover:text-primary-600 transition-colors text-lg'>
+                  <p className='font-medium text-chocolate mb-1'>Email</p>
+                  <a href={`mailto:${contactDetails.email}`} className='text-gray-700 hover:text-primary-700 transition-colors text-sm'>
                     {contactDetails.email}
                   </a>
                 </div>
               </div>
 
               <div className='flex items-start'>
-                <div className='bg-white p-3 rounded-xl shadow-lg mr-4 border border-primary-100'>
-                  <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6 text-primary-400' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                <div className='bg-white p-2 rounded-lg shadow-sm mr-3 border border-primary-200'>
+                  <svg xmlns='http://www.w3.org/2000/svg' className='h-5 w-5 text-primary-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                     <path
                       strokeLinecap='round'
                       strokeLinejoin='round'
@@ -132,8 +131,8 @@ export const Footer = () => {
                   </svg>
                 </div>
                 <div>
-                  <p className='font-medium text-secondary-700 mb-1 text-lg'>Telefon</p>
-                  <a href='tel:+48123456789' className='text-secondary-600 hover:text-primary-600 transition-colors text-lg'>
+                  <p className='font-medium text-chocolate mb-1'>Telefon</p>
+                  <a href={`tel:${contactDetails.phone}`} className='text-gray-700 hover:text-primary-700 transition-colors text-sm'>
                     {contactDetails.phone}
                   </a>
                 </div>
@@ -143,9 +142,9 @@ export const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className='border-t border-primary-100 mt-12 pt-8 text-center'>
-          <p className='text-secondary-500'>
-            © {currentYear} <span className='text-primary-600 font-medium'>Torty AGI</span>. Wszelkie prawa zastrzeżone.
+        <div className='border-t border-primary-200 mt-12 pt-6 text-center'>
+          <p className='text-gray-600 text-sm'>
+            © {currentYear} <span className='text-primary-700 font-medium'>Torty AGI</span>. Wszystkie prawa zastrzeżone.
           </p>
         </div>
       </div>

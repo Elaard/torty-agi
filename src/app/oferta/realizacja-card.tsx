@@ -13,32 +13,12 @@ export const RealizacjaCard = ({ realizacja, categories, onClick }: RealizacjaCa
   // Get the category name
   const categoryName = categories.find((c) => c.id === realizacja.category)?.name || '';
   
-  // Use a deterministic rotation based on the product ID
-  const getRotationClass = (id: string) => {
-    // Use the last character of the ID to determine rotation
-    const lastChar = id.charAt(id.length - 1);
-    const charCode = lastChar.charCodeAt(0);
-    
-    const rotationClasses = [
-      'transform rotate-1 hover:rotate-0',
-      'transform -rotate-1 hover:rotate-0',
-      'transform rotate-2 hover:rotate-0',
-      'transform -rotate-2 hover:rotate-0',
-    ];
-    
-    // Use modulo to get an index between 0 and 3
-    const index = charCode % 4;
-    return rotationClasses[index];
-  };
-  
-  const rotationClass = getRotationClass(realizacja.id);
-  
   return (
     <div
       className='block group cursor-pointer'
       onClick={() => onClick(realizacja)}
     >
-      <article className={`relative flex flex-col overflow-hidden h-full rounded-2xl bg-white transition-all duration-300 hover:shadow-xl border border-gray-100 ${rotationClass}`}>
+      <article className="relative flex flex-col overflow-hidden h-full rounded-2xl bg-white transition-all duration-300 hover:shadow-xl border border-gray-100">
         {/* Main Image - Larger and more prominent */}
         <div className='relative aspect-[4/3] overflow-hidden rounded-t-2xl'>
           {realizacja.mainImage ? (

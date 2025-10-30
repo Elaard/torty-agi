@@ -2,16 +2,16 @@ import { Metadata } from 'next';
 import { contactDetails } from '@/utils/contact-details';
 
 export const metadata: Metadata = {
-  title: 'Kontakt | Torty AGI | Zamów Torty i Ciasta',
-  description: 'Skontaktuj się z nami w sprawie zamówień tortów, ciast i słodkości. Oferujemy personalizowane zamówienia, dostawę i odbiór osobisty. Telefonicznie, mailowo lub przez media społecznościowe.',
-  keywords: 'kontakt, zamówienie tortu, cukiernia Torty AGI, zamówienia cukiernicze, dostawa tortów, odbiór osobisty',
+  title: 'Kontakt | Torty AGI | Napisz do mnie',
+  description: 'Skontaktuj się w sprawie zamówienia tortu, ciasta lub słodkości. Odpisuję zwykle tego samego dnia. Telefonicznie, mailowo lub przez media społecznościowe.',
+  keywords: 'kontakt, zamówienie tortu, Torty AGI, zamówienia cukiernicze, dostawa tortów',
   openGraph: {
-    title: 'Kontakt | Torty AGI Cukiernia',
-    description: 'Skontaktuj się z nami w sprawie zamówień, pytań lub opinii. Oferujemy personalizowane zamówienia, dostawę i odbiór osobisty.',
+    title: 'Kontakt | Torty AGI',
+    description: 'Skontaktuj się w sprawie zamówienia. Odpisuję zwykle tego samego dnia.',
     type: 'website',
     locale: 'pl_PL',
     url: 'https://torty-agi.pl/kontakt',
-    siteName: 'Torty AGI Cukiernia',
+    siteName: 'Torty AGI',
     images: [
       {
         url: '/images/og-image.jpg',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Kontakt | Torty AGI',
-    description: 'Skontaktuj się z nami w sprawie zamówień tortów, ciast i słodkości.',
+    description: 'Skontaktuj się w sprawie zamówienia.',
     images: ['/images/og-image.jpg'],
   },
   alternates: {
@@ -34,24 +34,26 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className='py-16 bg-gray-50'>
+    <div className='py-16 bg-cream min-h-screen'>
       <div className='container-custom'>
         {/* Page Header */}
-        <div className='text-center mb-16 max-w-3xl mx-auto'>
-          <h1 className='heading-1 mb-4'>Kontakt</h1>
-          <p className='text-gray-600 text-lg'>Masz pytanie lub chcesz złożyć zamówienie? Jestem tutaj, aby Ci pomóc i odpowiedzieć na wszystkie pytania!</p>
-          <div className='mt-6 w-24 h-1 bg-primary-500 mx-auto rounded-full'></div>
+        <div className='text-center mb-12 max-w-3xl mx-auto'>
+          <h1 className='text-4xl md:text-5xl font-bold mb-4 text-chocolate'>Kontakt</h1>
+          <div className='h-1 w-20 bg-secondary-500 mx-auto my-6 rounded'></div>
+          <p className='text-gray-700 text-lg'>
+            Masz pytanie o tort? Napisz, powiedz jaka okazja i dla ilu osób. Odpisuję zwykle tego samego dnia.
+          </p>
         </div>
 
         {/* Contact Information Card */}
-        <div className='max-w-4xl mx-auto bg-white p-10 rounded-2xl shadow-md border border-gray-100'>
-          <h2 className='heading-2 mb-10 text-center'>Dane kontaktowe</h2>
+        <div className='max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-md border border-primary-200'>
+          <h2 className='text-2xl font-serif font-bold mb-8 text-center text-chocolate'>Dane kontaktowe</h2>
 
           {/* Contact Info Grid */}
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-10'>
             {/* Location */}
             <div className='flex flex-col items-center text-center'>
-              <div className='bg-primary-100 p-5 rounded-full text-primary-600 mb-4'>
+              <div className='bg-primary-100 p-4 rounded-full text-primary-700 mb-4 border border-primary-200'>
                 <svg xmlns='http://www.w3.org/2000/svg' className='h-8 w-8' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                   <path
                     strokeLinecap='round'
@@ -62,13 +64,13 @@ export default function Page() {
                   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 11a3 3 0 11-6 0 3 3 0 016 0z' />
                 </svg>
               </div>
-              <h3 className='font-semibold text-xl mb-2'>Nasza lokalizacja</h3>
-              <p className='text-gray-600'>{contactDetails.localization}</p>
+              <h3 className='font-semibold text-lg mb-2 text-chocolate'>Lokalizacja</h3>
+              <p className='text-gray-700'>{contactDetails.localization}</p>
             </div>
 
             {/* Email */}
             <div className='flex flex-col items-center text-center'>
-              <div className='bg-primary-100 p-5 rounded-full text-primary-600 mb-4'>
+              <div className='bg-primary-100 p-4 rounded-full text-primary-700 mb-4 border border-primary-200'>
                 <svg xmlns='http://www.w3.org/2000/svg' className='h-8 w-8' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                   <path
                     strokeLinecap='round'
@@ -78,9 +80,9 @@ export default function Page() {
                   />
                 </svg>
               </div>
-              <h3 className='font-semibold text-xl mb-2'>Email</h3>
-              <p className='text-gray-600'>
-                <a href={`mailto:${contactDetails.email}`} className='hover:text-primary-600 transition-colors'>
+              <h3 className='font-semibold text-lg mb-2 text-chocolate'>Email</h3>
+              <p className='text-gray-700'>
+                <a href={`mailto:${contactDetails.email}`} className='hover:text-primary-700 transition-colors'>
                   {contactDetails.email}
                 </a>
               </p>
@@ -88,7 +90,7 @@ export default function Page() {
 
             {/* Phone */}
             <div className='flex flex-col items-center text-center'>
-              <div className='bg-primary-100 p-5 rounded-full text-primary-600 mb-4'>
+              <div className='bg-primary-100 p-4 rounded-full text-primary-700 mb-4 border border-primary-200'>
                 <svg xmlns='http://www.w3.org/2000/svg' className='h-8 w-8' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                   <path
                     strokeLinecap='round'
@@ -98,20 +100,20 @@ export default function Page() {
                   />
                 </svg>
               </div>
-              <h3 className='font-semibold text-xl mb-2'>Telefon</h3>
-              <p className='text-gray-600'>
-                <a href={`tel:${contactDetails.phone}`} className='hover:text-primary-600 transition-colors'>
+              <h3 className='font-semibold text-lg mb-2 text-chocolate'>Telefon</h3>
+              <p className='text-gray-700'>
+                <a href={`tel:${contactDetails.phone}`} className='hover:text-primary-700 transition-colors'>
                   {contactDetails.phone}
                 </a>
               </p>
             </div>
           </div>
 
-          {/* Map or Location Image */}
-          <div className='mt-12 pt-10 border-t border-gray-100'>
-            <h3 className='font-semibold text-xl mb-6 text-center'>Znajdź nas</h3>
+          {/* Map */}
+          <div className='mt-10 pt-8 border-t border-primary-200'>
+            <h3 className='font-semibold text-xl mb-6 text-center text-chocolate'>Gdzie mnie znaleźć</h3>
             <iframe
-              className='m-auto w-full'
+              className='w-full rounded-xl shadow-md'
               src={contactDetails.googleCompanyLink}
               width='600'
               height='450'
@@ -121,14 +123,14 @@ export default function Page() {
           </div>
 
           {/* Social Media */}
-          <div className='mt-12 pt-10 border-t border-gray-100'>
-            <h3 className='font-semibold text-xl mb-6 text-center'>Obserwuj nas</h3>
-            <div className='flex justify-center space-x-8'>
+          <div className='mt-10 pt-8 border-t border-primary-200'>
+            <h3 className='font-semibold text-xl mb-6 text-center text-chocolate'>Social media</h3>
+            <div className='flex justify-center space-x-6'>
               <a
                 href={contactDetails.instagram}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='bg-primary-100 p-5 rounded-full text-primary-600 hover:bg-primary-200 transition-colors transform hover:scale-110'
+                className='bg-primary-100 p-4 rounded-full text-primary-700 hover:bg-primary-200 hover:shadow-md transition-all duration-300 border border-primary-200'
                 aria-label='Instagram'
               >
                 <svg xmlns='http://www.w3.org/2000/svg' className='h-8 w-8' fill='currentColor' viewBox='0 0 24 24'>
@@ -139,7 +141,7 @@ export default function Page() {
                 href={contactDetails.facebook}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='bg-primary-100 p-5 rounded-full text-primary-600 hover:bg-primary-200 transition-colors transform hover:scale-110'
+                className='bg-primary-100 p-4 rounded-full text-primary-700 hover:bg-primary-200 hover:shadow-md transition-all duration-300 border border-primary-200'
                 aria-label='Facebook'
               >
                 <svg xmlns='http://www.w3.org/2000/svg' className='h-8 w-8' fill='currentColor' viewBox='0 0 24 24'>
@@ -149,10 +151,6 @@ export default function Page() {
             </div>
           </div>
         </div>
-
-        {/* Decorative Elements */}
-        <div className='absolute left-0 top-1/4 w-24 h-24 bg-primary-100 rounded-full opacity-50 -z-10 hidden lg:block'></div>
-        <div className='absolute right-0 bottom-1/4 w-32 h-32 bg-primary-100 rounded-full opacity-50 -z-10 hidden lg:block'></div>
       </div>
     </div>
   );

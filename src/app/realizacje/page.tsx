@@ -1,111 +1,144 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
+import { PlaceholderImage } from '@/components/ui/placeholder-image';
+
+export const metadata: Metadata = {
+  title: 'Realizacje | Torty AGI | Galeria Wypieków',
+  description: 'Zobacz galerię moich realizacji - torty, słodkie stoły i słodkości. Każdy wypiek robiony ręcznie z naturalnych składników.',
+  keywords: 'realizacje tortów, galeria tortów, torty urodzinowe, torty weselne, słodkie stoły',
+  openGraph: {
+    title: 'Realizacje | Torty AGI',
+    description: 'Zobacz galerię moich realizacji - każdy wypiek robiony ręcznie.',
+    type: 'website',
+    locale: 'pl_PL',
+    url: 'https://torty-agi.pl/realizacje',
+    siteName: 'Torty AGI',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Realizacje Torty AGI',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Realizacje | Torty AGI',
+    description: 'Zobacz galerię moich wypieków.',
+    images: ['/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://torty-agi.pl/realizacje',
+  },
+};
+
+const mockImageUrl = 'https://wszystkiegoslodkiego.pl/storage/images/202330/ciasto-malinowa-ksiezniczka.webp';
+
 
 export default function RealizacjePage() {
-  // Mock image URL for placeholders
-  const mockImageUrl = 'https://wszystkiegoslodkiego.pl/storage/images/202330/ciasto-malinowa-ksiezniczka.webp';
-
   return (
-    <div className="py-16 bg-beige">
+    <div className="py-16 bg-cream min-h-screen">
       <div className="container-custom">
         <div className="text-center mb-12">
-          <span className="badge badge-primary mb-4 inline-block transform rotate-1">Portfolio</span>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <span className="badge badge-primary mb-4 inline-block">Portfolio</span>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-chocolate">
             Realizacje
           </h1>
-          <div className="h-1 w-20 bg-accent-500 mx-auto my-6 rounded-full"></div>
-          <p className="text-secondary-600 max-w-2xl mx-auto mt-6 text-lg">
-            Zapraszam do obejrzenia galerii moich prac. Każda realizacja to unikalne dzieło stworzone z pasją i dbałością o najdrobniejsze detale.
+          <div className="h-1 w-20 bg-secondary-500 mx-auto my-6 rounded"></div>
+          <p className="text-gray-700 max-w-2xl mx-auto mt-6 text-lg">
+            Galeria moich prac. Tu są zdjęcia tego, co robiłam wcześniej - różne torty, słodkie stoły, desery.
           </p>
         </div>
 
         {/* Sekcja 1: Torty */}
         <section className="mb-20">
-          <h2 className="text-3xl font-bold mb-8 text-center font-serif">Torty</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center font-serif text-chocolate">Torty</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Duże zdjęcie na całą szerokość */}
-            <div className="md:col-span-3 overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+            <div className="md:col-span-3 overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative aspect-[21/9]">
-                <Image 
+               <Image 
                   src={mockImageUrl} 
-                  alt="Tort weselny" 
+                  alt="Tort weselny z kwiatami"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold">Tort weselny z kwiatami</h3>
+              <div className="p-4 bg-white border-t border-primary-100">
+                <h3 className="text-xl font-semibold text-chocolate">Tort weselny z kwiatami</h3>
               </div>
             </div>
-            
+
             {/* Dwa średnie zdjęcia obok siebie */}
-            <div className="md:col-span-2 overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+            <div className="md:col-span-2 overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative aspect-[16/9]">
-                <Image 
+                 <Image 
                   src={mockImageUrl} 
-                  alt="Tort urodzinowy" 
+                  alt="Tort weselny z kwiatami"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold">Tort urodzinowy dla dzieci</h3>
+              <div className="p-4 bg-white border-t border-primary-100">
+                <h3 className="text-xl font-semibold text-chocolate">Tort urodzinowy dla dzieci</h3>
               </div>
             </div>
-            
-            <div className="overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+
+            <div className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative aspect-[9/16]">
-                <Image 
+                 <Image 
                   src={mockImageUrl} 
-                  alt="Tort okolicznościowy" 
+                  alt="Tort weselny z kwiatami"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold">Tort okolicznościowy</h3>
+              <div className="p-4 bg-white border-t border-primary-100">
+                <h3 className="text-xl font-semibold text-chocolate">Tort okolicznościowy</h3>
               </div>
             </div>
-            
+
             {/* Trzy mniejsze zdjęcia w rzędzie */}
-            <div className="overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+            <div className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative aspect-square">
-                <Image 
+                 <Image 
                   src={mockImageUrl} 
-                  alt="Tort czekoladowy" 
+                  alt="Tort weselny z kwiatami"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold">Tort czekoladowy</h3>
+              <div className="p-4 bg-white border-t border-primary-100">
+                <h3 className="text-xl font-semibold text-chocolate">Tort czekoladowy</h3>
               </div>
             </div>
-            
-            <div className="overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+
+            <div className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative aspect-square">
-                <Image 
+                 <Image 
                   src={mockImageUrl} 
-                  alt="Tort owocowy" 
+                  alt="Tort weselny z kwiatami"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold">Tort owocowy</h3>
+              <div className="p-4 bg-white border-t border-primary-100">
+                <h3 className="text-xl font-semibold text-chocolate">Tort owocowy</h3>
               </div>
             </div>
-            
-            <div className="overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+
+            <div className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative aspect-square">
-                <Image 
+                 <Image 
                   src={mockImageUrl} 
-                  alt="Tort bezowy" 
+                  alt="Tort weselny z kwiatami"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold">Tort bezowy</h3>
+              <div className="p-4 bg-white border-t border-primary-100">
+                <h3 className="text-xl font-semibold text-chocolate">Tort bezowy</h3>
               </div>
             </div>
           </div>
@@ -113,62 +146,62 @@ export default function RealizacjePage() {
 
         {/* Sekcja 2: Słodkie stoły */}
         <section className="mb-20">
-          <h2 className="text-3xl font-bold mb-8 text-center font-serif">Słodkie stoły</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center font-serif text-chocolate">Słodkie stoły</h2>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Układ mozaikowy */}
-            <div className="md:col-span-8 overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+            <div className="md:col-span-8 overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative aspect-[16/9]">
-                <Image 
+                 <Image 
                   src={mockImageUrl} 
-                  alt="Słodki stół weselny" 
+                  alt="Tort weselny z kwiatami"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold">Słodki stół weselny</h3>
+              <div className="p-4 bg-white border-t border-primary-100">
+                <h3 className="text-xl font-semibold text-chocolate">Słodki stół weselny</h3>
               </div>
             </div>
-            
-            <div className="md:col-span-4 overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+
+            <div className="md:col-span-4 overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative aspect-[9/16]">
-                <Image 
+                 <Image 
                   src={mockImageUrl} 
-                  alt="Candy bar" 
+                  alt="Tort weselny z kwiatami"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold">Candy bar</h3>
+              <div className="p-4 bg-white border-t border-primary-100">
+                <h3 className="text-xl font-semibold text-chocolate">Candy bar</h3>
               </div>
             </div>
-            
-            <div className="md:col-span-4 overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+
+            <div className="md:col-span-4 overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative aspect-[1/1]">
-                <Image 
+                 <Image 
                   src={mockImageUrl} 
-                  alt="Słodki stół urodzinowy" 
+                  alt="Tort weselny z kwiatami"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold">Słodki stół urodzinowy</h3>
+              <div className="p-4 bg-white border-t border-primary-100">
+                <h3 className="text-xl font-semibold text-chocolate">Słodki stół urodzinowy</h3>
               </div>
             </div>
-            
-            <div className="md:col-span-8 overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+
+            <div className="md:col-span-8 overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative aspect-[16/9]">
-                <Image 
+                 <Image 
                   src={mockImageUrl} 
-                  alt="Słodki stół komunijny" 
+                  alt="Tort weselny z kwiatami"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold">Słodki stół komunijny</h3>
+              <div className="p-4 bg-white border-t border-primary-100">
+                <h3 className="text-xl font-semibold text-chocolate">Słodki stół komunijny</h3>
               </div>
             </div>
           </div>
@@ -176,76 +209,76 @@ export default function RealizacjePage() {
 
         {/* Sekcja 3: Słodkości */}
         <section className="mb-12">
-          <h2 className="text-3xl font-bold mb-8 text-center font-serif">Słodkości</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center font-serif text-chocolate">Słodkości</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Układ galerii z różnymi proporcjami */}
-            <div className="overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+            <div className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative aspect-[3/4]">
-                <Image 
+                 <Image 
                   src={mockImageUrl} 
-                  alt="Babeczki" 
+                  alt="Tort weselny z kwiatami"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold">Babeczki</h3>
+              <div className="p-4 bg-white border-t border-primary-100">
+                <h3 className="text-xl font-semibold text-chocolate">Babeczki</h3>
               </div>
             </div>
-            
-            <div className="overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+
+            <div className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative aspect-[1/1]">
-                <Image 
+                 <Image 
                   src={mockImageUrl} 
-                  alt="Makaroniki" 
+                  alt="Tort weselny z kwiatami"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold">Makaroniki</h3>
+              <div className="p-4 bg-white border-t border-primary-100">
+                <h3 className="text-xl font-semibold text-chocolate">Makaroniki</h3>
               </div>
             </div>
-            
-            <div className="overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+
+            <div className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative aspect-[3/4]">
-                <Image 
+                 <Image 
                   src={mockImageUrl} 
-                  alt="Cake pops" 
+                  alt="Tort weselny z kwiatami"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold">Cake pops</h3>
+              <div className="p-4 bg-white border-t border-primary-100">
+                <h3 className="text-xl font-semibold text-chocolate">Cake pops</h3>
               </div>
             </div>
-            
-            <div className="overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+
+            <div className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative aspect-[4/3]">
-                <Image 
+                 <Image 
                   src={mockImageUrl} 
-                  alt="Ciasteczka" 
+                  alt="Tort weselny z kwiatami"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold">Ciasteczka</h3>
+              <div className="p-4 bg-white border-t border-primary-100">
+                <h3 className="text-xl font-semibold text-chocolate">Ciasteczka</h3>
               </div>
             </div>
-            
-            <div className="md:col-span-2 overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.01] transition-transform duration-300">
+
+            <div className="md:col-span-2 overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative aspect-[16/9]">
-                <Image 
+                 <Image 
                   src={mockImageUrl} 
-                  alt="Desery w pucharkach" 
+                  alt="Tort weselny z kwiatami"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="p-4 bg-white">
-                <h3 className="text-xl font-semibold">Desery w pucharkach</h3>
+              <div className="p-4 bg-white border-t border-primary-100">
+                <h3 className="text-xl font-semibold text-chocolate">Desery w pucharkach</h3>
               </div>
             </div>
           </div>
