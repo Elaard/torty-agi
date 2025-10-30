@@ -7,7 +7,7 @@ import { routes } from '@/utils/routes';
 
 export const metadata: Metadata = {
   title: 'Torty AGI | Domowe Torty i Ciasta | Naturalne Składniki',
-  description: 'Domowe torty i ciasta robione z prawdziwego masła, śmietany i jajek z wolnego wybiegu. Bez gotowców, sztucznych barwników i konserwantów. Każdy wypiek robiony ręcznie z pasją.',
+  description: 'Zamów domowe torty i ciasta wypiekane z naturalnych składników. Prawdziwe masło, śmietana i jajka z wolnego wybiegu. Torty urodzinowe, weselne, okolicznościowe - każdy wypiek tworzony ręcznie z pasją',
   keywords: 'domowe torty, naturalne składniki, torty na zamówienie, ręcznie robione ciasta, tort urodzinowy, tort weselny, naturalne wypieki',
   openGraph: {
     title: 'Torty AGI | Domowe Torty z Naturalnych Składników',
@@ -67,7 +67,7 @@ export default function Home() {
                   Domowe wypieki od 2018
                 </span>
                 <h1 className='text-4xl md:text-6xl font-bold leading-tight text-chocolate'>
-                  Torty <span className='heading-fancy text-5xl md:text-7xl block mt-2'>AGI</span>
+                  Domowe Torty i Ciasta <span className='heading-fancy text-5xl md:text-7xl block mt-2'>z Naturalnych Składników</span>
                 </h1>
               </div>
 
@@ -78,15 +78,15 @@ export default function Home() {
               <div className='flex flex-col sm:flex-row gap-4'>
                 <Link
                   href={routes.contact}
-                  className='btn btn-primary text-base px-7 py-3'
+                  className='btn btn-primary text-base text-center px-7 py-3'
                 >
-                  Napisz do mnie
+                  Zapytaj o tort na zamówienie
                 </Link>
                 <Link
                   href={routes.oferta}
-                  className='btn btn-outline text-base px-7 py-3'
+                  className='btn btn-outline text-base text-center px-7 py-3'
                 >
-                  Zobacz ofertę
+                  Przeglądaj katalog wypieków
                 </Link>
               </div>
             </div>
@@ -271,7 +271,7 @@ export default function Home() {
                         <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>{creation1.name}</h3>
                         <p className='text-gray-700 mb-4'>{creation1.description}</p>
                         <span className='text-primary-700 font-medium inline-flex items-center hover:text-primary-800'>
-                          Zobacz więcej
+                          Szczegóły produktu
                           <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
                           </svg>
@@ -302,7 +302,7 @@ export default function Home() {
                         <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>{creation2.name}</h3>
                         <p className='text-gray-700 mb-4'>{creation2.description}</p>
                         <span className='text-primary-700 font-medium inline-flex items-center hover:text-primary-800'>
-                          Zobacz więcej
+                          Zobacz smaki i ceny
                           <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
                           </svg>
@@ -333,7 +333,7 @@ export default function Home() {
                         <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>{creation3.name}</h3>
                         <p className='text-gray-700 mb-4'>{creation3.description}</p>
                         <span className='text-primary-700 font-medium inline-flex items-center hover:text-primary-800'>
-                          Zobacz więcej
+                          Sprawdź dostępność
                           <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
                           </svg>
@@ -356,7 +356,7 @@ export default function Home() {
                       Klasyczny biszkopt przełożony kremem z prawdziwej czekolady. Nie używam gotowych mas, tylko topię czekoladę i mieszam ze śmietaną.
                     </p>
                     <Link href={routes.contact} className='text-primary-700 font-medium hover:text-primary-800 inline-flex items-center'>
-                      Zobacz więcej
+                      Zamów ten tort
                       <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                         <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
                       </svg>
@@ -374,7 +374,7 @@ export default function Home() {
                       Ciasteczka migdałowe z różnymi nadzieniami. Robię je w mniejszych partiach, więc są zawsze świeże. Dobre na prezent albo do kawy.
                     </p>
                     <Link href={routes.contact} className='text-primary-700 font-medium hover:text-primary-800 inline-flex items-center'>
-                      Zobacz więcej
+                      Zamów ten tort
                       <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                         <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
                       </svg>
@@ -390,7 +390,7 @@ export default function Home() {
                     <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>Babeczki</h3>
                     <p className='text-gray-700 mb-4'>Waniliowe lub czekoladowe babeczki z kremem maślanym. Dekoruję je według okazji - urodziny, chrzciny, co tam potrzeba.</p>
                     <Link href={routes.contact} className='text-primary-700 font-medium hover:text-primary-800 inline-flex items-center'>
-                      Zobacz więcej
+                      Zamów ten tort
                       <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                         <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
                       </svg>
@@ -403,7 +403,7 @@ export default function Home() {
 
           <div className='text-center mt-12'>
             <Link href={routes.oferta} className='btn btn-primary text-base px-8 py-3'>
-              Zobacz całą ofertę
+              Odkryj pełny asortyment wypieków
             </Link>
           </div>
         </div>
@@ -472,7 +472,7 @@ export default function Home() {
               href='/kontakt'
               className='inline-block btn btn-primary text-lg px-10 py-4'
             >
-              Napisz wiadomość
+              Skontaktuj się w sprawie zamówienia
             </Link>
           </div>
         </div>

@@ -5,33 +5,33 @@ import { routes } from '@/utils/routes';
 import ProductClient from '../oferta/product-client';
 
 export const metadata: Metadata = {
-  title: 'Oferta | Torty AGI | Nasze Wypieki',
-  description: 'Pełna oferta wypieków - torty urodzinowe, weselne, babeczki, makaroniki i inne słodkości. Każdy wypiek robiony ręcznie z naturalnych składników.',
-  keywords: 'oferta tortów, torty urodzinowe, torty weselne, babeczki, makaroniki, słodkości na zamówienie',
+  title: 'Torty Okolicznościowe | Urodzinowe, Weselne, Komunijne | Torty AGI',
+  description: 'Zamów wyjątkowy tort okolicznościowy wykonany ręcznie z naturalnych składników. Torty urodzinowe, weselne, komunijne, chrzcielne - dziecięce, kobiece, męskie. Indywidualny design dopasowany do każdej okazji w Rzuchowej i okolicach.',
+  keywords: 'torty okolicznościowe, tort urodzinowy, tort weselny, tort komunijny, tort chrzcielny, torty dziecięce, torty kobiece, torty męskie, tort na zamówienie',
   openGraph: {
-    title: 'Oferta | Torty AGI | Nasze Wypieki',
-    description: 'Zobacz pełną ofertę wypieków. Każda realizacja robiona ręcznie z naturalnych składników.',
+    title: 'Torty Okolicznościowe | Torty AGI',
+    description: 'Wyjątkowe torty na każdą okazję - urodziny, wesela, komunię, chrzciny. Ręcznie dekorowane z naturalnych składników.',
     type: 'website',
     locale: 'pl_PL',
-    url: 'https://torty-agi.pl/oferta',
+    url: 'https://torty-agi.pl/torty-okolicznosciowe',
     siteName: 'Torty AGI',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Oferta Torty AGI',
+        alt: 'Torty Okolicznościowe - Torty AGI',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Oferta | Torty AGI',
-    description: 'Zobacz pełną ofertę naszych wypieków - torty, babeczki, makaroniki.',
+    title: 'Torty Okolicznościowe | Torty AGI',
+    description: 'Wyjątkowe torty na urodziny, wesela, komunię, chrzciny. Ręcznie dekorowane z naturalnych składników.',
     images: ['/images/og-image.jpg'],
   },
   alternates: {
-    canonical: 'https://torty-agi.pl/oferta',
+    canonical: 'https://torty-agi.pl/torty-okolicznosciowe',
   },
 };
 
@@ -54,9 +54,12 @@ export default async function TortyOkolicznosciowePage({ searchParams }: { searc
       <div className="container-custom">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-chocolate">
-            Torty okolicznościowe
+            Torty Okolicznościowe na Każdą Okazję
           </h1>
           <div className="h-1 w-20 bg-secondary-500 mx-auto my-6 rounded"></div>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto mt-6 leading-relaxed">
+            Każdy tort okolicznościowy projektuję oraz wypieku indywidualnie, dostosowując smak, wzornictwo oraz wielkość do konkretnej uroczystości. Specjalizuję się w tortach urodzinowych dla dzieci oraz dorosłych, tortach weselnych, komunijnych, chrzcielnych oraz innych wypiekach celebrujących ważne wydarzenia życiowe.
+          </p>
         </div>
 
         <div className="space-y-8">

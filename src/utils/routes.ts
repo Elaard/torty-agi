@@ -1,7 +1,7 @@
 export const routes = {
   home: '/',
   contact: '/kontakt',
-  oferta: '/oferta?kategoria=all',
+  oferta: '/oferta',
   tortyOkolicznosciowe: '/torty-okolicznosciowe',
   realizacje: '/realizacje'
 }
