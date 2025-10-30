@@ -50,7 +50,7 @@ export default async function TortyOkolicznosciowePage({ searchParams }: { searc
   );
 
   return (
-    <div className="py-16 bg-cream min-h-screen">
+    <div className="py-24 bg-cream min-h-screen">
       <div className="container-custom">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-chocolate">
@@ -88,7 +88,7 @@ export default async function TortyOkolicznosciowePage({ searchParams }: { searc
           <ProductClient offer={offer} categories={cakesVariants} />
 
           {offer.length === 0 && (
-            <div className="text-center py-16 bg-white rounded-2xl shadow-md border border-primary-200">
+            <div className="text-center py-24 bg-white rounded-2xl shadow-md border border-primary-200">
               <p className="text-xl text-gray-600">Brak realizacji w tej kategorii.</p>
             </div>
           )}

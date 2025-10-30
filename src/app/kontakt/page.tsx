@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className='py-16 bg-cream min-h-screen'>
+    <div className='py-24 bg-cream min-h-screen'>
       <div className='container-custom'>
         {/* Page Header */}
         <div className='text-center mb-12 max-w-3xl mx-auto'>

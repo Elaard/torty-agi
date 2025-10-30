@@ -52,7 +52,7 @@ export const Header = () => {
               <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300'></span>
             </Link>
             <Link href={routes.oferta} className='font-medium text-gray-700 hover:text-primary-700 transition-colors relative group py-2'>
-              <span>Inne</span>
+              <span>Pełna oferta</span>
               <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300'></span>
             </Link>
             <Link href={routes.realizacje} className='font-medium text-gray-700 hover:text-primary-700 transition-colors relative group py-2'>
@@ -106,7 +106,7 @@ export const Header = () => {
               className='block py-3 px-6 hover:bg-primary-50 transition-colors text-gray-700 hover:text-primary-700 rounded-lg'
               onClick={() => setIsMenuOpen(false)}
             >
-              Inne
+              Pełna oferta
             </Link>
             <Link
               href={routes.realizacje}

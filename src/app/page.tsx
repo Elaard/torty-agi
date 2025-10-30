@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <div className='bg-cream'>
       {/* Hero Section */}
-      <section className='relative overflow-hidden py-16 md:py-24'>
+      <section className='relative overflow-hidden py-24 md:py-24'>
         {/* Subtle background texture */}
         <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] bg-[url('/images/hero-cake.svg')] bg-repeat"></div>
 

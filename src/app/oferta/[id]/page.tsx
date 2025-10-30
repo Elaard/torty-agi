@@ -97,7 +97,7 @@ export default async function RealizacjaDetailPage({ params }: { params: Promise
     <>
       <ProductSchema product={realizacja} categoryName={categoryName} />
       <BreadcrumbSchema items={breadcrumbItems} />
-      <div className="py-16 bg-beige">
+      <div className="py-24 bg-beige">
         <div className="container-custom">
         {/* Breadcrumbs */}
         <div className="mb-8">

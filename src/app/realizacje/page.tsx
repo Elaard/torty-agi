@@ -37,7 +37,7 @@ const mockImageUrl = 'https://wszystkiegoslodkiego.pl/storage/images/202330/cias
 
 export default function RealizacjePage() {
   return (
-    <div className="py-16 bg-cream min-h-screen">
+    <div className="py-24 bg-cream min-h-screen">
       <div className="container-custom">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-chocolate">
