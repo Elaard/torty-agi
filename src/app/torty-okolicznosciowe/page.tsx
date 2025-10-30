@@ -37,7 +37,6 @@ export const metadata: Metadata = {
 
 export default async function TortyOkolicznosciowePage({ searchParams }: { searchParams: Promise<{ kategoria?: string }> }) {
   const { allProducts, cakesVariants } = getPageConfig();
-  const variantIds = cakesVariants.map(v => v.id);
   const params = await searchParams;
   const filter = params.kategoria || 'all';
 
@@ -49,7 +48,7 @@ export default async function TortyOkolicznosciowePage({ searchParams }: { searc
     && product.images.length > 0 
     && (filter === 'all' || filter === product.variant)
   );
-  console.log(cakesOffer)
+
   return (
     <div className="py-16 bg-cream min-h-screen">
       <div className="container-custom">

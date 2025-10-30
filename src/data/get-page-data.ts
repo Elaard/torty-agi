@@ -36,18 +36,25 @@ export interface Category<T = string> {
 }
 
 export interface PageData {
+  // section Ulubione wypieki
+  // for elements on the main page
+  // IDs of promoted products
+  // defined in allProducts
   promoted: {
     promoted1: string;
     promoted2: string;
     promoted3: string;
     promoted4: string;
   };
+  // section Domowe wypieki od 2018
+  // for elements on the main page
+  // IDs of creations products
+  // defined in allProducts
   creations: {
     creation1: string;
     creation2: string;
     creation3: string;
   };
-  products: string[];
   allProducts: Product[];
   categories: Array<Category<ProductCategory>>;
   cakesVariants: Array<Category<CakeVariants>>;
@@ -65,7 +72,6 @@ const data: PageData = {
     'creation2': 'makaroniki',
     'creation3': 'babeczki'
   },
-  'products': ['tort-czekoladowy', 'makaroniki', 'babeczki', 'tort-weselny'],
   'allProducts': [
     {
       'id': 'tort-czekoladowy',
@@ -151,7 +157,7 @@ const data: PageData = {
     },
     {
       'id': CakeVariants.KOMUNIJNY_TORT,
-      'name': 'Komunijny'
+      'name': 'Komunijne'
     },
     {
       'id': CakeVariants.INNE_TORTY,
