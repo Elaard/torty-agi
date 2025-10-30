@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { LocalBusinessSchema } from '@/components/seo/local-business-schema';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
@@ -36,6 +37,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='pl' className='scroll-smooth'>
+      <head>
+        <LocalBusinessSchema />
+      </head>
       <body className='bg-white text-gray-900 font-sans'>
         <div className='flex flex-col min-h-screen'>
           <Header />

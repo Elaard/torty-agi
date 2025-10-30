@@ -1,8 +1,40 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { Metadata } from 'next';
 import { PlaceholderImage } from '../components/ui/placeholder-image';
 import { getPageConfig } from '@/data/get-page-data';
 import { routes } from '@/utils/routes';
+
+export const metadata: Metadata = {
+  title: 'Torty AGI | Artystyczna Cukiernia | Ręcznie Robione Torty i Ciasta',
+  description: 'Ręcznie robione torty, ciasta i słodkości przygotowane z pasją i najlepszych składników. Kremy na bazie śmietany, prawdziwe masło, jajka z wolnego wybiegu. Idealne na każdą okazję - urodziny, wesela, chrzty.',
+  keywords: 'torty na zamówienie, cukiernia artystyczna, torty urodzinowe, torty weselne, ciasta domowe, słodkości ręcznie robione, torty AGI, cukiernia, desery, makaroniki, babeczki',
+  openGraph: {
+    title: 'Torty AGI | Artystyczna Cukiernia | Ręcznie Robione Torty',
+    description: 'Każdy tort jest robiony z najwyższej jakości składników - kremy na bazie śmietany, prawdziwe masło, jajka z wolnego wybiegu. Wszystkie dekoracje robię własnoręcznie.',
+    type: 'website',
+    locale: 'pl_PL',
+    url: 'https://torty-agi.pl',
+    siteName: 'Torty AGI Cukiernia',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Torty AGI - Artystyczna Cukiernia',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Torty AGI | Artystyczna Cukiernia',
+    description: 'Ręcznie robione torty, ciasta i słodkości przygotowane z pasją i najlepszych składników.',
+    images: ['/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://torty-agi.pl',
+  },
+};
 
 export default function Home() {
   // Get page data

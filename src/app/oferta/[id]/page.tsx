@@ -1,12 +1,77 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getPageConfig } from '@/data/get-page-data';
 import { routes } from '@/utils/routes';
 import { ImageCarousel } from './image-carousel';
+import { ProductSchema } from '@/components/seo/product-schema';
+import { BreadcrumbSchema } from '@/components/seo/breadcrumb-schema';
 
+// Generate static params for all products (SSG)
+export async function generateStaticParams() {
+  const { allProducts } = getPageConfig();
 
-export default function RealizacjaDetailPage({ params }: any) {
-  const { id } = params;
+  return allProducts.map((product) => ({
+    id: product.id,
+  }));
+}
+
+// Generate metadata for each product page
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const { allProducts, categories } = getPageConfig();
+  const product = allProducts.find((p) => p.id === id);
+
+  if (!product) {
+    return {
+      title: 'Produkt nie znaleziony | Torty AGI',
+    };
+  }
+
+  const category = categories.find((c) => c.id === product.category);
+  const categoryName = category ? category.name : '';
+
+  return {
+    title: `${product.name} | ${categoryName} | Torty AGI`,
+    description: product.description || `${product.name} - ${categoryName}. Ręcznie robiony wypiek z najlepszych składników. Idealne na każdą okazję.`,
+    keywords: `${product.name}, ${categoryName}, torty na zamówienie, cukiernia, ${product.ingredients?.join(', ') || ''}`,
+    openGraph: {
+      title: `${product.name} | Torty AGI`,
+      description: product.description || `${product.name} - ${categoryName}. Ręcznie robiony wypiek z najlepszych składników.`,
+      type: 'website',
+      locale: 'pl_PL',
+      url: `https://torty-agi.pl/oferta/${id}`,
+      siteName: 'Torty AGI Cukiernia',
+      images: product.mainImage ? [
+        {
+          url: product.mainImage,
+          width: 1200,
+          height: 630,
+          alt: product.name,
+        },
+      ] : [
+        {
+          url: '/images/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: product.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.name} | Torty AGI`,
+      description: product.description || `${product.name} - ${categoryName}`,
+      images: product.mainImage ? [product.mainImage] : ['/images/og-image.jpg'],
+    },
+    alternates: {
+      canonical: `https://torty-agi.pl/oferta/${id}`,
+    },
+  };
+}
+
+export default async function RealizacjaDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const { allProducts, categories } = getPageConfig();
 
   // Find the realization by ID
@@ -19,10 +84,21 @@ export default function RealizacjaDetailPage({ params }: any) {
 
   // Get category name
   const category = categories.find((c) => c.id === realizacja.category);
+  const categoryName = category ? category.name : '';
+
+  // Breadcrumb data
+  const breadcrumbItems = [
+    { name: 'Strona główna', url: 'https://torty-agi.pl' },
+    { name: 'Oferta', url: 'https://torty-agi.pl/oferta' },
+    { name: realizacja.name, url: `https://torty-agi.pl/oferta/${id}` },
+  ];
 
   return (
-    <div className="py-16 bg-beige">
-      <div className="container-custom">
+    <>
+      <ProductSchema product={realizacja} categoryName={categoryName} />
+      <BreadcrumbSchema items={breadcrumbItems} />
+      <div className="py-16 bg-beige">
+        <div className="container-custom">
         {/* Breadcrumbs */}
         <div className="mb-8">
           <div className="flex items-center text-sm text-gray-600">
@@ -112,5 +188,6 @@ export default function RealizacjaDetailPage({ params }: any) {
         </div>
       </div>
     </div>
+    </>
   );
 }

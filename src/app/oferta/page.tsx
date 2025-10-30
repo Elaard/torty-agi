@@ -1,13 +1,44 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
 import { getPageConfig } from '../../data/get-page-data';
 import { routes } from '@/utils/routes';
 import RealizacjeClient from './realizacje-client';
 
+export const metadata: Metadata = {
+  title: 'Oferta | Torty AGI | Nasze Wypieki i Realizacje',
+  description: 'Pełna oferta naszych wypieków - torty urodzinowe, weselne, babeczki, makaroniki i inne słodkości. Zobacz galerie naszych realizacji i wybierz idealny wypiek na swoją okazję.',
+  keywords: 'oferta tortów, galeria tortów, realizacje cukiernicze, torty urodzinowe, torty weselne, babeczki, makaroniki, słodkości na zamówienie',
+  openGraph: {
+    title: 'Oferta | Torty AGI | Nasze Wypieki i Realizacje',
+    description: 'Zobacz pełną ofertę naszych wypieków. Każda realizacja to unikalne dzieło stworzone z pasją i dbałością o najdrobniejsze detale.',
+    type: 'website',
+    locale: 'pl_PL',
+    url: 'https://torty-agi.pl/oferta',
+    siteName: 'Torty AGI Cukiernia',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Oferta Torty AGI',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Oferta | Torty AGI',
+    description: 'Zobacz pełną ofertę naszych wypieków - torty, babeczki, makaroniki i więcej.',
+    images: ['/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://torty-agi.pl/oferta',
+  },
+};
 
-export default function RealizacjePage({ searchParams }: any) {
+export default async function RealizacjePage({ searchParams }: { searchParams: Promise<{ kategoria?: string }> }) {
   const { allProducts, categories } = getPageConfig();
-  
-  const categoryFilter = searchParams.kategoria || 'all';
+  const params = await searchParams;
+  const categoryFilter = params.kategoria || 'all';
   
   // Filter products to only include those that have images
   const oferta = allProducts.filter(

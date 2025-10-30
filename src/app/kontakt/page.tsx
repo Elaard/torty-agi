@@ -1,8 +1,35 @@
+import { Metadata } from 'next';
 import { contactDetails } from '@/utils/contact-details';
 
-export const metadata = {
-  title: 'Kontakt | Torty AGI Cukiernia',
-  description: 'Skontaktuj się z nami w sprawie zamówień, pytań lub opinii.',
+export const metadata: Metadata = {
+  title: 'Kontakt | Torty AGI | Zamów Torty i Ciasta',
+  description: 'Skontaktuj się z nami w sprawie zamówień tortów, ciast i słodkości. Oferujemy personalizowane zamówienia, dostawę i odbiór osobisty. Telefonicznie, mailowo lub przez media społecznościowe.',
+  keywords: 'kontakt, zamówienie tortu, cukiernia Torty AGI, zamówienia cukiernicze, dostawa tortów, odbiór osobisty',
+  openGraph: {
+    title: 'Kontakt | Torty AGI Cukiernia',
+    description: 'Skontaktuj się z nami w sprawie zamówień, pytań lub opinii. Oferujemy personalizowane zamówienia, dostawę i odbiór osobisty.',
+    type: 'website',
+    locale: 'pl_PL',
+    url: 'https://torty-agi.pl/kontakt',
+    siteName: 'Torty AGI Cukiernia',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Kontakt - Torty AGI',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Kontakt | Torty AGI',
+    description: 'Skontaktuj się z nami w sprawie zamówień tortów, ciast i słodkości.',
+    images: ['/images/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://torty-agi.pl/kontakt',
+  },
 };
 
 export default function Page() {
