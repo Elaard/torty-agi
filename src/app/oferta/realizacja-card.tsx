@@ -1,12 +1,12 @@
 'use client';
 import Image from 'next/image';
 import { PlaceholderImage } from '../../components/ui/placeholder-image';
-import { Product, ProductCategory } from '@/data/get-page-data';
+import { Product, Category } from '@/data/get-page-data';
 
 interface RealizacjaCardProps {
   onClick: (realizacja: Product) => void;
   realizacja: Product;
-  categories: ProductCategory[];
+  categories: Category[];
 }
 
 export const RealizacjaCard = ({ realizacja, categories, onClick }: RealizacjaCardProps) => {

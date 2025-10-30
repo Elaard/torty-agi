@@ -28,9 +28,7 @@ export const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 backdrop-blur-md ${
-        isScrolled ? 'bg-white/95 shadow-md py-3' : 'bg-cream/80 py-5'
-      }`}
+      className={`sticky top-0 z-50 transition-all duration-300 backdrop-blur-md ${isScrolled ? 'bg-white/95 shadow-md py-3' : 'bg-cream/80 py-5'}`}
     >
       <div className='container-custom'>
         <div className='flex items-center justify-between'>
@@ -49,8 +47,12 @@ export const Header = () => {
               <span>Strona główna</span>
               <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300'></span>
             </Link>
+             <Link href={routes.tortyOkolicznosciowe} className='font-medium text-gray-700 hover:text-primary-700 transition-colors relative group py-2'>
+              <span>Torty Okolicznościowe</span>
+              <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300'></span>
+            </Link>
             <Link href={routes.oferta} className='font-medium text-gray-700 hover:text-primary-700 transition-colors relative group py-2'>
-              <span>Oferta</span>
+              <span>Inne</span>
               <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300'></span>
             </Link>
             <Link href={routes.realizacje} className='font-medium text-gray-700 hover:text-primary-700 transition-colors relative group py-2'>
@@ -93,11 +95,18 @@ export const Header = () => {
               Strona główna
             </Link>
             <Link
+              href={routes.tortyOkolicznosciowe}
+              className='block py-3 px-6 hover:bg-primary-50 transition-colors text-gray-700 hover:text-primary-700 rounded-lg'
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Torty okolicznościowe
+            </Link>
+            <Link
               href={routes.oferta}
               className='block py-3 px-6 hover:bg-primary-50 transition-colors text-gray-700 hover:text-primary-700 rounded-lg'
               onClick={() => setIsMenuOpen(false)}
             >
-              Oferta
+              Inne
             </Link>
             <Link
               href={routes.realizacje}

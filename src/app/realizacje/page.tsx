@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import { PlaceholderImage } from '@/components/ui/placeholder-image';
 
 export const metadata: Metadata = {
   title: 'Realizacje | Torty AGI | Galeria Wypieków',
@@ -41,7 +40,6 @@ export default function RealizacjePage() {
     <div className="py-16 bg-cream min-h-screen">
       <div className="container-custom">
         <div className="text-center mb-12">
-          <span className="badge badge-primary mb-4 inline-block">Portfolio</span>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-chocolate">
             Realizacje
           </h1>

@@ -1,16 +1,16 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { Product, ProductCategory } from '@/data/get-page-data';
+import { Product, Category } from '@/data/get-page-data';
 import { ImageCarousel } from './image-carousel';
 
 interface RealizacjaModalProps {
   realizacja: Product | null;
-  categories: ProductCategory[];
+  categories: Category[];
   isOpen: boolean;
   onClose: () => void;
 }
 
-export const RealizacjaModal = ({ realizacja, categories, isOpen, onClose }: RealizacjaModalProps) => {
+export const RealizacjaModal = ({ realizacja, isOpen, onClose }: RealizacjaModalProps) => {
   const [mounted, setMounted] = useState(false);
 
   // Handle escape key press to close modal

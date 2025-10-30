@@ -1,12 +1,12 @@
 'use client';
 import { useState } from 'react';
-import { Product, ProductCategory } from '@/data/get-page-data';
+import { Product, Category } from '@/data/get-page-data';
 import { RealizacjaCard } from './realizacja-card';
 import { RealizacjaModal } from './realizacja-modal';
 
 interface RealizacjeClientProps {
   oferta: Product[];
-  categories: ProductCategory[];
+  categories: Category[];
 }
 
 export default function RealizacjeClient({ oferta, categories }: RealizacjeClientProps) {
