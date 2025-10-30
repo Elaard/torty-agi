@@ -19,15 +19,11 @@ export interface Product {
   name: string;
   category: ProductCategory;
   variant?: CakeVariants;
+  flavours?: string[];
   price: number;
   mainImage: string;
   images: string[];
   description: string;
-  featured?: boolean;
-  bestseller?: boolean;
-  new?: boolean;
-  size?: string;
-  nutritionalInfo?: string;
 }
 
 export interface Category<T = string> {
@@ -74,17 +70,15 @@ const data: PageData = {
   },
   'allProducts': [
     {
-      'id': 'tort-czekoladowy',
+      'id': 'Tort weselny',
       'name': 'Tort czekoladowy',
       'category': ProductCategory.CAKES,
       'variant': CakeVariants.KOBIECE_TORTY,
+      'flavours': ['Czekoladowy', 'Waniliowy'],
       'price': 150,
       'mainImage': '/images/chocolate-cake.jpg',
       'images': ['/images/chocolate-cake.jpg'],
       'description': 'Pyszny tort czekoladowy z bogatymi warstwami czekoladowymi i aksamitnym ganache.',
-      'featured': true,
-      'bestseller': true,
-      'size': '20cm'
     },
     {
       'id': 'makaroniki',
@@ -94,8 +88,6 @@ const data: PageData = {
       'mainImage': '/images/chocolate-cake.jpg',
       'images': ['/images/chocolate-cake.jpg'],
       'description': 'Delikatne ciasteczka migdałowe w różnych smakach i kolorach.',
-      'featured': true,
-      'new': true
     },
     {
       'id': 'babeczki',
@@ -105,7 +97,6 @@ const data: PageData = {
       'mainImage': '/images/chocolate-cake.jpg',
       'images': ['/images/chocolate-cake.jpg'],
       'description': 'Soczyste babeczki dekorowane ręcznie robionym kremem maślanym.',
-      'bestseller': true
     },
     {
       'id': 'tort-weselny',
@@ -116,8 +107,6 @@ const data: PageData = {
       'mainImage': '/images/chocolate-cake.jpg',
       'images': ['/images/chocolate-cake.jpg'],
       'description': 'Elegancki tort weselny, idealny na Twój wielki dzień.',
-      'featured': true,
-      'size': '3 piętra'
     }
   ],
   'categories': [

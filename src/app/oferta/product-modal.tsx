@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react';
 import { Product, Category } from '@/data/get-page-data';
 import { ImageCarousel } from './image-carousel';
 
-interface RealizacjaModalProps {
-  realizacja: Product | null;
+interface ProductModalProps {
+  product: Product | null;
   categories: Category[];
   isOpen: boolean;
   onClose: () => void;
 }
 
-export const RealizacjaModal = ({ realizacja, isOpen, onClose }: RealizacjaModalProps) => {
+export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
   const [mounted, setMounted] = useState(false);
 
   // Handle escape key press to close modal
@@ -39,7 +39,7 @@ export const RealizacjaModal = ({ realizacja, isOpen, onClose }: RealizacjaModal
   // Don't render anything on the server
   if (!mounted) return null;
 
-  if (!isOpen || !realizacja) return null;
+  if (!isOpen || !product) return null;
 
   return (
     <div
@@ -65,14 +65,14 @@ export const RealizacjaModal = ({ realizacja, isOpen, onClose }: RealizacjaModal
         <div className="p-6">
           {/* Header with category badge */}
           <div className="mb-6">
-            <h2 className="text-3xl font-bold mb-4">{realizacja.name}</h2>
-            <p className="text-lg text-gray-700">{realizacja.description}</p>
+            <h2 className="text-3xl font-bold mb-4">{product.name}</h2>
+            <p className="text-lg text-gray-700">{product.description}</p>
           </div>
 
           {/* Image Carousel */}
           <ImageCarousel
-            images={realizacja.images && realizacja.images.length > 0 ? realizacja.images : realizacja.mainImage ? [realizacja.mainImage] : []}
-            alt={realizacja.name}
+            images={product.images && product.images.length > 0 ? product.images : product.mainImage ? [product.mainImage] : []}
+            alt={product.name}
           />
         </div>
       </div>

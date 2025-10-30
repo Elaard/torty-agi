@@ -3,35 +3,35 @@ import Image from 'next/image';
 import { PlaceholderImage } from '../../components/ui/placeholder-image';
 import { Product, Category } from '@/data/get-page-data';
 
-interface RealizacjaCardProps {
-  onClick: (realizacja: Product) => void;
-  realizacja: Product;
+interface ProductCardProps {
+  onClick: (product: Product) => void;
+  product: Product;
   categories: Category[];
 }
 
-export const RealizacjaCard = ({ realizacja, categories, onClick }: RealizacjaCardProps) => {
+export const ProductCard = ({ product, categories, onClick }: ProductCardProps) => {
   // Get the category name
-  const categoryName = categories.find((c) => c.id === realizacja.category)?.name || '';
+  const categoryName = categories.find((c) => c.id === product.category)?.name || '';
   
   return (
     <div
       className='block group cursor-pointer'
-      onClick={() => onClick(realizacja)}
+      onClick={() => onClick(product)}
     >
       <article className="relative flex flex-col overflow-hidden h-full rounded-2xl bg-white transition-all duration-300 hover:shadow-xl border border-gray-100">
         {/* Main Image - Larger and more prominent */}
         <div className='relative aspect-[4/3] overflow-hidden rounded-t-2xl'>
-          {realizacja.mainImage ? (
+          {product.mainImage ? (
             <Image
-              src={realizacja.mainImage}
-              alt={realizacja.name}
+              src={product.mainImage}
+              alt={product.name}
               width={500}
               height={500}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           ) : (
             <PlaceholderImage 
-              text={realizacja.name} 
+              text={product.name} 
               className='transition-transform duration-500 group-hover:scale-105' 
             />
           )}
@@ -44,17 +44,22 @@ export const RealizacjaCard = ({ realizacja, categories, onClick }: RealizacjaCa
           </div>
 
           {/* Multiple Images Badge */}
-          {realizacja.images && realizacja.images.length > 1 && (
+          {product.images && product.images.length > 1 && (
             <div className='absolute bottom-3 right-3 bg-white bg-opacity-80 text-gray-800 text-xs font-bold px-3 py-1 rounded-full shadow-sm'>
-              {realizacja.images.length} zdjęć
+              {product.images.length} zdjęć
             </div>
           )}
         </div>
 
         {/* Realizacja Info */}
         <div className='p-6 flex-grow flex flex-col'>
-          <h3 className='font-serif text-2xl font-semibold mb-3 group-hover:text-primary-600 transition-colors'>{realizacja.name}</h3>
-          <p className='text-gray-600 mb-5 line-clamp-3 flex-grow text-lg'>{realizacja.description}</p>
+          <h3 className='font-serif text-2xl font-semibold mb-3 group-hover:text-primary-600 transition-colors'>{product.name}</h3>
+          <p className='text-gray-600 mb-5 line-clamp-3 flex-grow text-lg'>{product.description}</p>
+          {
+            product?.flavours && product?.flavours?.length > 0 ? (
+              <p className='text-gray-600 font-semibold mb-5 line-clamp-3 flex-grow text-lg'>Smaki: {product.flavours?.join(', ')}</p>
+            ) : null
+          }
           <div className='flex justify-between items-center mt-auto pt-4 border-t border-gray-100'>
             <span className='text-primary-600 font-medium group-hover:text-primary-800 transition-colors flex items-center gap-2 text-lg'>
               Zobacz galerię

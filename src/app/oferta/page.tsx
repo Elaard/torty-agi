@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { getPageConfig } from '../../data/get-page-data';
 import { routes } from '@/utils/routes';
-import RealizacjeClient from './realizacje-client';
+import ProductClient from './product-client';
 
 export const metadata: Metadata = {
   title: 'Oferta | Torty AGI | Nasze Wypieki',
@@ -81,7 +81,7 @@ export default async function RealizacjePage({ searchParams }: { searchParams: P
           </div>
 
           {/* Client component for gallery and modal */}
-          <RealizacjeClient oferta={oferta} categories={categories} />
+          <ProductClient offer={oferta} categories={categories} />
 
           {oferta.length === 0 && (
             <div className="text-center py-16 bg-white rounded-2xl shadow-md border border-primary-200">
