@@ -111,13 +111,6 @@ export const Header = () => {
             >
               Realizacje
             </Link>
-            <Link
-              href={routes.contact}
-              className='block py-3 px-6 hover:bg-primary-50 transition-colors text-gray-700 hover:text-primary-700 rounded-lg'
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Kontakt
-            </Link>
             <div className='px-6 pt-2 pb-3'>
               <Link href={routes.contact} className='block w-full btn btn-primary text-center' onClick={() => setIsMenuOpen(false)}>
                 Zamów
