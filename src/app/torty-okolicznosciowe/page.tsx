@@ -64,7 +64,7 @@ export default async function TortyOkolicznosciowePage({ searchParams }: { searc
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             <Link
               href={routes.tortyOkolicznosciowe}
-              className={`px-5 py-2 rounded-full transition-all duration-300 font-medium ${
+              className={`px-5 py-2 rounded-full font-medium ${
                 filter === 'all' ? 'bg-primary-600 text-white shadow-md' : 'bg-white hover:bg-primary-50 text-gray-700 shadow-sm border border-primary-200'
               }`}
             >
@@ -75,7 +75,7 @@ export default async function TortyOkolicznosciowePage({ searchParams }: { searc
               <Link
                 key={cakeVariant.id}
                 href={`${routes.tortyOkolicznosciowe}?kategoria=${cakeVariant.id}`}
-                className={`px-5 py-2 rounded-full transition-all duration-300 capitalize font-medium ${
+                className={`px-5 py-2 rounded-full capitalize font-medium ${
                   filter === cakeVariant.id ? 'bg-primary-600 text-white shadow-md' : 'bg-white hover:bg-primary-50 text-gray-700 shadow-sm border border-primary-200'
                 }`}
               >

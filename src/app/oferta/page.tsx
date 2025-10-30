@@ -60,7 +60,7 @@ export default async function RealizacjePage({ searchParams }: { searchParams: P
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             <Link
               href={routes.oferta}
-              className={`px-5 py-2 rounded-full transition-all duration-300 font-medium ${
+              className={`px-5 py-2 rounded-full font-medium ${
                 categoryFilter === 'all' ? 'bg-primary-600 text-white shadow-md' : 'bg-white hover:bg-primary-50 text-gray-700 shadow-sm border border-primary-200'
               }`}
             >
@@ -71,7 +71,7 @@ export default async function RealizacjePage({ searchParams }: { searchParams: P
               <Link
                 key={category.id}
                 href={`/oferta?kategoria=${category.id}`}
-                className={`px-5 py-2 rounded-full transition-all duration-300 capitalize font-medium ${
+                className={`px-5 py-2 rounded-full capitalize font-medium ${
                   categoryFilter === category.id ? 'bg-primary-600 text-white shadow-md' : 'bg-white hover:bg-primary-50 text-gray-700 shadow-sm border border-primary-200'
                 }`}
               >
