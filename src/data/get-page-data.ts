@@ -70,14 +70,14 @@ const data: PageData = {
   },
   'allProducts': [
     {
-      'id': 'Tort weselny',
+      'id': 'tort-czekoladowy',
       'name': 'Tort czekoladowy',
       'category': ProductCategory.CAKES,
       'variant': CakeVariants.KOBIECE_TORTY,
       'flavours': ['Czekoladowy', 'Waniliowy'],
       'price': 150,
       'mainImage': '/images/chocolate-cake.jpg',
-      'images': ['/images/chocolate-cake.jpg'],
+      'images': ['/images/chocolate-cake.jpg', '/images/chocolate-cake.jpg', '/images/chocolate-cake.jpg'],
       'description': 'Pyszny tort czekoladowy z bogatymi warstwami czekoladowymi i aksamitnym ganache.',
     },
     {

@@ -28,7 +28,7 @@ export const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 backdrop-blur-md ${isScrolled ? 'bg-white/95 shadow-md py-3' : 'bg-cream/80 py-5'}`}
+      className={`sticky top-0 z-50 transition-all duration-300 backdrop-blur-md ${isScrolled ? 'bg-white/95 shadow-md py-3' : 'bg-white py-5'}`}
     >
       <div className='container-custom'>
         <div className='flex items-center justify-between'>
