@@ -1,0 +1,136 @@
+{
+  "promoted": {
+    "promoted1": "tort-czekoladowy",
+    "promoted2": "makaroniki",
+    "promoted3": "babeczki",
+    "promoted4": "tort-weselny"
+  },
+  "creations": {
+    "creation1": "tort-czekoladowy",
+    "creation2": "makaroniki",
+    "creation3": "babeczki"
+  },
+  "products": [
+    "tort-czekoladowy",
+    "makaroniki",
+    "babeczki",
+    "tort-weselny"
+  ],
+  "allProducts": [
+    {
+      "id": "tort-czekoladowy",
+      "name": "Tort czekoladowy",
+      "category": "cakes",
+      "price": 150,
+      "mainImage": "/images/placeholder-cake.jpg",
+      "images": [
+        "/images/placeholder-cake.jpg"
+      ],
+      "description": "Pyszny tort czekoladowy z bogatymi warstwami czekoladowymi i aksamitnym ganache.",
+      "featured": true,
+      "bestseller": true,
+      "size": "20cm",
+      "ingredients": [
+        "mąka",
+        "kakao",
+        "cukier",
+        "jajka",
+        "masło"
+      ],
+      "allergens": [
+        "gluten",
+        "jajka",
+        "mleko"
+      ]
+    },
+    {
+      "id": "makaroniki",
+      "name": "Makaroniki",
+      "category": "desserts",
+      "price": 80,
+      "mainImage": "/images/placeholder-macarons.jpg",
+      "images": [
+        "/images/placeholder-macarons.jpg"
+      ],
+      "description": "Delikatne ciasteczka migdałowe w różnych smakach i kolorach.",
+      "featured": true,
+      "new": true,
+      "ingredients": [
+        "migdały",
+        "cukier puder",
+        "białka jajek"
+      ],
+      "allergens": [
+        "orzechy",
+        "jajka"
+      ]
+    },
+    {
+      "id": "babeczki",
+      "name": "Babeczki",
+      "category": "cupcakes",
+      "price": 60,
+      "mainImage": "/images/placeholder-cupcakes.jpg",
+      "images": [
+        "/images/placeholder-cupcakes.jpg"
+      ],
+      "description": "Soczyste babeczki dekorowane ręcznie robionym kremem maślanym.",
+      "bestseller": true,
+      "ingredients": [
+        "mąka",
+        "cukier",
+        "jajka",
+        "masło",
+        "wanilia"
+      ],
+      "allergens": [
+        "gluten",
+        "jajka",
+        "mleko"
+      ]
+    },
+    {
+      "id": "tort-weselny",
+      "name": "Tort weselny",
+      "category": "cakes",
+      "price": 500,
+      "mainImage": "/images/placeholder-wedding-cake.jpg",
+      "images": [
+        "/images/placeholder-wedding-cake.jpg"
+      ],
+      "description": "Elegancki tort weselny, idealny na Twój wielki dzień.",
+      "featured": true,
+      "size": "3 piętra",
+      "ingredients": [
+        "mąka",
+        "cukier",
+        "jajka",
+        "masło",
+        "owoce"
+      ],
+      "allergens": [
+        "gluten",
+        "jajka",
+        "mleko"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "cakes",
+      "name": "Torty"
+    },
+    {
+      "id": "cupcakes",
+      "name": "Babeczki"
+    },
+    {
+      "id": "desserts",
+      "name": "Desery"
+    },
+    {
+      "id": "cookies",
+      "name": "Ciastka"
+    }
+  ]
+}

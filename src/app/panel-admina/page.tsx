@@ -1,8 +1,8 @@
 import { getPageConfig } from '@/data/get-page-data';
 import { AdminPanel } from './admin-panel';
 
-const Page = async () => {
-  const pageData = await getPageConfig('fetching from admin page');
+const Page = () => {
+  const pageData = getPageConfig();
 
   return <AdminPanel initialData={pageData} />;
 };

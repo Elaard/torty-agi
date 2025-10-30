@@ -12,10 +12,7 @@ interface ImageUploaderProps {
 }
 
 export const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>(({ onImageUploaded, onFileSelected }, ref) => {
-  const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
-  const [uploadProgress, setUploadProgress] = useState(0);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,41 +42,6 @@ export const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>
     });
   };
 
-  const uploadFile = async (file: File) => {
-    setIsUploading(true);
-    setUploadError(null);
-    setUploadProgress(0);
-
-    try {
-      const formData = new FormData();
-      formData.append('file', file);
-
-      const response = await fetch('/api/admin/upload-image', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Błąd podczas przesyłania pliku');
-      }
-
-      const data = await response.json();
-
-      if (data.success && data.imageUrl) {
-        onImageUploaded(data.imageUrl);
-        setUploadProgress(100);
-      } else {
-        throw new Error('Nie udało się uzyskać adresu URL obrazu');
-      }
-    } catch (error) {
-      console.error('Error uploading image:', error);
-      setUploadError(error instanceof Error ? error.message : 'Nieznany błąd podczas przesyłania');
-    } finally {
-      setIsUploading(false);
-    }
-  };
-
   const triggerFileInput = () => {
     fileInputRef.current?.click();
   };
@@ -87,9 +49,6 @@ export const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>
   // Expose the uploadSelectedFile method to the parent component
   useImperativeHandle(ref, () => ({
     uploadSelectedFile: async () => {
-      if (selectedFile) {
-        await uploadFile(selectedFile);
-      }
       return null;
     },
   }));
@@ -115,15 +74,6 @@ export const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>
 
         <input type='file' ref={fileInputRef} onChange={handleFileChange} accept='image/*' className='hidden' />
       </div>
-
-      {isUploading && (
-        <div className='mt-2'>
-          <div className='w-full bg-gray-200 rounded-full h-2.5'>
-            <div className='bg-blue-600 h-2.5 rounded-full transition-all duration-300' style={{ width: `${uploadProgress}%` }}></div>
-          </div>
-          <p className='text-sm text-gray-500 mt-1'>Przesyłanie...</p>
-        </div>
-      )}
 
       {uploadError && <p className='text-sm text-red-500 mt-1'>{uploadError}</p>}
     </div>

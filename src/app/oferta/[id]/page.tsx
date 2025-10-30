@@ -5,9 +5,9 @@ import { routes } from '@/utils/routes';
 import { ImageCarousel } from './image-carousel';
 
 
-export default async function RealizacjaDetailPage({ params }: any) {
+export default function RealizacjaDetailPage({ params }: any) {
   const { id } = params;
-  const { allProducts, categories } = await getPageConfig('fetching from realizacja detail page');
+  const { allProducts, categories } = getPageConfig();
 
   // Find the realization by ID
   const realizacja = allProducts.find((p) => p.id === id);

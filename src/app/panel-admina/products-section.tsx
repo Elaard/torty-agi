@@ -184,16 +184,8 @@ export const ProductsSection = ({ products, categories, updateProducts }: Produc
   };
 
   // Handle image upload (for direct URL input or after successful upload)
-  const handleImageUploaded = (imageUrl: string): any => {
-    if (!editingProduct) return;
-
-    // Add to images array
-    const updatedImages = [...(editingProduct.images || [])];
-
-    return {
-      mainImage: editingProduct.mainImage || imageUrl,
-      images: updatedImages,
-    };
+  const handleImageUploaded = () => {
+    // Function kept for potential future use
   };
 
   // Usunięto console.log

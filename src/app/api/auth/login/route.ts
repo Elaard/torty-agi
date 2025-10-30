@@ -1,20 +1,38 @@
 import { NextResponse } from 'next/server';
-import { AWSError } from 'aws-sdk';
-import { login } from '@/data/cognito-auth';
+
+// Simple authentication - in production, use proper authentication
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 
 export async function POST(req: Request) {
-  const { username, password } = await req.json();
-
   try {
-    const token = await login(username, password);
+    const { username, password } = await req.json();
 
-    const response = NextResponse.json({ status: 200 });
+    // Verify credentials
+    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+      // Create a simple token (in production, use JWT or similar)
+      const token = Buffer.from(`${username}:${Date.now()}`).toString('base64');
 
-    response.headers.append('Set-Cookie', `auth=${token}; HttpOnly; Path=/; Max-Age=3600`);
+      const response = NextResponse.json({ status: 200, success: true });
 
-    return response;
+      // Set cookie with token
+      response.headers.append(
+        'Set-Cookie',
+        `auth=${token}; HttpOnly; Path=/; Max-Age=3600; SameSite=Strict`
+      );
+
+      return response;
+    }
+
+    return NextResponse.json(
+      { error: 'Niepoprawne dane logowania' },
+      { status: 401 }
+    );
   } catch (error) {
-    const e = error as AWSError;
-    return NextResponse.json('Niepoprawne dane logowania', { status: e.statusCode });
+    console.error('Login error:', error);
+    return NextResponse.json(
+      { error: 'Błąd logowania' },
+      { status: 500 }
+    );
   }
 }

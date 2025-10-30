@@ -4,8 +4,8 @@ import { routes } from '@/utils/routes';
 import RealizacjeClient from './realizacje-client';
 
 
-export default async function RealizacjePage({ searchParams }: any) {
-  const { allProducts, categories } = await getPageConfig('fetching from oferta page');
+export default function RealizacjePage({ searchParams }: any) {
+  const { allProducts, categories } = getPageConfig();
   
   const categoryFilter = searchParams.kategoria || 'all';
   

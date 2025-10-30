@@ -4,9 +4,9 @@ import { PlaceholderImage } from '../components/ui/placeholder-image';
 import { getPageConfig } from '@/data/get-page-data';
 import { routes } from '@/utils/routes';
 
-export default async function Home() {
-  // Fetch page data
-  const pageData = await getPageConfig('fetching from home page');
+export default function Home() {
+  // Get page data
+  const pageData = getPageConfig();
 
   // Get promoted products as individual variables
   const promoted1 = pageData.promoted.promoted1 ? pageData.allProducts.find((p) => p.id === pageData.promoted.promoted1) || null : null;

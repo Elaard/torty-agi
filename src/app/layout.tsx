@@ -6,6 +6,7 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: 'Torty AGI | Artystyczna Cukiernia',
   description: 'Ręcznie robione torty, ciasta i słodkości przygotowane z pasją i najlepszych składników. Idealne na każdą okazję.',
   keywords: 'cukiernia, torty, ciasta, słodkości, domowe wypieki, artystyczne wypieki, desery',
