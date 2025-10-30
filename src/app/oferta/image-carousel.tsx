@@ -39,13 +39,14 @@ export const ImageCarousel = ({ images, alt }: ImageCarouselProps) => {
   return (
     <div className="relative mb-12 group">
       {/* Main carousel container */}
-      <div className="rounded-3xl overflow-hidden shadow-2xl relative">
+      <div className="rounded-3xl overflow-hidden shadow-2xl relative flex items-center justify-center bg-gray-100" style={{ maxHeight: '60vh' }}>
         <Image
           src={images[currentIndex]}
           alt={`${alt} - zdjęcie ${currentIndex + 1}`}
           width={1200}
           height={800}
-          className="w-full h-auto object-cover"
+          className="w-full h-full object-contain"
+          style={{ maxHeight: '60vh' }}
           priority
         />
 
