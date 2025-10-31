@@ -1,29 +1,29 @@
 enum CakeVariants {
-  DZIECIECE_TORTY = 'dzieciece-torty',
-  KOBIECE_TORTY = 'kobiece-torty',
-  MESKIE_TORTY = 'meskie-torty',
-  NA_CHRZEST = 'na-chrzest',
-  KOMUNIJNY_TORT = 'komunijny-tort',
-  INNE_TORTY = 'inne-torty',
+  CHRZEST = 'torty-na-chrzest',
+  KOMUNIA = 'torty-na-komunie',
+  DZIECIECE = 'torty-dla-dzieci',
+  KOBIETA = 'torty-dla-kobiety',
+  MEZCZYZNA = 'torty-dla-mezczyzny',
+  INNE = 'torty-okolicznosciowe-na-kazda-okazje',
 }
 
 enum ProductCategory {
   CAKES = 'cakes',
   CUPCAKES = 'cupcakes',
-  DESSERTS = 'desserts',
-  COOKIES = 'cookies',
+  MACAROONS = 'macaroons',
+  OTHER = 'other',
 }
 
 export interface Product {
   id: string;
   name: string;
+  description?: string;
   category: ProductCategory;
   variant?: CakeVariants;
-  flavours?: string[];
-  price: number;
+  // flavours?: string[];
+  // price: number;
   mainImage: string;
   images: string[];
-  description: string;
 }
 
 export interface Category<T = string> {
@@ -57,104 +57,493 @@ export interface PageData {
 }
 
 const data: PageData = {
-  'promoted': {
-    'promoted1': 'tort-czekoladowy',
-    'promoted2': 'makaroniki',
-    'promoted3': 'babeczki',
-    'promoted4': 'tort-weselny'
+  promoted: {
+    promoted1: '1',
+    promoted2: '2',
+    promoted3: '3',
+    promoted4: '4',
   },
-  'creations': {
-    'creation1': 'tort-czekoladowy',
-    'creation2': 'makaroniki',
-    'creation3': 'babeczki'
+  creations: {
+    creation1: '5',
+    creation2: '6',
+    creation3: '7',
   },
-  'allProducts': [
+  allProducts: [
     {
-      'id': 'tort-czekoladowy',
-      'name': 'Tort czekoladowy',
-      'category': ProductCategory.CAKES,
-      'variant': CakeVariants.KOBIECE_TORTY,
-      'flavours': ['Czekoladowy', 'Waniliowy'],
-      'price': 150,
-      'mainImage': '/images/chocolate-cake.jpg',
-      'images': ['/images/chocolate-cake.jpg', '/images/chocolate-cake.jpg', '/images/chocolate-cake.jpg'],
-      'description': 'Pyszny tort czekoladowy z bogatymi warstwami czekoladowymi i aksamitnym ganache.',
+      id: '1',
+      name: 'Biały tort na chrzest z niebieskimi dekoracjami',
+      description: 'Delikatny tort chrzcielny z pastelowymi zdobieniami',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.CHRZEST,
+      mainImage: '/images/chrzest/chrzest_zdj_1.jpg',
+      images: ['/images/chrzest/chrzest_zdj_1.jpg'],
     },
     {
-      'id': 'makaroniki',
-      'name': 'Makaroniki',
-      'category': ProductCategory.COOKIES,
-      'price': 80,
-      'mainImage': '/images/chocolate-cake.jpg',
-      'images': ['/images/chocolate-cake.jpg'],
-      'description': 'Delikatne ciasteczka migdałowe w różnych smakach i kolorach.',
+      id: '2',
+      name: 'Kolorowy tort urodzinowy dla dziewczynki',
+      description: 'Jasny tort dziecięcy z wesołą dekoracją',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.DZIECIECE,
+      mainImage: '/images/dzieciece/dzieciece_zdj_3.jpg',
+      images: ['/images/dzieciece/dzieciece_zdj_3.jpg'],
     },
     {
-      'id': 'babeczki',
-      'name': 'Babeczki',
-      'category': ProductCategory.CUPCAKES,
-      'price': 60,
-      'mainImage': '/images/chocolate-cake.jpg',
-      'images': ['/images/chocolate-cake.jpg'],
-      'description': 'Soczyste babeczki dekorowane ręcznie robionym kremem maślanym.',
+      id: '3',
+      name: 'Tort komunijny z białym kremem i hostią',
+      description: 'Tradycyjny tort na Pierwszą Komunię Świętą',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.KOMUNIA,
+      mainImage: '/images/komunia/komunia_zdj_5.jpg',
+      images: ['/images/komunia/komunia_zdj_5.jpg'],
     },
     {
-      'id': 'tort-weselny',
-      'name': 'Tort weselny',
-      'category': ProductCategory.CAKES,
-      'variant': CakeVariants.INNE_TORTY,
-      'price': 500,
-      'mainImage': '/images/chocolate-cake.jpg',
-      'images': ['/images/chocolate-cake.jpg'],
-      'description': 'Elegancki tort weselny, idealny na Twój wielki dzień.',
-    }
+      id: '4',
+      name: 'Elegancki tort dla kobiety z kwiatami',
+      description: 'Romantyczny tort urodzinowy w pastelowych kolorach',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.KOBIETA,
+      mainImage: '/images/kobieta/kobieta_zdj_5.jpg',
+      images: ['/images/kobieta/kobieta_zdj_5.jpg'],
+    },
+    {
+      id: '5',
+      name: 'Tort okolicznościowy z owocami',
+      description: 'Uniwersalny tort na każdą uroczystość',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.INNE,
+      mainImage: '/images/inne/inne_zdj_5.jpg',
+      images: ['/images/inne/inne_zdj_5.jpg'],
+    },
+    {
+      id: '6',
+      name: 'Babeczki czekoladowe z kolorowym kremem',
+      description: 'Pyszne muffiny z bogatą dekoracją',
+      category: ProductCategory.CUPCAKES,
+      mainImage: '/images/inne/inne_zdj_7.jpg',
+      images: ['/images/inne/inne_zdj_7.jpg'],
+    },
+    {
+      id: '7',
+      name: 'Babeczki waniliowe ze śmietankowym kremem',
+      description: 'Delikatne cupcakes z masłem i owocami',
+      category: ProductCategory.CUPCAKES,
+      mainImage: '/images/inne/inne_zdj_8.jpg',
+      images: ['/images/inne/inne_zdj_8.jpg'],
+    },
+    {
+      id: '9',
+      name: 'Tort chrzcielny z różową kokardą',
+      description: 'Uroczy tort na chrzest dla dziewczynki',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.CHRZEST,
+      mainImage: '/images/chrzest/chrzest_zdj_2.jpg',
+      images: ['/images/chrzest/chrzest_zdj_2.jpg'],
+    },
+    {
+      id: '10',
+      name: 'Dwupiętrowy tort na chrzest święty',
+      description: 'Klasyczny biały tort z aniołkami',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.CHRZEST,
+      mainImage: '/images/chrzest/chrzest_zdj_3.jpg',
+      images: ['/images/chrzest/chrzest_zdj_3.jpg'],
+    },
+    {
+      id: '11',
+      name: 'Kremowy tort chrzcielny z krzyżykiem',
+      description: 'Subtelny tort z religijnymi motywami',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.CHRZEST,
+      mainImage: '/images/chrzest/chrzest_zdj_4.jpg',
+      images: ['/images/chrzest/chrzest_zdj_4.jpg'],
+    },
+    // Dziecięce
+    {
+      id: '12',
+      name: 'Tort dla dzieci z bajkowymi postaciami',
+      description: 'Kolorowy tort urodzinowy z cukrowymi figurkami',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.DZIECIECE,
+      mainImage: '/images/dzieciece/dzieciece_zdj_1.jpg',
+      images: ['/images/dzieciece/dzieciece_zdj_1.jpg'],
+    },
+    {
+      id: '13',
+      name: 'Tęczowy tort dziecięcy z posypką',
+      description: 'Radosny tort na urodziny dla najmłodszych',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.DZIECIECE,
+      mainImage: '/images/dzieciece/dzieciece_zdj_2.jpg',
+      images: ['/images/dzieciece/dzieciece_zdj_2.jpg'],
+    },
+    {
+      id: '14',
+      name: 'Tort urodzinowy dla chłopca z samochodami',
+      description: 'Chłopięcy tort z niebieskimi akcentami',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.DZIECIECE,
+      mainImage: '/images/dzieciece/dzieciece_zdj_3.jpg',
+      images: ['/images/dzieciece/dzieciece_zdj_3.jpg'],
+    },
+    {
+      id: '15',
+      name: 'Różowy tort dla dziewczynki z kwiatkami',
+      description: 'Słodki tort z motylkami i cukrowymi kwiatami',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.DZIECIECE,
+      mainImage: '/images/dzieciece/dzieciece_zdj_4.jpg',
+      images: ['/images/dzieciece/dzieciece_zdj_4.jpg'],
+    },
+    // Inne
+    {
+      id: '16',
+      name: 'Tort weselny z białymi różami',
+      description: 'Elegancki tort na ślub lub rocznicę',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.INNE,
+      mainImage: '/images/inne/inne_zdj_1.jpg',
+      images: ['/images/inne/inne_zdj_1.jpg'],
+    },
+    {
+      id: '17',
+      name: 'Tort jubileuszowy z złotymi dekoracjami',
+      description: 'Wytworny tort na okrągłe urodziny',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.INNE,
+      mainImage: '/images/inne/inne_zdj_2.jpg',
+      images: ['/images/inne/inne_zdj_2.jpg'],
+    },
+    {
+      id: '18',
+      name: 'Klasyczny tort z owocami sezonowymi',
+      description: 'Tort na przyjęcie ze świeżymi owocami',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.INNE,
+      mainImage: '/images/inne/inne_zdj_3.jpg',
+      images: ['/images/inne/inne_zdj_3.jpg'],
+    },
+    {
+      id: '19',
+      name: 'Nowoczesny tort z geometrycznym wzorem',
+      description: 'Minimalistyczny tort na specjalne okazje',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.INNE,
+      mainImage: '/images/inne/inne_zdj_4.jpg',
+      images: ['/images/inne/inne_zdj_4.jpg'],
+    },
+    {
+      id: '20',
+      name: 'Tort rocznicowy z perłami cukrowymi',
+      description: 'Subtelny tort na rocznicę ślubu',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.INNE,
+      mainImage: '/images/inne/inne_zdj_5.jpg',
+      images: ['/images/inne/inne_zdj_5.jpg'],
+    },
+    // Kobieta
+    {
+      id: '21',
+      name: 'Tort urodzinowy z makaronikami i kwiatami',
+      description: 'Kobiecy tort w stylu francuskim',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.KOBIETA,
+      mainImage: '/images/kobieta/kobieta_zdj_1.jpg',
+      images: ['/images/kobieta/kobieta_zdj_1.jpg'],
+    },
+    {
+      id: '22',
+      name: 'Różowy tort z kremem śmietankowym',
+      description: 'Delikatny tort na urodziny dla pani',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.KOBIETA,
+      mainImage: '/images/kobieta/kobieta_zdj_2.jpg',
+      images: ['/images/kobieta/kobieta_zdj_2.jpg'],
+    },
+    {
+      id: '23',
+      name: 'Elegancki tort dla kobiety z truskawkami',
+      description: 'Wytworny tort z czerwonymi owocami',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.KOBIETA,
+      mainImage: '/images/kobieta/kobieta_zdj_3.jpg',
+      images: ['/images/kobieta/kobieta_zdj_3.jpg'],
+    },
+    {
+      id: '24',
+      name: 'Tort urodzinowy z fioletowymi kwiatami',
+      description: 'Romantyczny tort z cukrowymi liliami',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.KOBIETA,
+      mainImage: '/images/kobieta/kobieta_zdj_4.jpg',
+      images: ['/images/kobieta/kobieta_zdj_4.jpg'],
+    },
+    // Komunia
+    {
+      id: '25',
+      name: 'Biały tort komunijny z kielichem',
+      description: 'Uroczysto zdobiony tort na komunię świętą',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.KOMUNIA,
+      mainImage: '/images/komunia/komunia_zdj_1.jpg',
+      images: ['/images/komunia/komunia_zdj_1.jpg'],
+    },
+    {
+      id: '26',
+      name: 'Tort na komunię z aniołkiem i różańcem',
+      description: 'Klasyczny tort z religijnymi symbolami',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.KOMUNIA,
+      mainImage: '/images/komunia/komunia_zdj_2.jpg',
+      images: ['/images/komunia/komunia_zdj_2.jpg'],
+    },
+    {
+      id: '27',
+      name: 'Tort komunijny dla dziewczynki w koronkach',
+      description: 'Subtelny biało-różowy tort pierwszokomunijny',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.KOMUNIA,
+      mainImage: '/images/komunia/komunia_zdj_3.jpg',
+      images: ['/images/komunia/komunia_zdj_3.jpg'],
+    },
+    {
+      id: '28',
+      name: 'Tort na komunię dla chłopca z biblią',
+      description: 'Chłopięcy tort komunijny w bieli i błękicie',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.KOMUNIA,
+      mainImage: '/images/komunia/komunia_zdj_4.jpg',
+      images: ['/images/komunia/komunia_zdj_4.jpg'],
+    },
+    // Mężczyzna
+    {
+      id: '29',
+      name: 'Tort urodzinowy dla mężczyzny w stylu klasycznym',
+      description: 'Męski tort z eleganckimi dekoracjami',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.MEZCZYZNA,
+      mainImage: '/images/mezczyzna/mezczyzna_zdj_1.jpg',
+      images: ['/images/mezczyzna/mezczyzna_zdj_1.jpg'],
+    },
+    {
+      id: '30',
+      name: 'Tort dla mężczyzny z ciemną czekoladą',
+      description: 'Elegancki tort czekoladowy dla panów',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.MEZCZYZNA,
+      mainImage: '/images/mezczyzna/mezczyzna_zdj_2.jpg',
+      images: ['/images/mezczyzna/mezczyzna_zdj_2.jpg'],
+    },
+    {
+      id: '31',
+      name: 'Tort z motywem męskiego hobby',
+      description: 'Spersonalizowany tort na urodziny dla niego',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.MEZCZYZNA,
+      mainImage: '/images/mezczyzna/mezczyzna_zdj_3.jpg',
+      images: ['/images/mezczyzna/mezczyzna_zdj_3.jpg'],
+    },
+    {
+      id: '32',
+      name: 'Stylowy tort urodzinowy dla dżentelmena',
+      description: 'Nowoczesny tort w męskiej kolorystyce',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.MEZCZYZNA,
+      mainImage: '/images/mezczyzna/mezczyzna_zdj_4.jpg',
+      images: ['/images/mezczyzna/mezczyzna_zdj_4.jpg'],
+    },
+    // Babeczki
+    {
+      id: '33',
+      name: 'Babeczki czekoladowe z maślanym kremem',
+      description: 'Domowe muffiny z bogatą polewą',
+      category: ProductCategory.CUPCAKES,
+      mainImage: '/images/babeczki/babeczki_zdj_1.jpg',
+      images: ['/images/babeczki/babeczki_zdj_1.jpg'],
+    },
+    {
+      id: '34',
+      name: 'Kolorowe babeczki z posypką i kulkami',
+      description: 'Radosne cupcakes na przyjęcie dla dzieci',
+      category: ProductCategory.CUPCAKES,
+      mainImage: '/images/babeczki/babeczki_zdj_2.jpg',
+      images: ['/images/babeczki/babeczki_zdj_2.jpg'],
+    },
+    {
+      id: '35',
+      name: 'Babeczki waniliowe z różowym kremem',
+      description: 'Delikatne muffiny na słodki stół',
+      category: ProductCategory.CUPCAKES,
+      mainImage: '/images/babeczki/babeczki_zdj_3.jpg',
+      images: ['/images/babeczki/babeczki_zdj_3.jpg'],
+    },
+    {
+      id: '36',
+      name: 'Babeczki urodzinowe z kremem maślanym',
+      description: 'Wyjątkowe cupcakes na każdą okazję',
+      category: ProductCategory.CUPCAKES,
+      mainImage: '/images/babeczki/babeczki_zdj_4.jpg',
+      images: ['/images/babeczki/babeczki_zdj_4.jpg'],
+    },
+    {
+      id: '37',
+      name: 'Babeczki czekoladowe z owocami',
+      description: 'Soczyste muffiny z dodatkami owocowymi',
+      category: ProductCategory.CUPCAKES,
+      mainImage: '/images/babeczki/babeczki_zdj_5.jpg',
+      images: ['/images/babeczki/babeczki_zdj_5.jpg'],
+    },
+    {
+      id: '38',
+      name: 'Eleganckie babeczki z kremem śmietankowym',
+      description: 'Wytwornie zdobione cupcakes na przyjęcie',
+      category: ProductCategory.CUPCAKES,
+      mainImage: '/images/babeczki/babeczki_zdj_6.jpg',
+      images: ['/images/babeczki/babeczki_zdj_6.jpg'],
+    },
+    // Makaroniki
+    {
+      id: '39',
+      name: 'Kolorowe makaroniki francuskie',
+      description: 'Kruche ciasteczka z różnymi nadzieniami',
+      category: ProductCategory.MACAROONS,
+      mainImage: '/images/makaroniki/makaroniki_zdj_1.jpg',
+      images: ['/images/makaroniki/makaroniki_zdj_1.jpg'],
+    },
+    {
+      id: '40',
+      name: 'Makaroniki migdałowe w pastelowych kolorach',
+      description: 'Eleganckie macarons na słodki bufet',
+      category: ProductCategory.MACAROONS,
+      mainImage: '/images/makaroniki/makaroniki_zdj_2.jpg',
+      images: ['/images/makaroniki/makaroniki_zdj_2.jpg'],
+    },
+    // Pozostałe
+    {
+      id: '41',
+      name: 'Sernik nowojorski z owocami',
+      description: 'Kremowy cheesecake z sezonowymi dodatkami',
+      category: ProductCategory.OTHER,
+      mainImage: '/images/pozostale/pozostale_zdj_1.jpg',
+      images: ['/images/pozostale/pozostale_zdj_1.jpg'],
+    },
+    {
+      id: '42',
+      name: 'Brownie czekoladowe z orzechami',
+      description: 'Intensywnie czekoladowe ciasto w kawałkach',
+      category: ProductCategory.OTHER,
+      mainImage: '/images/pozostale/pozostale_zdj_2.jpg',
+      images: ['/images/pozostale/pozostale_zdj_2.jpg'],
+    },
+    {
+      id: '43',
+      name: 'Domowe ciastka kruche z dodatkami',
+      description: 'Tradycyjne wypieki na każdą okazję',
+      category: ProductCategory.OTHER,
+      mainImage: '/images/pozostale/pozostale_zdj_3.jpg',
+      images: ['/images/pozostale/pozostale_zdj_3.jpg'],
+    },
+    {
+      id: '44',
+      name: 'Ciasto marchewkowe z kremem serowym',
+      description: 'Wilgotne ciasto z orzechami i przyprawami',
+      category: ProductCategory.OTHER,
+      mainImage: '/images/pozostale/pozostale_zdj_4.jpg',
+      images: ['/images/pozostale/pozostale_zdj_4.jpg'],
+    },
+    {
+      id: '45',
+      name: 'Tarteletki z owocami i kremem',
+      description: 'Mini desery z kruchym spodem',
+      category: ProductCategory.OTHER,
+      mainImage: '/images/pozostale/pozostale_zdj_5.jpg',
+      images: ['/images/pozostale/pozostale_zdj_5.jpg'],
+    },
+    {
+      id: '46',
+      name: 'Eklerki z kremem waniliowym',
+      description: 'Francuskie ciastka z pysznym nadzieniem',
+      category: ProductCategory.OTHER,
+      mainImage: '/images/pozostale/pozostale_zdj_6.jpg',
+      images: ['/images/pozostale/pozostale_zdj_6.jpg'],
+    },
+    {
+      id: '47',
+      name: 'Ptysie z bitą śmietaną',
+      description: 'Chrupiące ptysie z kremowym farszem',
+      category: ProductCategory.OTHER,
+      mainImage: '/images/pozostale/pozostale_zdj_7.jpg',
+      images: ['/images/pozostale/pozostale_zdj_7.jpg'],
+    },
+    {
+      id: '48',
+      name: 'Pierniki lukrowane ręcznie',
+      description: 'Aromatyczne pierniki z kolorową dekoracją',
+      category: ProductCategory.OTHER,
+      mainImage: '/images/pozostale/pozostale_zdj_8.jpg',
+      images: ['/images/pozostale/pozostale_zdj_8.jpg'],
+    },
+    {
+      id: '49',
+      name: 'Bezy francuskie kolorowe',
+      description: 'Delikatne beziki w różnych smakach',
+      category: ProductCategory.OTHER,
+      mainImage: '/images/pozostale/pozostale_zdj_9.jpg',
+      images: ['/images/pozostale/pozostale_zdj_9.jpg'],
+    },
+    {
+      id: '50',
+      name: 'Ciasto czekoladowe z musem',
+      description: 'Warstwowy deser z kremową nutą',
+      category: ProductCategory.OTHER,
+      mainImage: '/images/pozostale/pozostale_zdj_10.jpg',
+      images: ['/images/pozostale/pozostale_zdj_10.jpg'],
+    },
   ],
-  'categories': [
+  categories: [
     {
-      'id': ProductCategory.CAKES,
-      'name': 'Torty'
+      id: ProductCategory.CAKES,
+      name: 'Torty',
     },
     {
-      'id': ProductCategory.CUPCAKES,
-      'name': 'Babeczki'
+      id: ProductCategory.CUPCAKES,
+      name: 'Babeczki',
     },
     {
-      'id': ProductCategory.DESSERTS,
-      'name': 'Desery'
+      id: ProductCategory.MACAROONS,
+      name: 'Makaroniki',
     },
     {
-      'id': ProductCategory.COOKIES,
-      'name': 'Ciastka'
-    }
+      id: ProductCategory.OTHER,
+      name: 'Inne',
+    },
   ],
-  'cakesVariants': [
+  cakesVariants: [
     {
-      'id': CakeVariants.DZIECIECE_TORTY,
-      'name': 'Dziecięce'
+      id: CakeVariants.CHRZEST,
+      name: 'Chrzest',
     },
     {
-      'id': CakeVariants.KOBIECE_TORTY,
-      'name': 'Kobiece'
+      id: CakeVariants.KOMUNIA,
+      name: 'Komunia',
     },
     {
-      'id': CakeVariants.MESKIE_TORTY,
-      'name': 'Męskie'
+      id: CakeVariants.DZIECIECE,
+      name: 'Dla Najmłodszych',
     },
     {
-      'id': CakeVariants.NA_CHRZEST,
-      'name': 'Na chrzest'
+      id: CakeVariants.KOBIETA,
+      name: 'Dla Niej',
     },
     {
-      'id': CakeVariants.KOMUNIJNY_TORT,
-      'name': 'Komunijne'
+      id: CakeVariants.MEZCZYZNA,
+      name: 'Dla Niego',
     },
     {
-      'id': CakeVariants.INNE_TORTY,
-      'name': 'Inne'
-    }
-  ]
-}
-
+      id: CakeVariants.INNE,
+      name: 'Na każdą okazję',
+    },
+  ],
+};
 
 export function getPageConfig(): PageData {
   return data;

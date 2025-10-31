@@ -6,12 +6,13 @@ import { getPageConfig } from '@/data/get-page-data';
 import { routes } from '@/utils/routes';
 
 export const metadata: Metadata = {
-  title: 'Torty AGI | Domowe Torty i Ciasta | Naturalne Składniki',
-  description: 'Zamów domowe torty i ciasta wypiekane z naturalnych składników. Prawdziwe masło, śmietana i jajka z wolnego wybiegu. Torty urodzinowe, weselne, okolicznościowe - każdy wypiek tworzony ręcznie z pasją',
+  title: 'Torty AGI | Domowe Torty i Inne Słodkości | Naturalne Składniki',
+  description:
+    'Zamów domowe torty i ciasta wypiekane z naturalnych składników. Belgijska Czekolada, śmietana i jajka z wolnego wybiegu. Torty urodzinowe, weselne, okolicznościowe - każdy wypiek tworzony ręcznie z pasją',
   keywords: 'domowe torty, naturalne składniki, torty na zamówienie, ręcznie robione ciasta, tort urodzinowy, tort weselny, naturalne wypieki',
   openGraph: {
     title: 'Torty AGI | Domowe Torty z Naturalnych Składników',
-    description: 'Prawdziwe masło, śmietana, jajka z wolnego wybiegu. Każdy tort robiony ręcznie, bez gotowców i sztucznych dodatków.',
+    description: 'Belgijska Czekolada, śmietana, jajka z wolnego wybiegu. Każdy tort robiony ręcznie, bez gotowców i sztucznych dodatków.',
     type: 'website',
     locale: 'pl_PL',
     url: 'https://torty-agi.pl',
@@ -67,25 +68,19 @@ export default function Home() {
                   Domowe wypieki od 2018
                 </span>
                 <h1 className='text-4xl md:text-6xl font-bold leading-tight text-chocolate'>
-                  Domowe Torty i Ciasta <span className='heading-fancy text-5xl md:text-7xl block mt-2'>z Naturalnych Składników</span>
+                  Domowe Torty i Inne Słodkości <span className='heading-fancy text-5xl md:text-7xl block mt-2'>z Naturalnych Składników</span>
                 </h1>
               </div>
 
               <p className='text-lg text-gray-700 mb-8 leading-relaxed max-w-xl'>
-              Robię torty w domu, z tego co mam pod ręką - prawdziwego masła, śmietany, jajek od kur z wolnego wybiegu. Każdy krem robię sama, dekoracje też. Żadnych gotowców z marketu, sztucznych barwników czy odgrzewanych mas. Po prostu uczciwe składniki i czas, który trzeba poświęcić, żeby coś wyszło naprawdę dobrze.
+                Każdy tort wykonuję z najwyższej jakości składników, dbając o to, by był nie tylko pyszny, ale i estetyczny.
               </p>
 
               <div className='flex flex-col sm:flex-row gap-4'>
-                <Link
-                  href={routes.contact}
-                  className='btn btn-primary text-base text-center px-7 py-3'
-                >
+                <Link href={routes.contact} className='btn btn-primary text-base text-center px-7 py-3'>
                   Zapytaj o tort na zamówienie
                 </Link>
-                <Link
-                  href={routes.oferta}
-                  className='btn btn-outline text-base text-center px-7 py-3'
-                >
+                <Link href={routes.oferta} className='btn btn-outline text-base text-center px-7 py-3'>
                   Przeglądaj katalog wypieków
                 </Link>
               </div>
@@ -94,139 +89,104 @@ export default function Home() {
             {/* Right content - Featured images */}
             <div className='relative'>
               <div className='relative grid grid-cols-2 gap-4 md:gap-6'>
-                {promoted1 || promoted2 || promoted3 || promoted4 ? (
-                  <>
-                    <div className='space-y-4 md:space-y-6 pt-10'>
-                      {/* First promoted product */}
-                      {promoted1 && (
-                        <Link
-                          href={routes.oferta}
-                          key={promoted1.id}
-                          className='block h-40 md:h-56 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
-                        >
-                          {promoted1.mainImage ? (
-                            <Image
-                              src={promoted1.mainImage}
-                              alt={promoted1.name}
-                              className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
-                              width={500}
-                              height={500}
-                            />
-                          ) : (
-                            <PlaceholderImage
-                              text={promoted1.name}
-                              className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
-                            />
-                          )}
-                        </Link>
+                <div className='space-y-4 md:space-y-6 pt-10'>
+                  {/* First promoted product */}
+                  {promoted1 && (
+                    <Link
+                      href={routes.oferta}
+                      key={promoted1.id}
+                      className='block h-40 md:h-56 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
+                    >
+                      {promoted1.mainImage ? (
+                        <Image
+                          src={promoted1.mainImage}
+                          alt={promoted1.name}
+                          className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
+                          width={500}
+                          height={500}
+                        />
+                      ) : (
+                        <PlaceholderImage
+                          text={promoted1.name}
+                          className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
+                        />
                       )}
+                    </Link>
+                  )}
 
-                      {/* Second promoted product */}
-                      {promoted2 && (
-                        <Link
-                          href={routes.oferta}
-                          key={promoted2.id}
-                          className='block h-32 md:h-44 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
-                        >
-                          {promoted2.mainImage ? (
-                            <Image
-                              width={500}
-                              height={500}
-                              src={promoted2.mainImage}
-                              alt={promoted2.name}
-                              className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
-                            />
-                          ) : (
-                            <PlaceholderImage
-                              text={promoted2.name}
-                              className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
-                            />
-                          )}
-                        </Link>
+                  {/* Second promoted product */}
+                  {promoted2 && (
+                    <Link
+                      href={routes.oferta}
+                      key={promoted2.id}
+                      className='block h-32 md:h-44 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
+                    >
+                      {promoted2.mainImage ? (
+                        <Image
+                          width={500}
+                          height={500}
+                          src={promoted2.mainImage}
+                          alt={promoted2.name}
+                          className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
+                        />
+                      ) : (
+                        <PlaceholderImage
+                          text={promoted2.name}
+                          className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
+                        />
                       )}
-                    </div>
-                    <div className='space-y-4 md:space-y-6'>
-                      {/* Third promoted product */}
-                      {promoted3 && (
-                        <Link
-                          href={routes.oferta}
-                          key={promoted3.id}
-                          className='block h-32 md:h-44 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
-                        >
-                          {promoted3.mainImage ? (
-                            <Image
-                              width={500}
-                              height={500}
-                              src={promoted3.mainImage}
-                              alt={promoted3.name}
-                              className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
-                            />
-                          ) : (
-                            <PlaceholderImage
-                              text={promoted3.name}
-                              className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
-                            />
-                          )}
-                        </Link>
+                    </Link>
+                  )}
+                </div>
+                <div className='space-y-4 md:space-y-6'>
+                  {/* Third promoted product */}
+                  {promoted3 && (
+                    <Link
+                      href={routes.oferta}
+                      key={promoted3.id}
+                      className='block h-32 md:h-44 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
+                    >
+                      {promoted3.mainImage ? (
+                        <Image
+                          width={500}
+                          height={500}
+                          src={promoted3.mainImage}
+                          alt={promoted3.name}
+                          className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
+                        />
+                      ) : (
+                        <PlaceholderImage
+                          text={promoted3.name}
+                          className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
+                        />
                       )}
+                    </Link>
+                  )}
 
-                      {/* Fourth promoted product */}
-                      {promoted4 && (
-                        <Link
-                          href={routes.oferta}
-                          key={promoted4.id}
-                          className='block h-40 md:h-56 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
-                        >
-                          {promoted4.mainImage ? (
-                            <Image
-                              width={500}
-                              height={500}
-                              src={promoted4.mainImage}
-                              alt={promoted4.name}
-                              className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
-                            />
-                          ) : (
-                            <PlaceholderImage
-                              text={promoted4.name}
-                              className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
-                            />
-                          )}
-                        </Link>
+                  {/* Fourth promoted product */}
+                  {promoted4 && (
+                    <Link
+                      href={routes.oferta}
+                      key={promoted4.id}
+                      className='block h-40 md:h-56 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
+                    >
+                      {promoted4.mainImage ? (
+                        <Image
+                          width={500}
+                          height={500}
+                          src={promoted4.mainImage}
+                          alt={promoted4.name}
+                          className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
+                        />
+                      ) : (
+                        <PlaceholderImage
+                          text={promoted4.name}
+                          className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
+                        />
                       )}
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className='space-y-4 md:space-y-6 pt-10'>
-                      <div className='h-40 md:h-56 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'>
-                        <PlaceholderImage
-                          text='Tort czekoladowy'
-                          className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
-                        />
-                      </div>
-                      <div className='h-32 md:h-44 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'>
-                        <PlaceholderImage
-                          text='Makaroniki'
-                          className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
-                        />
-                      </div>
-                    </div>
-                    <div className='space-y-4 md:space-y-6'>
-                      <div className='h-32 md:h-44 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'>
-                        <PlaceholderImage
-                          text='Babeczki'
-                          className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
-                        />
-                      </div>
-                      <div className='h-40 md:h-56 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'>
-                        <PlaceholderImage
-                          text='Tort weselny'
-                          className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
-                        />
-                      </div>
-                    </div>
-                  </>
-                )}
+                    </Link>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -239,7 +199,7 @@ export default function Home() {
           <div className='text-center mb-16'>
             <span className='badge badge-primary mb-4 inline-block'>Co robię najchętniej</span>
             <h2 className='text-3xl md:text-5xl font-bold mb-4 text-chocolate'>
-              Ulubione <span className='heading-fancy'>wypieki</span>
+              Najczęściej wybierane <span className='heading-fancy'>wypieki</span>
             </h2>
             <div className='h-1 w-20 bg-secondary-500 mx-auto my-6 rounded'></div>
             <p className='text-gray-700 max-w-2xl mx-auto mt-6 text-lg'>
@@ -248,162 +208,86 @@ export default function Home() {
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-            {creation1 || creation2 || creation3 ? (
-              <>
-                {/* First creation */}
-                {creation1 && (
-                  <div className='group'>
-                    <Link href={routes.oferta} className='block'>
-                      <div className='bg-beige p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-primary-100'>
-                        <div className='relative h-64 mb-6 overflow-hidden rounded-xl'>
-                          {creation1.mainImage ? (
-                            <Image
-                              width={500}
-                              height={500}
-                              src={creation1.mainImage}
-                              alt={creation1.name}
-                              className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
-                            />
-                          ) : (
-                            <PlaceholderImage text={creation1.name} className='transition-transform duration-500 group-hover:scale-105' />
-                          )}
-                        </div>
-                        <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>{creation1.name}</h3>
-                        <p className='text-gray-700 mb-4'>{creation1.description}</p>
-                        <span className='text-primary-700 font-medium inline-flex items-center hover:text-primary-800'>
-                          Szczegóły produktu
-                          <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-                            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
-                          </svg>
-                        </span>
-                      </div>
-                    </Link>
-                  </div>
-                )}
-
-                {/* Second creation */}
-                {creation2 && (
-                  <div className='group'>
-                    <Link href={routes.oferta} className='block'>
-                      <div className='bg-beige p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-primary-100'>
-                        <div className='relative h-64 mb-6 overflow-hidden rounded-xl'>
-                          {creation2.mainImage ? (
-                            <Image
-                              width={500}
-                              height={500}
-                              src={creation2.mainImage}
-                              alt={creation2.name}
-                              className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
-                            />
-                          ) : (
-                            <PlaceholderImage text={creation2.name} className='transition-transform duration-500 group-hover:scale-105' />
-                          )}
-                        </div>
-                        <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>{creation2.name}</h3>
-                        <p className='text-gray-700 mb-4'>{creation2.description}</p>
-                        <span className='text-primary-700 font-medium inline-flex items-center hover:text-primary-800'>
-                          Zobacz smaki i ceny
-                          <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-                            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
-                          </svg>
-                        </span>
-                      </div>
-                    </Link>
-                  </div>
-                )}
-
-                {/* Third creation */}
-                {creation3 && (
-                  <div className='group'>
-                    <Link href={routes.oferta} className='block'>
-                      <div className='bg-beige p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-primary-100'>
-                        <div className='relative h-64 mb-6 overflow-hidden rounded-xl'>
-                          {creation3.mainImage ? (
-                            <Image
-                              width={500}
-                              height={500}
-                              src={creation3.mainImage}
-                              alt={creation3.name}
-                              className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
-                            />
-                          ) : (
-                            <PlaceholderImage text={creation3.name} className='transition-transform duration-500 group-hover:scale-105' />
-                          )}
-                        </div>
-                        <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>{creation3.name}</h3>
-                        <p className='text-gray-700 mb-4'>{creation3.description}</p>
-                        <span className='text-primary-700 font-medium inline-flex items-center hover:text-primary-800'>
-                          Sprawdź dostępność
-                          <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-                            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
-                          </svg>
-                        </span>
-                      </div>
-                    </Link>
-                  </div>
-                )}
-              </>
-            ) : (
-              // Fallback content
-              <>
-                <div className='group'>
+            {creation1 && (
+              <div className='group'>
+                <Link href={routes.oferta} className='block'>
                   <div className='bg-beige p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-primary-100'>
                     <div className='relative h-64 mb-6 overflow-hidden rounded-xl'>
-                      <PlaceholderImage text='Tort czekoladowy' className='transition-transform duration-500 group-hover:scale-105' />
+                      <Image
+                        width={500}
+                        height={500}
+                        src={creation1.mainImage}
+                        alt={creation1.name}
+                        className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
+                      />
                     </div>
-                    <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>Tort czekoladowy</h3>
-                    <p className='text-gray-700 mb-4'>
-                      Klasyczny biszkopt przełożony kremem z prawdziwej czekolady. Nie używam gotowych mas, tylko topię czekoladę i mieszam ze śmietaną.
-                    </p>
-                    <Link href={routes.contact} className='text-primary-700 font-medium hover:text-primary-800 inline-flex items-center'>
-                      Zamów ten tort
+                    <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>{creation1.name}</h3>
+                    <p className='text-gray-700 mb-4'>{creation1.description}</p>
+                    <span className='text-primary-700 font-medium inline-flex items-center hover:text-primary-800'>
+                      Przejdź do oferty
                       <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                         <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
                       </svg>
-                    </Link>
+                    </span>
                   </div>
-                </div>
-
-                <div className='group'>
+                </Link>
+              </div>
+            )}
+            {creation2 && (
+              <div className='group'>
+                <Link href={routes.oferta} className='block'>
                   <div className='bg-beige p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-primary-100'>
                     <div className='relative h-64 mb-6 overflow-hidden rounded-xl'>
-                      <PlaceholderImage text='Makaroniki' className='transition-transform duration-500 group-hover:scale-105' />
+                      <Image
+                        width={500}
+                        height={500}
+                        src={creation2.mainImage}
+                        alt={creation2.name}
+                        className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
+                      />
                     </div>
-                    <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>Makaroniki</h3>
-                    <p className='text-gray-700 mb-4'>
-                      Ciasteczka migdałowe z różnymi nadzieniami. Robię je w mniejszych partiach, więc są zawsze świeże. Dobre na prezent albo do kawy.
-                    </p>
-                    <Link href={routes.contact} className='text-primary-700 font-medium hover:text-primary-800 inline-flex items-center'>
-                      Zamów ten tort
+                    <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>{creation2.name}</h3>
+                    <p className='text-gray-700 mb-4'>{creation2.description}</p>
+                    <span className='text-primary-700 font-medium inline-flex items-center hover:text-primary-800'>
+                      Zobacz smaki i ceny
                       <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                         <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
                       </svg>
-                    </Link>
+                    </span>
                   </div>
-                </div>
-
-                <div className='group'>
+                </Link>
+              </div>
+            )}
+            {creation3 && (
+              <div className='group'>
+                <Link href={routes.oferta} className='block'>
                   <div className='bg-beige p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-primary-100'>
                     <div className='relative h-64 mb-6 overflow-hidden rounded-xl'>
-                      <PlaceholderImage text='Babeczki' className='transition-transform duration-500 group-hover:scale-105' />
+                      <Image
+                        width={500}
+                        height={500}
+                        src={creation3.mainImage}
+                        alt={creation3.name}
+                        className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
+                      />
                     </div>
-                    <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>Babeczki</h3>
-                    <p className='text-gray-700 mb-4'>Waniliowe lub czekoladowe babeczki z kremem maślanym. Dekoruję je według okazji - urodziny, chrzciny, co tam potrzeba.</p>
-                    <Link href={routes.contact} className='text-primary-700 font-medium hover:text-primary-800 inline-flex items-center'>
-                      Zamów ten tort
+                    <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>{creation3.name}</h3>
+                    <p className='text-gray-700 mb-4'>{creation3.description}</p>
+                    <span className='text-primary-700 font-medium inline-flex items-center hover:text-primary-800'>
+                      Sprawdź dostępność
                       <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                         <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
                       </svg>
-                    </Link>
+                    </span>
                   </div>
-                </div>
-              </>
+                </Link>
+              </div>
             )}
           </div>
 
           <div className='text-center mt-12'>
             <Link href={routes.oferta} className='btn btn-primary text-base px-8 py-3'>
-              Odkryj pełny asortyment wypieków
+              Zobacz pełną ofertę wypieków
             </Link>
           </div>
         </div>
@@ -416,7 +300,7 @@ export default function Home() {
           <div className='text-center mb-12'>
             <span className='badge badge-secondary mb-4 inline-block'>Jak to robię</span>
             <h2 className='text-3xl md:text-5xl font-bold mb-4 text-chocolate'>
-              Uczciwe <span className='heading-fancy'>składniki</span>
+              Naturalne <span className='heading-fancy'>składniki</span>
             </h2>
             <div className='h-1 w-20 bg-secondary-500 mx-auto my-6 rounded'></div>
           </div>
@@ -428,8 +312,8 @@ export default function Home() {
                   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' />
                 </svg>
               </div>
-              <h3 className='font-serif text-xl font-bold mb-3 text-chocolate'>Prawdziwe masło</h3>
-              <p className='text-gray-700'>Żadnych margaryny czy zamienników. Tylko zwykłe masło extra.</p>
+              <h3 className='font-serif text-xl font-bold mb-3 text-chocolate'>Belgijska Czekolada</h3>
+              <p className='text-gray-700'>Belgijska czekolada o głębokim aromacie i aksamitnej konsystencji, która nadaje ciastom wyjątkowy smak.</p>
             </div>
 
             <div className='bg-white p-8 rounded-xl shadow-md text-center'>
@@ -439,7 +323,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className='font-serif text-xl font-bold mb-3 text-chocolate'>Jajka z wolnego wybiegu</h3>
-              <p className='text-gray-700'>Kupuję na targowisku, od sprawdzonej pani. Żółtka są pomarańczowe.</p>
+              <p className='text-gray-700'>Jajka o intensywnie pomarańczowych żółtkach i pełnym, naturalnym smaku.</p>
             </div>
 
             <div className='bg-white p-8 rounded-xl shadow-md text-center'>
@@ -448,8 +332,8 @@ export default function Home() {
                   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' />
                 </svg>
               </div>
-              <h3 className='font-serif text-xl font-bold mb-3 text-chocolate'>Bez gotowych mas</h3>
-              <p className='text-gray-700'>Każdy krem robię od zera. Trwa dłużej, ale smak jest zupełnie inny.</p>
+              <h3 className='font-serif text-xl font-bold mb-3 text-chocolate'>Świeże owoce</h3>
+              <p className='text-gray-700'>Świeże owoce pełne naturalnej słodyczy i aromatu, idealne do podkreślenia smaku domowych wypieków.</p>
             </div>
           </div>
         </div>
@@ -468,10 +352,7 @@ export default function Home() {
             <p className='text-lg text-gray-700 max-w-2xl mx-auto mb-8'>
               Napisz do mnie, powiedz jaka okazja i dla ilu osób. Ustalimy smak, dekoracje i termin. Zwykle odpowiadam tego samego dnia.
             </p>
-            <Link
-              href='/kontakt'
-              className='inline-block btn btn-primary text-lg px-10 py-4'
-            >
+            <Link href='/kontakt' className='inline-block btn btn-primary text-lg px-10 py-4'>
               Skontaktuj się w sprawie zamówienia
             </Link>
           </div>

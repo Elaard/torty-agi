@@ -62,12 +62,12 @@ export const Footer = () => {
                   <span>Pełna oferta</span>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href={routes.realizacje} className='text-gray-700 hover:text-primary-700 transition-colors flex items-center group'>
                   <span className='w-2 h-2 bg-secondary-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity'></span>
                   <span>Realizacje</span>
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href={routes.contact} className='text-gray-700 hover:text-primary-700 transition-colors flex items-center group'>
                   <span className='w-2 h-2 bg-secondary-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity'></span>

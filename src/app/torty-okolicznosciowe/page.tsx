@@ -5,7 +5,7 @@ import { routes } from '@/utils/routes';
 import ProductClient from '../oferta/product-client';
 
 export const metadata: Metadata = {
-  title: 'Torty Okolicznościowe | Urodzinowe, Weselne, Komunijne | Torty AGI',
+  title: 'Torty Okolicznościowe | Urodzinowe, Weselne, Komunia | Torty AGI',
   description: 'Zamów wyjątkowy tort okolicznościowy wykonany ręcznie z naturalnych składników. Torty urodzinowe, weselne, komunijne, chrzcielne - dziecięce, kobiece, męskie. Indywidualny design dopasowany do każdej okazji w Rzuchowej i okolicach.',
   keywords: 'torty okolicznościowe, tort urodzinowy, tort weselny, tort komunijny, tort chrzcielny, torty dziecięce, torty kobiece, torty męskie, tort na zamówienie',
   openGraph: {
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 };
 
 export default async function TortyOkolicznosciowePage({ searchParams }: { searchParams: Promise<{ kategoria?: string }> }) {
-  const { allProducts, cakesVariants } = getPageConfig();
+  const { allProducts, categories, cakesVariants } = getPageConfig();
   const params = await searchParams;
   const filter = params.kategoria || 'all';
 
@@ -54,12 +54,9 @@ export default async function TortyOkolicznosciowePage({ searchParams }: { searc
       <div className="container-custom">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-chocolate">
-            Torty Okolicznościowe na Każdą Okazję
+            Torty Okolicznościowe
           </h1>
           <div className="h-1 w-20 bg-secondary-500 mx-auto my-6 rounded"></div>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto mt-6 leading-relaxed">
-            Każdy tort okolicznościowy projektuję oraz wypieku indywidualnie, dostosowując smak, wzornictwo oraz wielkość do konkretnej uroczystości. Specjalizuję się w tortach urodzinowych dla dzieci oraz dorosłych, tortach weselnych, komunijnych, chrzcielnych oraz innych wypiekach celebrujących ważne wydarzenia życiowe.
-          </p>
         </div>
 
         <div className="space-y-8">
@@ -88,7 +85,7 @@ export default async function TortyOkolicznosciowePage({ searchParams }: { searc
           </div>
 
           {/* Client component for gallery and modal */}
-          <ProductClient offer={offer} categories={cakesVariants} />
+          <ProductClient offer={offer} categories={categories} cakesVariants={cakesVariants} />
 
           {offer.length === 0 && (
             <div className="text-center py-24 bg-white rounded-2xl shadow-md border border-primary-200">

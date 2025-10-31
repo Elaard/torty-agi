@@ -55,11 +55,6 @@ export const ProductCard = ({ product, categories, onClick }: ProductCardProps) 
         <div className='p-6 flex-grow flex flex-col'>
           <h3 className='font-serif text-2xl font-semibold mb-3 group-hover:text-primary-600 transition-colors'>{product.name}</h3>
           <p className='text-gray-600 mb-5 line-clamp-3 flex-grow text-lg'>{product.description}</p>
-          {
-            product?.flavours && product?.flavours?.length > 0 ? (
-              <p className='text-gray-600 font-semibold mb-5 line-clamp-3 flex-grow text-lg'>Smaki: {product.flavours?.join(', ')}</p>
-            ) : null
-          }
           <div className='flex justify-between items-center mt-auto pt-4 border-t border-gray-100'>
             <span className='text-primary-600 font-medium group-hover:text-primary-800 transition-colors flex items-center gap-2 text-lg'>
               Zobacz galerię

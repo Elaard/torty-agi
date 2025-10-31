@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 };
 
 export default async function RealizacjePage({ searchParams }: { searchParams: Promise<{ kategoria?: string }> }) {
-  const { allProducts, categories } = getPageConfig();
+  const { allProducts, categories, cakesVariants } = getPageConfig();
   const params = await searchParams;
   const categoryFilter = params.kategoria || 'all';
 
@@ -81,7 +81,7 @@ export default async function RealizacjePage({ searchParams }: { searchParams: P
           </div>
 
           {/* Client component for gallery and modal */}
-          <ProductClient offer={oferta} categories={categories} />
+          <ProductClient offer={oferta} categories={categories} cakesVariants={cakesVariants} />
 
           {oferta.length === 0 && (
             <div className="text-center py-24 bg-white rounded-2xl shadow-md border border-primary-200">
