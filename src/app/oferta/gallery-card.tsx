@@ -23,6 +23,8 @@ export const GalleryCard = ({ product, onClick }: GalleryCardProps) => {
               alt={product.name}
               width={600}
               height={600}
+              loading="lazy"
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
               className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-90"
             />
           ) : (

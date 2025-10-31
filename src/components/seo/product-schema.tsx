@@ -20,8 +20,7 @@ export function ProductSchema({ product, categoryName }: ProductSchemaProps) {
       '@type': 'Offer',
       url: `https://torty-agi.pl/oferta/${product.id}`,
       priceCurrency: 'PLN',
-      price: product.price || 0,
-      availability: 'https://schema.org/InStock',
+      availability: 'https://schema.org/PreOrder',
       seller: {
         '@type': 'Organization',
         name: 'Torty AGI',
