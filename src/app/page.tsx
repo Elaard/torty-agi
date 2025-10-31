@@ -95,7 +95,7 @@ export default function Home() {
                     <Link
                       href={routes.oferta}
                       key={promoted1.id}
-                      className='block h-40 md:h-56 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
+                      className='block aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
                     >
                       {promoted1.mainImage ? (
                         <Image
@@ -119,7 +119,7 @@ export default function Home() {
                     <Link
                       href={routes.oferta}
                       key={promoted2.id}
-                      className='block h-32 md:h-44 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
+                      className='block aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
                     >
                       {promoted2.mainImage ? (
                         <Image
@@ -144,7 +144,7 @@ export default function Home() {
                     <Link
                       href={routes.oferta}
                       key={promoted3.id}
-                      className='block h-32 md:h-44 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
+                      className='block aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
                     >
                       {promoted3.mainImage ? (
                         <Image
@@ -168,7 +168,7 @@ export default function Home() {
                     <Link
                       href={routes.oferta}
                       key={promoted4.id}
-                      className='block h-40 md:h-56 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
+                      className='block aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group'
                     >
                       {promoted4.mainImage ? (
                         <Image
