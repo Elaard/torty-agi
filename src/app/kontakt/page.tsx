@@ -2,29 +2,29 @@ import { Metadata } from 'next';
 import { contactDetails } from '@/utils/contact-details';
 
 export const metadata: Metadata = {
-  title: 'Kontakt | Torty AGI | Napisz do mnie',
-  description: 'Skontaktuj się w sprawie zamówienia tortu, ciasta lub słodkości. Odpisuję zwykle tego samego dnia. Telefonicznie, mailowo lub przez media społecznościowe.',
-  keywords: 'kontakt, zamówienie tortu, Torty AGI, zamówienia cukiernicze, dostawa tortów',
+  title: 'Kontakt | Torty Tarnów | Zamówienie Tortu | Torty AGI',
+  description: 'Zamów tort w Tarnowie i okolicach. Rzuchowa 484 (9 km od Tarnowa). Dostawa tortów w Tarnowie, Rzuchowa, Pleśna. Tel: 668 368 596. Odpisuję tego samego dnia.',
+  keywords: 'kontakt torty tarnów, zamówienie tortu tarnów, torty tarnów telefon, cukiernia tarnów kontakt, torty rzuchowa, dostawa tortów tarnów',
   openGraph: {
-    title: 'Kontakt | Torty AGI',
-    description: 'Skontaktuj się w sprawie zamówienia. Odpisuję zwykle tego samego dnia.',
+    title: 'Kontakt | Torty Tarnów | Torty AGI',
+    description: 'Zamów tort w Tarnowie. Rzuchowa 484 (9 km od Tarnowa). Dostawa w Tarnowie i okolicach.',
     type: 'website',
     locale: 'pl_PL',
     url: 'https://torty-agi.pl/kontakt',
-    siteName: 'Torty AGI',
+    siteName: 'Torty AGI - Torty Tarnów',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Kontakt - Torty AGI',
+        alt: 'Kontakt - Torty Tarnów - Torty AGI',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kontakt | Torty AGI',
-    description: 'Skontaktuj się w sprawie zamówienia.',
+    title: 'Kontakt | Torty Tarnów',
+    description: 'Zamów tort w Tarnowie i okolicach. Dostawa w Tarnowie, Rzuchowa, Pleśna.',
     images: ['/images/og-image.jpg'],
   },
   alternates: {
@@ -40,9 +40,6 @@ export default function Page() {
         <div className='text-center mb-12 max-w-3xl mx-auto'>
           <h1 className='text-4xl md:text-5xl font-bold mb-4 text-chocolate'>Kontakt</h1>
           <div className='h-1 w-20 bg-secondary-500 mx-auto my-6 rounded'></div>
-          <p className='text-gray-700 text-lg'>
-            Masz pytanie o tort? Napisz, powiedz jaka okazja i dla ilu osób. Odpisuję zwykle tego samego dnia.
-          </p>
         </div>
 
         {/* Contact Information Card */}
@@ -65,7 +62,8 @@ export default function Page() {
                 </svg>
               </div>
               <h3 className='font-semibold text-lg mb-2 text-chocolate'>Lokalizacja</h3>
-              <p className='text-gray-700'>{contactDetails.localization}</p>
+              <p className='text-gray-700 mb-1'>{contactDetails.localization}</p>
+              <p className='text-sm text-gray-600'>(9 km od centrum Tarnowa)</p>
             </div>
 
             {/* Email */}

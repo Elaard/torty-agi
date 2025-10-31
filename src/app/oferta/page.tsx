@@ -5,29 +5,29 @@ import { routes } from '@/utils/routes';
 import ProductClient from './product-client';
 
 export const metadata: Metadata = {
-  title: 'Oferta | Torty AGI | Nasze Wypieki',
-  description: 'Pełna oferta wypieków - torty urodzinowe, weselne, babeczki, makaroniki i inne słodkości. Każdy wypiek robiony ręcznie z naturalnych składników.',
-  keywords: 'oferta tortów, torty urodzinowe, torty weselne, babeczki, makaroniki, słodkości na zamówienie',
+  title: 'Oferta | Torty Tarnów | Torty Urodzinowe, Weselne | Torty AGI',
+  description: 'Pełna oferta tortów w Tarnowie - torty urodzinowe, weselne, komunijne, babeczki, makaroniki. Domowe wypieki z naturalnych składników. Dostawa w Tarnowie i okolicach.',
+  keywords: 'oferta tortów tarnów, torty urodzinowe tarnów, torty weselne tarnów, torty komunijne tarnów, babeczki tarnów, makaroniki tarnów, cukiernia tarnów oferta',
   openGraph: {
-    title: 'Oferta | Torty AGI | Nasze Wypieki',
-    description: 'Zobacz pełną ofertę wypieków. Każda realizacja robiona ręcznie z naturalnych składników.',
+    title: 'Oferta | Torty Tarnów | Torty AGI',
+    description: 'Zobacz pełną ofertę tortów w Tarnowie - urodzinowe, weselne, komunijne. Domowe wypieki z naturalnych składników.',
     type: 'website',
     locale: 'pl_PL',
     url: 'https://torty-agi.pl/oferta',
-    siteName: 'Torty AGI',
+    siteName: 'Torty AGI - Torty Tarnów',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Oferta Torty AGI',
+        alt: 'Oferta Tortów Tarnów - Torty AGI',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Oferta | Torty AGI',
-    description: 'Zobacz pełną ofertę naszych wypieków - torty, babeczki, makaroniki.',
+    title: 'Oferta | Torty Tarnów',
+    description: 'Zobacz pełną ofertę tortów w Tarnowie - torty urodzinowe, weselne, babeczki, makaroniki.',
     images: ['/images/og-image.jpg'],
   },
   alternates: {
@@ -50,9 +50,12 @@ export default async function RealizacjePage({ searchParams }: { searchParams: P
       <div className="container-custom">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-chocolate">
-            Oferta
+            Torty na Zamówienie Tarnów
           </h1>
           <div className="h-1 w-20 bg-secondary-500 mx-auto my-6 rounded"></div>
+          <p className="text-gray-700 text-lg max-w-2xl mx-auto">
+            Zobacz nasze realizacje - <strong>torty urodzinowe, weselne, komunijne</strong> i inne słodkości dostępne w <strong>Tarnowie i okolicach</strong>
+          </p>
         </div>
 
         <div className="space-y-8">

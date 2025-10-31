@@ -5,8 +5,8 @@ export function LocalBusinessSchema() {
     '@context': 'https://schema.org',
     '@type': 'Bakery',
     name: 'Torty AGI',
-    alternateName: 'Torty AGI Cukiernia',
-    description: 'Artystyczna cukiernia specjalizująca się w ręcznie robionych tortach, ciastach i słodkościach. Wszystkie wypieki przygotowywane z najlepszych składników.',
+    alternateName: ['Torty AGI Cukiernia', 'Torty Tarnów', 'Torty AGI Tarnów'],
+    description: 'Cukiernia specjalizująca się w domowych tortach na zamówienie w Tarnowie i okolicach. Torty urodzinowe, weselne, komunijne z naturalnych składników. Obsługa Tarnowa, Rzuchowa, Pleśna i całego powiatu tarnowskiego.',
     url: 'https://torty-agi.pl',
     telephone: contactDetails.phone,
     email: contactDetails.email,
@@ -14,6 +14,7 @@ export function LocalBusinessSchema() {
       '@type': 'PostalAddress',
       streetAddress: 'Rzuchowa 484',
       addressLocality: 'Rzuchowa',
+      addressRegion: 'Małopolskie',
       postalCode: '33-114',
       addressCountry: 'PL',
     },
@@ -28,14 +29,39 @@ export function LocalBusinessSchema() {
     ],
     priceRange: '$$',
     servesCuisine: 'Wypieki',
-    areaServed: {
+    // Główny obszar obsługi - Tarnów i okolice
+    areaServed: [
+      {
+        '@type': 'City',
+        name: 'Tarnów',
+        '@id': 'https://www.wikidata.org/wiki/Q104997',
+      },
+      {
+        '@type': 'City',
+        name: 'Rzuchowa',
+      },
+      {
+        '@type': 'City',
+        name: 'Pleśna',
+      },
+      {
+        '@type': 'City',
+        name: 'Wierzchosławice',
+      },
+      {
+        '@type': 'AdministrativeArea',
+        name: 'Powiat Tarnowski',
+      },
+    ],
+    // Dodatkowy GeoCircle dla zasięgu
+    serviceArea: {
       '@type': 'GeoCircle',
       geoMidpoint: {
         '@type': 'GeoCoordinates',
-        latitude: 49.94750344707502,
-        longitude: 20.938618921034944,
+        latitude: 50.0121, // Koordynaty centrum Tarnowa
+        longitude: 20.9888,
       },
-      geoRadius: '50000', // 50km radius
+      geoRadius: '25000', // 25km promień wokół Tarnowa
     },
     openingHoursSpecification: [
       {
@@ -45,6 +71,36 @@ export function LocalBusinessSchema() {
         closes: '18:00',
       },
     ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Oferta Tortów',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: 'Torty urodzinowe Tarnów',
+            description: 'Domowe torty urodzinowe na zamówienie',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: 'Torty weselne Tarnów',
+            description: 'Eleganckie torty weselne z naturalnych składników',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: 'Torty komunijne Tarnów',
+            description: 'Torty na Pierwszą Komunię Świętą',
+          },
+        },
+      ],
+    },
   };
 
   return (

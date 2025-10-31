@@ -6,30 +6,30 @@ import { getPageConfig } from '@/data/get-page-data';
 import { routes } from '@/utils/routes';
 
 export const metadata: Metadata = {
-  title: 'Torty AGI | Domowe Torty i Inne Słodkości | Naturalne Składniki',
+  title: 'Torty Tarnów | Domowe Torty na Zamówienie | Torty AGI',
   description:
-    'Zamów domowe torty i ciasta wypiekane z naturalnych składników. Belgijska Czekolada, śmietana i jajka z wolnego wybiegu. Torty urodzinowe, weselne, okolicznościowe - każdy wypiek tworzony ręcznie z pasją',
-  keywords: 'domowe torty, naturalne składniki, torty na zamówienie, ręcznie robione ciasta, tort urodzinowy, tort weselny, naturalne wypieki',
+    'Torty na zamówienie Tarnów i okolice - domowe wypieki z naturalnych składników. Torty urodzinowe, weselne, komunijne. Dostawa w Tarnowie i okolicy (Rzuchowa, Pleśna). Belgijska czekolada, jajka z wolnego wybiegu.',
+  keywords: 'torty tarnów, torty na zamówienie tarnów, tort urodzinowy tarnów, tort weselny tarnów, cukiernia tarnów, domowe torty tarnów, torty rzuchowa, torty pleśna, torty okolice tarnowa',
   openGraph: {
-    title: 'Torty AGI | Domowe Torty z Naturalnych Składników',
-    description: 'Belgijska Czekolada, śmietana, jajka z wolnego wybiegu. Każdy tort robiony ręcznie, bez gotowców i sztucznych dodatków.',
+    title: 'Torty Tarnów | Domowe Torty na Zamówienie | Torty AGI',
+    description: 'Torty na zamówienie w Tarnowie i okolicach. Domowe wypieki z belgijskiej czekolady i naturalnych składników. Dostawa w Tarnowie, Rzuchowa, Pleśna.',
     type: 'website',
     locale: 'pl_PL',
     url: 'https://torty-agi.pl',
-    siteName: 'Torty AGI',
+    siteName: 'Torty AGI - Torty Tarnów',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Torty AGI - Domowe Wypieki',
+        alt: 'Torty Tarnów - Torty AGI - Domowe Wypieki na Zamówienie',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Torty AGI | Domowe Torty',
-    description: 'Prawdziwe składniki, ręczna praca, zero gotowców.',
+    title: 'Torty Tarnów | Torty AGI',
+    description: 'Domowe torty na zamówienie w Tarnowie i okolicach. Naturalne składniki, ręczna praca.',
     images: ['/images/og-image.jpg'],
   },
   alternates: {
@@ -68,12 +68,20 @@ export default function Home() {
                   Domowe wypieki od 2018
                 </span>
                 <h1 className='text-4xl md:text-6xl font-bold leading-tight text-chocolate'>
-                  Domowe Torty i Inne Słodkości <span className='heading-fancy text-5xl md:text-7xl block mt-2'>z Naturalnych Składników</span>
+                  Torty na Zamówienie <span className='heading-fancy text-5xl md:text-7xl block mt-2'>Tarnów i Okolice</span>
                 </h1>
               </div>
 
-              <p className='text-lg text-gray-700 mb-8 leading-relaxed max-w-xl'>
-                Każdy tort wykonuję z najwyższej jakości składników, dbając o to, by był nie tylko pyszny, ale i estetyczny.
+              <p className='text-lg text-gray-700 mb-6 leading-relaxed max-w-xl'>
+                Każdy tort wykonuję z najwyższej jakości składników, dbając o to, by był nie tylko pyszny, ale i estetyczny. <strong className='text-chocolate'>Obsługuję Tarnów oraz okoliczne miejscowości</strong> - Rzuchowa, Pleśna, Wierzchosławice i cały powiat tarnowski.
+              </p>
+
+              <p className='text-base text-gray-600 mb-8 max-w-xl flex items-center gap-2'>
+                <svg xmlns='http://www.w3.org/2000/svg' className='h-5 w-5 text-primary-700 flex-shrink-0' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z' />
+                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 11a3 3 0 11-6 0 3 3 0 016 0z' />
+                </svg>
+                <span>Rzuchowa 484 (9 km od centrum Tarnowa) • Tarnów</span>
               </p>
 
               <div className='flex flex-col sm:flex-row gap-4'>
