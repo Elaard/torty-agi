@@ -71,36 +71,6 @@ export function LocalBusinessSchema() {
         closes: '18:00',
       },
     ],
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Oferta Tortów',
-      itemListElement: [
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Product',
-            name: 'Torty urodzinowe Tarnów',
-            description: 'Domowe torty urodzinowe na zamówienie',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Product',
-            name: 'Torty weselne Tarnów',
-            description: 'Eleganckie torty weselne z naturalnych składników',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Product',
-            name: 'Torty komunijne Tarnów',
-            description: 'Torty na Pierwszą Komunię Świętą',
-          },
-        },
-      ],
-    },
   };
 
   return (
