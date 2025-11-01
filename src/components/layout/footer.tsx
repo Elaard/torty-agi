@@ -17,7 +17,7 @@ export const Footer = () => {
             </h3>
             <div className='h-1 w-16 bg-secondary-500 my-4 rounded'></div>
             <p className='text-gray-700 mb-6 leading-relaxed'>
-              Domowe torty i słodkości robione z naturalnych składników. Bez gotowców, sztucznych barwników i odgrzewanych mas.
+              Domowe torty i słodkości robione z naturalnych składników. Bez gotowców i sztucznych barwników.
             </p>
             <div className='flex space-x-4'>
               <a

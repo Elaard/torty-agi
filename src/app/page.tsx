@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import { PlaceholderImage } from '../components/ui/placeholder-image';
 import { getPageConfig } from '@/data/get-page-data';
 import { routes } from '@/utils/routes';
+import { contactDetails } from '@/utils/contact-details';
 
 export const metadata: Metadata = {
   title: 'Torty Tarnów | Domowe Torty na Zamówienie | Torty AGI',
@@ -73,7 +74,8 @@ export default function Home() {
               </div>
 
               <p className='text-lg text-gray-700 mb-6 leading-relaxed max-w-xl'>
-                Każdy tort wykonuję z najwyższej jakości składników, dbając o to, by był nie tylko pyszny, ale i estetyczny. <strong className='text-chocolate'>Obsługuję Tarnów oraz okoliczne miejscowości</strong> - Rzuchowa, Pleśna, Wierzchosławice i cały powiat tarnowski.
+                Każdy tort wykonuję z najwyższej jakości składników, dbając o to, by był nie tylko pyszny, ale i estetyczny. Prowadzę małą pracownię rzemieślniczą, a do 
+                każdego zamówienia podchodzę indywidualnie i z pasją.
               </p>
 
               <p className='text-base text-gray-600 mb-8 max-w-xl flex items-center gap-2'>
@@ -211,7 +213,8 @@ export default function Home() {
             </h2>
             <div className='h-1 w-20 bg-secondary-500 mx-auto my-6 rounded'></div>
             <p className='text-gray-700 max-w-2xl mx-auto mt-6 text-lg'>
-              Kilka rzeczy, które robię najczęściej i wychodzą mi najlepiej. Ale jak masz inny pomysł, możemy spróbować czegoś nowego.
+              Najczęściej wykonuję torty artystyczne.
+              Jeśli nie masz pomysłu na tort to chętnie pomogę.
             </p>
           </div>
 
@@ -231,12 +234,6 @@ export default function Home() {
                     </div>
                     <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>{creation1.name}</h3>
                     <p className='text-gray-700 mb-4'>{creation1.description}</p>
-                    <span className='text-primary-700 font-medium inline-flex items-center hover:text-primary-800'>
-                      Przejdź do oferty
-                      <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
-                      </svg>
-                    </span>
                   </div>
                 </Link>
               </div>
@@ -256,12 +253,6 @@ export default function Home() {
                     </div>
                     <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>{creation2.name}</h3>
                     <p className='text-gray-700 mb-4'>{creation2.description}</p>
-                    <span className='text-primary-700 font-medium inline-flex items-center hover:text-primary-800'>
-                      Zobacz smaki i ceny
-                      <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
-                      </svg>
-                    </span>
                   </div>
                 </Link>
               </div>
@@ -281,12 +272,6 @@ export default function Home() {
                     </div>
                     <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>{creation3.name}</h3>
                     <p className='text-gray-700 mb-4'>{creation3.description}</p>
-                    <span className='text-primary-700 font-medium inline-flex items-center hover:text-primary-800'>
-                      Sprawdź dostępność
-                      <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 ml-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
-                      </svg>
-                    </span>
                   </div>
                 </Link>
               </div>
@@ -347,6 +332,48 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Current Realizations Section */}
+      <section className='py-20 bg-white relative'>
+        <div className='container-custom relative z-10'>
+          <div className='text-center mb-12'>
+            <span className='badge badge-primary mb-4 inline-block'>Zobacz więcej</span>
+            <h2 className='text-3xl md:text-5xl font-bold mb-4 text-chocolate'>
+              Aktualne <span className='heading-fancy'>realizacje</span>
+            </h2>
+            <div className='h-1 w-20 bg-secondary-500 mx-auto my-6 rounded'></div>
+            <p className='text-gray-700 max-w-2xl mx-auto mt-6 text-lg'>
+              Śledź moje profile w mediach społecznościowych, żeby być na bieżąco z najnowszymi realizacjami i ciekawymi projektami.
+            </p>
+          </div>
+
+          <div className='flex flex-col sm:flex-row gap-6 justify-center items-center max-w-2xl mx-auto'>
+            <a
+              href={contactDetails.instagram}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='group flex items-center gap-4 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto justify-center'
+            >
+              <svg xmlns='http://www.w3.org/2000/svg' className='h-7 w-7' fill='currentColor' viewBox='0 0 24 24'>
+                <path d='M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z' />
+              </svg>
+              <span className='font-semibold text-lg'>Zobacz na Instagramie</span>
+            </a>
+
+            <a
+              href={contactDetails.facebook}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='group flex items-center gap-4 bg-[#1877F2] text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto justify-center'
+            >
+              <svg xmlns='http://www.w3.org/2000/svg' className='h-7 w-7' fill='currentColor' viewBox='0 0 24 24'>
+                <path d='M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z' />
+              </svg>
+              <span className='font-semibold text-lg'>Zobacz na Facebooku</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className='py-20 relative overflow-hidden bg-primary-700'>
         <div className="absolute inset-0 bg-[url('/images/hero-cake.svg')] opacity-[0.05] bg-repeat"></div>
@@ -358,7 +385,7 @@ export default function Home() {
             </h2>
             <div className='h-1 w-20 bg-secondary-500 mx-auto my-6 rounded'></div>
             <p className='text-lg text-gray-700 max-w-2xl mx-auto mb-8'>
-              Napisz do mnie, powiedz jaka okazja i dla ilu osób. Ustalimy smak, dekoracje i termin. Zwykle odpowiadam tego samego dnia.
+              Napisz do mnie, powiedz jaka okazja i dla ilu osób. Ustalimy smak, dekoracje i termin.
             </p>
             <Link href='/kontakt' className='inline-block btn btn-primary text-lg px-10 py-4'>
               Skontaktuj się w sprawie zamówienia

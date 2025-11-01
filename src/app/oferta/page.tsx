@@ -54,7 +54,7 @@ export default async function RealizacjePage({ searchParams }: { searchParams: P
           </h1>
           <div className="h-1 w-20 bg-secondary-500 mx-auto my-6 rounded"></div>
           <p className="text-gray-700 text-lg max-w-2xl mx-auto">
-            Zobacz nasze realizacje - <strong>torty urodzinowe, weselne, komunijne</strong> i inne słodkości dostępne w <strong>Tarnowie i okolicach</strong>
+            Zobacz moje realizacje - <strong>torty urodzinowe, weselne, komunijne</strong> i inne słodkości dostępne w <strong>Tarnowie i okolicach</strong>
           </p>
         </div>
 

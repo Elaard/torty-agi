@@ -64,8 +64,8 @@ const data: PageData = {
     promoted4: '4',
   },
   creations: {
-    creation1: '51',
-    creation2: '6',
+    creation1: '21',
+    creation2: '36',
     creation3: '7',
   },
   allProducts: [
@@ -98,8 +98,8 @@ const data: PageData = {
     },
     {
       id: '4',
-      name: 'Elegancki tort dla kobiety z kwiatami',
-      description: 'Romantyczny tort urodzinowy w pastelowych kolorach',
+      name: 'Torty Okolicznościowe',
+      description: 'Wyjątkowe torty na każdą okazję',
       category: ProductCategory.CAKES,
       variant: CakeVariants.WOMEN,
       mainImage: '/images/kobieta/kobieta_zdj_5.jpg',
@@ -113,14 +113,6 @@ const data: PageData = {
       variant: CakeVariants.OTHER,
       mainImage: '/images/inne/inne_zdj_5.jpg',
       images: ['/images/inne/inne_zdj_5.jpg'],
-    },
-    {
-      id: '6',
-      name: 'Babeczki',
-      description: 'Ręcznie dekorowany babeczki',
-      category: ProductCategory.CUPCAKES,
-      mainImage: '/images/inne/inne_zdj_7.jpg',
-      images: ['/images/inne/inne_zdj_7.jpg'],
     },
     {
       id: '7',
@@ -243,8 +235,8 @@ const data: PageData = {
     // Kobieta
     {
       id: '21',
-      name: 'Tort urodzinowy z makaronikami i kwiatami',
-      description: 'Kobiecy tort w stylu francuskim',
+      name: 'Torty Okolicznościowe',
+      description: 'Wyjątkowe torty na każdą okazję',
       category: ProductCategory.CAKES,
       variant: CakeVariants.WOMEN,
       mainImage: '/images/kobieta/kobieta_zdj_1.jpg',
@@ -378,8 +370,8 @@ const data: PageData = {
     },
     {
       id: '36',
-      name: 'Babeczki urodzinowe z kremem maślanym',
-      description: 'Wyjątkowe cupcakes na każdą okazję',
+      name: 'Babeczki',
+      description: 'Personalizowane babeczki',
       category: ProductCategory.CUPCAKES,
       mainImage: '/images/babeczki/babeczki_zdj_4.jpg',
       images: ['/images/babeczki/babeczki_zdj_4.jpg'],
@@ -502,7 +494,7 @@ const data: PageData = {
       id: '51',
       name: 'Torty Okolicznościowe',
       description: 'Wyjątkowe torty na każdą okazję',
-      category: ProductCategory.OTHER,
+      category: ProductCategory.CAKES,
       mainImage: '/images/inne/inne_zdj_6.jpg',
       images: ['/images/inne/inne_zdj_6.jpg'],
     },
