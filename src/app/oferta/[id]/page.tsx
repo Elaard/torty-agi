@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import { getPageConfig } from '@/data/get-page-data';
 import { routes } from '@/utils/routes';
 import { ImageCarousel } from './image-carousel';
-import { ProductSchema } from '@/components/seo/product-schema';
 import { BreadcrumbSchema } from '@/components/seo/breadcrumb-schema';
 
 // Generate static params for all products (SSG)
@@ -82,9 +81,8 @@ export default async function RealizacjaDetailPage({ params }: { params: Promise
     notFound();
   }
 
-  // Get category name
+  // Get category
   const category = categories.find((c) => c.id === realizacja.category);
-  const categoryName = category ? category.name : '';
 
   // Breadcrumb data
   const breadcrumbItems = [
@@ -95,7 +93,6 @@ export default async function RealizacjaDetailPage({ params }: { params: Promise
 
   return (
     <>
-      <ProductSchema product={realizacja} categoryName={categoryName} />
       <BreadcrumbSchema items={breadcrumbItems} />
       <div className="py-24 bg-beige">
         <div className="container-custom">
