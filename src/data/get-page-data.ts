@@ -7,7 +7,7 @@ enum CakeVariants {
   OTHER = 'torty-okolicznosciowe-na-kazda-okazje',
 }
 
-enum ProductCategory {
+export enum ProductCategory {
   CAKES = 'torty',
   CUPCAKES = 'babeczki',
   MACAROONS = 'makaroniki',

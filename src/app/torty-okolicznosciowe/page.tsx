@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { getPageConfig } from '../../data/get-page-data';
+import { getPageConfig, ProductCategory } from '../../data/get-page-data';
 import { routes } from '@/utils/routes';
 import ProductClient from '../oferta/product-client';
 
@@ -40,7 +40,7 @@ export default async function TortyOkolicznosciowePage({ searchParams }: { searc
   const params = await searchParams;
   const filter = params.kategoria || 'all';
 
-  const cakesOffer = allProducts.filter(product => product.category === 'cakes');
+  const cakesOffer = allProducts.filter(product => product.category === ProductCategory.CAKES);
 
   // Filter products to only include those that have images
   const offer = cakesOffer.filter(
