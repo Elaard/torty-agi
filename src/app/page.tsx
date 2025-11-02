@@ -232,8 +232,8 @@ export default function Home() {
                         className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
                       />
                     </div>
-                    <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>{creation1.name}</h3>
-                    <p className='text-gray-700 mb-4'>{creation1.description}</p>
+                    <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>Torty Okolicznościowe</h3>
+                    <p className='text-gray-700 mb-4'>Wyjątkowe torty na każdą okazję</p>
                   </div>
                 </Link>
               </div>
@@ -251,8 +251,8 @@ export default function Home() {
                         className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
                       />
                     </div>
-                    <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>{creation2.name}</h3>
-                    <p className='text-gray-700 mb-4'>{creation2.description}</p>
+                    <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>Babeczki</h3>
+                    <p className='text-gray-700 mb-4'>Personalizowane Babeczki</p>
                   </div>
                 </Link>
               </div>
@@ -270,8 +270,8 @@ export default function Home() {
                         className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
                       />
                     </div>
-                    <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>{creation3.name}</h3>
-                    <p className='text-gray-700 mb-4'>{creation3.description}</p>
+                    <h3 className='font-serif text-2xl font-bold mb-3 text-chocolate'>Deserki</h3>
+                    <p className='text-gray-700 mb-4'>Delikatne deserki z owocami</p>
                   </div>
                 </Link>
               </div>
