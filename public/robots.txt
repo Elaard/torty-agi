@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://torty-agi.pl/sitemap.xml
+
+# Disallow crawling of technical Next.js folders
+Disallow: /_next/
+Disallow: /api/

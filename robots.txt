@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /logowanie/
-Disallow: /panel-admina/
-Disallow: /api/
-
-Sitemap: https://torty-agi.pl/sitemap.xml
