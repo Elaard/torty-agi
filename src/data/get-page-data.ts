@@ -552,6 +552,33 @@ const data: PageData = {
       mainImage: '/images/chrzest/chrzest_zdj_10.jpg',
       images: ['/images/chrzest/chrzest_zdj_10.jpg'],
     },
+    {
+      id: '58',
+      name: 'Torty na komunię świętą',
+      description: 'Torty na komunię świętą',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.COMMUNION,
+      mainImage: '/images/komunia/komunia_zdj_6.jpg',
+      images: ['/images/komunia/komunia_zdj_6.jpg'],
+    },
+    {
+      id: '59',
+      name: 'Torty na komunię świętą',
+      description: 'Torty na komunię świętą',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.COMMUNION,
+      mainImage: '/images/komunia/komunia_zdj_7.jpg',
+      images: ['/images/komunia/komunia_zdj_7.jpg'],
+    },
+    {
+      id: '60',
+      name: 'Torty na komunię świętą',
+      description: 'Torty na komunię świętą',
+      category: ProductCategory.CAKES,
+      variant: CakeVariants.COMMUNION,
+      mainImage: '/images/komunia/komunia_zdj_8.jpg',
+      images: ['/images/komunia/komunia_zdj_8.jpg'],
+    },
   ],
   categories: [
     {
